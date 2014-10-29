@@ -15,6 +15,5 @@ C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\bin\Debug\Enti
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.xml
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.csprojResolveAssemblyReference.cache
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb

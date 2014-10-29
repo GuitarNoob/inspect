@@ -17,8 +17,6 @@ namespace ISIInspection.Models
         public string Units { get; set; }
 
         public Guid RouterId { get; set; }
-        public Guid PartTypeId { get; set; }
-        //public virtual Part PartType { get; set; }
 
         public void CopyInfo(PartMeasurementSP part)
         {

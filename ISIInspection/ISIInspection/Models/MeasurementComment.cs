@@ -8,6 +8,12 @@ namespace ISIInspection.Models
 {
     public class MeasurementComment
     {
+        public Guid MeasurementCommentId { get; set; }
+
+        public Guid RouterId { get; set; }
+        public Guid WorkOrderId { get; set; }
+        public Guid UserId { get; set; }
+
         public Guid MeasurementId { get; set; }
         public PartMeasurementActual Measurement { get; set; }
 

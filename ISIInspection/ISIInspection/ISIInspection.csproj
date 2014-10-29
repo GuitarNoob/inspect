@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ISIInspectionEngine.cs" />
+    <Compile Include="MieTrak\MieTrakConnectionManager.cs" />
     <Compile Include="Models\InspectionContext.cs" />
     <Compile Include="Models\MeasurementComment.cs" />
-    <Compile Include="Models\PartComment.cs" />
     <Compile Include="Models\PartMeasurementActual.cs" />
     <Compile Include="Models\PartMeasurementSP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
