@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\paul\documents\visual studio 2013\Projects\ISIInspection\ProcessInspection\obj\Debug\
+C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ProcessInspection\obj\Debug\
 ProcessInspection
 none
 false
 DEBUG;TRACE
-C:\Users\paul\documents\visual studio 2013\Projects\ISIInspection\ProcessInspection\App.xaml
+C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ProcessInspection\App.xaml
 181069587400
 
 22-871749515
-19-1992214402
+19-1296592748
 MainWindow.xaml;UserControls\CustomerUserControl.xaml;UserControls\DbManagement.xaml;UserControls\MeasurementSPUserControl.xaml;UserControls\PartsRanUserControl.xaml;UserControls\PartTypeUserControl.xaml;UserControls\RunPartStart.xaml;UserControls\RunPartUserControl.xaml;UserControls\WorkOrderMainControl.xaml;UserControls\WorkOrderUserControl.xaml;Windows\AddEditCustomerWindow.xaml;Windows\AddEditPartInformation.xaml;Windows\AddEditPartSetPoint.xaml;Windows\AddEditRanPart.xaml;Windows\AddEditUser.xaml;Windows\AddEditWorkOrder.xaml;Windows\LinkToPartType.xaml;Windows\RunPartWindow.xaml;
 
 False

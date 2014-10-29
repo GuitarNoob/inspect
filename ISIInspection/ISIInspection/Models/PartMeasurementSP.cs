@@ -9,17 +9,20 @@ namespace ISIInspection.Models
     public class PartMeasurementSP
     {
         public Guid PartMeasurementSPId { get; set; }        
-        public string Number { get; set; }
+        public string CharNumber { get; set; }
+        public string RefLocation { get; set; }
+        public string Requirement { get; set; }
         public decimal SetPoint { get; set; }
         public decimal Tolerance { get; set; }
         public string Units { get; set; }
 
+        public Guid RouterId { get; set; }
         public Guid PartTypeId { get; set; }
-        public virtual Part PartType { get; set; }
+        //public virtual Part PartType { get; set; }
 
         public void CopyInfo(PartMeasurementSP part)
         {
-            part.Number = this.Number;
+            part.CharNumber = this.CharNumber;
             part.SetPoint = this.SetPoint;
             part.Tolerance = this.Tolerance;
             part.Units = this.Units;

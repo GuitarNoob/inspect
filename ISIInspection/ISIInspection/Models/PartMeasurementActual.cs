@@ -12,10 +12,11 @@ namespace ISIInspection.Models
         public DateTime CompletedTime { get; set; }
         public decimal MeasuredValue { get; set; }
 
+        public Guid RouterId { get; set; }
         public Guid PartRanId { get; set; }
-        public virtual RanPart Part { get; set; }
+        //public virtual RanPart Part { get; set; }
 
         public Guid UserId { get; set; }
-        public virtual User Operator { get; set; }
+        //public virtual User Operator { get; set; }
     }
 }
