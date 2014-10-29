@@ -1,0 +1,10 @@
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\ISIInspection.dll.config
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\ISIInspection.dll
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\ISIInspection.pdb
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\EntityFramework.dll
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\EntityFramework.xml
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
+c:\users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb
+C:\Users\paul\documents\visual studio 2013\Projects\ISIInspection\ISIInspection\obj\Debug\ISIInspection.csprojResolveAssemblyReference.cache

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ProcessInspection.UserControls.PartsRanUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900" Loaded="UserControl_Loaded">
+    <Grid Name="GridContent">
+        <Grid Name="MainGrid">
+        <DataGrid x:Name="contentDataGrid" AutoGenerateColumns="True" EnableRowVirtualization="True"  
+                ItemsSource="{Binding}" Margin="10,38,10,10"  
+                RowDetailsVisibilityMode="Collapsed" IsReadOnly="True" MouseDoubleClick="contentDataGrid_MouseDoubleClick">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add" Name="MenuAdd" Click="MenuAdd_Click"/>
+                    <MenuItem Header="Edit" Name="MenuEdit" Click="MenuEdit_Click"/>
+                    <MenuItem Header="Remove" Name="MenuRemove" Click="MenuRemove_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Button x:Name="ButtonAdd" IsDefault="True" Content="Run New Part" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="98" Click="ButtonAdd_Click"/>
+        </Grid>        
+    </Grid>
+</UserControl>
