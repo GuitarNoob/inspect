@@ -11,7 +11,7 @@ namespace TestApplication
         static void Main(string[] args)
         {
             ISIInspection.ISIInspectionEngine eng = new ISIInspection.ISIInspectionEngine();
-            eng.GetMeasurementsForPart();
+            eng.GetMeasurements();
         }
     }
 }

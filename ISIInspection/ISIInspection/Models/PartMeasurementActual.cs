@@ -15,6 +15,8 @@ namespace ISIInspection.Models
         public Guid RouterId { get; set; }
         public Guid WorkOrderId { get; set; }
 
+        public Guid PartNumber { get; set; }
+
         public Guid UserId { get; set; }
     }
 }

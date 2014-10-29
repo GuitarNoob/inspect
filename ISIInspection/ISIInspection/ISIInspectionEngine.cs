@@ -13,12 +13,12 @@ namespace ISIInspection
         public MieTrakConnectionManager dbMieTrak = new MieTrakConnectionManager("");
         public InspectionContext db = new InspectionContext();     
 
-        public List<PartMeasurementActual> GetMeasurementsForPart()
+        public List<PartMeasurementActual> GetMeasurements()
         {
             return db.MeasurementActual.ToList();
         }
 
-        public List<PartMeasurementSP> GetSetPointsForPart()
+        public List<PartMeasurementSP> GetSetPoints()
         {
             return db.MeasurementSetpoints.ToList();
         }
@@ -54,15 +54,36 @@ namespace ISIInspection
 
         public bool UpdateMeasurement(PartMeasurementActual measurement)
         {
-            //db.MeasurementActual.Add(measurement);
-            //db.SaveChanges();
+            PartMeasurementActual item = GetMeasurements().Find(x => x.PartMeasurementActualId == measurement.PartMeasurementActualId);
+            if (item == null)
+                return false;
+
+            item.CompletedTime = measurement.CompletedTime;
+            item.MeasuredValue = measurement.MeasuredValue;
+            item.PartNumber = measurement.PartNumber;
+            item.RouterId = measurement.RouterId;
+            item.UserId = measurement.UserId;
+            item.WorkOrderId = measurement.WorkOrderId;
+
+            db.SaveChanges();
             return true;
         }
 
         public bool UpdateSetPoint(PartMeasurementSP measurement)
         {
-            //db.MeasurementSetpoints.Add(measurement);
-            //db.SaveChanges();
+            PartMeasurementSP item = GetSetPoints().Find(x => x.PartMeasurementSPId == measurement.PartMeasurementSPId);
+            if (item == null)
+                return false;
+
+            item.CharNumber = measurement.CharNumber;
+            item.RefLocation = measurement.RefLocation;
+            item.Requirement = measurement.Requirement;
+            item.RouterId = measurement.RouterId;
+            item.SetPoint = measurement.SetPoint;
+            item.Tolerance = measurement.Tolerance;
+            item.Units = measurement.Units;
+
+            db.SaveChanges();
             return true;
         }
     }

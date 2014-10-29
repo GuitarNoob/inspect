@@ -16,14 +16,6 @@ namespace ISIInspection.Models
         public decimal Tolerance { get; set; }
         public string Units { get; set; }
 
-        public Guid RouterId { get; set; }
-
-        public void CopyInfo(PartMeasurementSP part)
-        {
-            part.CharNumber = this.CharNumber;
-            part.SetPoint = this.SetPoint;
-            part.Tolerance = this.Tolerance;
-            part.Units = this.Units;
-        }
+        public Guid RouterId { get; set; }       
     }
 }
