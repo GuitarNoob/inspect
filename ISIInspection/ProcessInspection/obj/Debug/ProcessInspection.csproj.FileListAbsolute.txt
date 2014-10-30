@@ -116,3 +116,6 @@ C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ProcessInspection\obj\Debug\
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ProcessInspection\obj\Debug\ProcessInspection.csproj.GenerateResource.Cache
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ProcessInspection\obj\Debug\ProcessInspection.exe
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ProcessInspection\obj\Debug\ProcessInspection.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\ProcessInspection\bin\Debug\ProcessInspection.exe.config
+C:\Users\paul\Documents\inspect\ISIInspection\ProcessInspection\obj\Debug\ProcessInspection.exe
+C:\Users\paul\Documents\inspect\ISIInspection\ProcessInspection\obj\Debug\ProcessInspection.pdb
