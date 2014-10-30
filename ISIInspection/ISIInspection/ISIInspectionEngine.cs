@@ -20,7 +20,6 @@ namespace ISIInspection
 
         public List<PartMeasurementSP> GetSetPoints()
         {
-            //ashdkjahsdkjhasd
             return db.MeasurementSetpoints.ToList();
         }
 
