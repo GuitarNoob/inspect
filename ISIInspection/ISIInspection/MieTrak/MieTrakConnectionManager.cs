@@ -9,24 +9,21 @@ namespace ISIInspection.MieTrak
 {
     public class MieTrakConnectionManager
     {
-        public MieTrakConnectionManager(string sqlConnectionString)
+        MIETRAKEntities mietrakDb = new MIETRAKEntities();      
+
+        public List<MieTrak.User> GetUsers()
         {
- 
+            return mietrakDb.Users.ToList();
         }
 
-        public DataTable GetUsers()
+        public List<MieTrak.Router> GetRouters()
         {
-            return null;
+            return mietrakDb.Routers.ToList();
         }
 
-        public DataTable GetRouters()
+        public List<MieTrak.WorkOrder> GetWorkOrders()
         {
-            return null;
-        }
-
-        public DataTable GetWorkOrders()
-        {
-            return null;
+            return mietrakDb.WorkOrders.ToList();
         }
     }
 }

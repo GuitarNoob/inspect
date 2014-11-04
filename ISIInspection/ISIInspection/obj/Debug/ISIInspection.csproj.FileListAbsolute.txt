@@ -18,3 +18,13 @@ C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\bin\Debug\Enti
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb
 C:\Users\pparks\Documents\Git\Inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.csprojResolveAssemblyReference.cache
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\ISIInspection.dll.config
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\ISIInspection.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\ISIInspection.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.xml
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.csprojResolveAssemblyReference.cache
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb

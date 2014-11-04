@@ -10,45 +10,30 @@ namespace ISIInspection
 {
     public class ISIInspectionEngine
     {
-        public MieTrakConnectionManager dbMieTrak = new MieTrakConnectionManager("");
-        public InspectionContext db = new InspectionContext();     
+        public MieTrakConnectionManager MieTrakInspectionDb = new MieTrakConnectionManager(s);
+        public InspectionContext InspectionDb = new InspectionContext();     
 
         public List<PartMeasurementActual> GetMeasurements()
         {
-            return db.MeasurementActual.ToList();
+            return InspectionDb.MeasurementActual.ToList();
         }
 
         public List<PartMeasurementSP> GetSetPoints()
         {
-            return db.MeasurementSetpoints.ToList();
-        }
-
-        public List<object> GetUsers()
-        {
-            return null;
-        }
-
-        public List<object> GetWorkOrders()
-        {
-            return null;
-        }
-
-        public List<object> GetPartys()
-        {
-            return null;
-        }
+            return InspectionDb.MeasurementSetpoints.ToList();
+        }    
 
         public bool AddMeasurement(PartMeasurementActual measurement)
         {
-            db.MeasurementActual.Add(measurement);
-            db.SaveChanges();
+            InspectionDb.MeasurementActual.Add(measurement);
+            InspectionDb.SaveChanges();
             return true;
         }
 
         public bool AddSetPoint(PartMeasurementSP measurement)
         {
-            db.MeasurementSetpoints.Add(measurement);
-            db.SaveChanges();
+            InspectionDb.MeasurementSetpoints.Add(measurement);
+            InspectionDb.SaveChanges();
             return true;
         }
 
@@ -65,7 +50,7 @@ namespace ISIInspection
             item.UserId = measurement.UserId;
             item.WorkOrderId = measurement.WorkOrderId;
 
-            db.SaveChanges();
+            InspectionDb.SaveChanges();
             return true;
         }
 
@@ -83,7 +68,7 @@ namespace ISIInspection
             item.Tolerance = measurement.Tolerance;
             item.Units = measurement.Units;
 
-            db.SaveChanges();
+            InspectionDb.SaveChanges();
             return true;
         }
     }

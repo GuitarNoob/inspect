@@ -16,5 +16,5 @@ C:\Users\paul\Documents\inspect\ISIInspection\ProcessInspection\App.xaml
 191454777867
 MainWindow.xaml;UserControls\CustomerUserControl.xaml;UserControls\DbManagement.xaml;UserControls\MeasurementSPUserControl.xaml;UserControls\PartsRanUserControl.xaml;UserControls\PartTypeUserControl.xaml;UserControls\RunPartStart.xaml;UserControls\RunPartUserControl.xaml;UserControls\WorkOrderMainControl.xaml;UserControls\WorkOrderUserControl.xaml;Windows\AddEditCustomerWindow.xaml;Windows\AddEditPartInformation.xaml;Windows\AddEditPartSetPoint.xaml;Windows\AddEditRanPart.xaml;Windows\AddEditUser.xaml;Windows\AddEditWorkOrder.xaml;Windows\LinkToPartType.xaml;Windows\RunPartWindow.xaml;
 
-True
+False
 
