@@ -10,14 +10,12 @@ namespace ISIInspection.Models
     public class InspectionContext : DbContext
     {
         public InspectionContext()
-            : base()
-        { }
+            : base("name=INSPECTIONEntities")
+        {            
+            Database.SetInitializer<InspectionContext>(new CreateDatabaseIfNotExists<InspectionContext>());
+        }
 
-        public InspectionContext(string connectionName)
-            : base("name=" + connectionName)
-        { }
-
-        public DbSet<MeasurementComment> MeasurementComments { get; set; }
+        //public DbSet<MeasurementComment> MeasurementComments { get; set; }
         public DbSet<PartMeasurementSP> MeasurementSetpoints { get; set; }
         public DbSet<PartMeasurementActual> MeasurementActual { get; set; }        
     }

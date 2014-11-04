@@ -1,0 +1,1279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MieTrakWrapper</RootNamespace>
+    <AssemblyName>MieTrakWrapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MieTrak\AccountingMethod.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ActivityLog.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ActivityLogType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Address.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\AddressType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ApplicationType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Bill.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillPayment.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillPaymentApply.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillPaymentApplyCredit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillPaymentCheck.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillPaymentCheckStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillPaymentStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BillStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Budget.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BudgetAccount.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BulletinMessage.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BulletinMessageFor.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BusinessProcess.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BusinessProcessResult.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BusinessProcessResultDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BusinessProcessTemplate.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\BusinessProcessTemplateDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CachedTable.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CalculationType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CalendarPeriod.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningItem.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningScheduleCalendar.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningScheduledItemBillOfMaterial.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningScheduleItemInventory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningScheduleOpenPurchaseOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningScheduleOpenWorkOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CapacityPlanningScheduleWorkCenter.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Catalog.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CatalogCategory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CatalogType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Cell.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CellMachine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CertificationType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Comment.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CommentType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Commodity.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CommodityParty.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CompanyBenefit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ConfirmingStatement.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ContainmentAction.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CorrectiveActionType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Country.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CRMNotesCategory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CurrencyCode.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerAging.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerDeposit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerDepositLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerDepositStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerGroup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerPayment.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerPaymentApply.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerPaymentApplyCredit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerPaymentStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CustomerPaymentType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\CycleType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DaysOff.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DaysOffDivision.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DefaultPropertyValue.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Department.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DirectionType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Discount.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DiscountPercentage.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DispositionType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Division.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DivisionParameter.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Document.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DocumentGroup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DocumentGroupUser.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DocumentType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\DropShipment.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ElectronicRequestForQuote.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ElectronicRequestForQuoteLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ElectronicSalesOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ElectronicSalesOrderLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\EmploymentType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\EmploymentTypeAccrual.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\EngineeringChangeRequest.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\EngineeringChangeRequestPart.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\EngineeringChangeRequestStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\EngineeringChangeRequestType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\FailureType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\FiscalCalendar.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\FixedAsset.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Form1099Box.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Form1099Report.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Form1099ReportParty.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\FreightClass.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\FreightCode.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralJournalEntry.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralJournalEntryLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralJournalEntryStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralLedgerAccount.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralLedgerAccountType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralLedgerDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\GeneralLedgerSummaryTotal.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRAdditionalInfo.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRAdditionalInfoType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRAddress.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRAward.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRBenefit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRCertificate.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRDependent.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HREducation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HREmergencyInfo.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HREvaluation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HREvaluationCategory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HREvaluationScore.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HREvaluationType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRPersonalInfo.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRTraining.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRWarning.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\HRWorkHistory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ImportElectronicBOMItem.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ImportExportScript.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ImportExportType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\IntegrationTransaction.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\IntegrityCheck.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Invoice.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoiceLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoiceLineItemType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoicePackaging.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoicePayment.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoiceSalesperson.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoiceStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\InvoiceTerm.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Item.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemCatalogCategory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemClass.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemCycle.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemDivision.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventoryLocation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventoryTransaction.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventoryTransactionType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventoryWorkInProcessTransaction.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventoryWorkSheet.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemInventoryWorkSheetItem.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemKit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemMachine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemMasterProductionSchedule.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemMPSForecast.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemMPSType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemNumber.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemPackaging.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemSerialNumber.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemSubstitution.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemUsageReading.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ItemVendor.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Kit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\KitComponentsShowType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\KitType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Location.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\LocationType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\LockedFile.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\LockedFileType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\LookupTable.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\LookupTableType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\LookupTableValue.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Machine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineAvailability.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineCategory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineDepreciation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceCycleType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenancePriority.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceReminder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceRequiredItem.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceSchedule.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceScheduleRequest.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceScheduleRequestStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceScheduleType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceScheduleWorkOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceScheduleWorkOrderActivity.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineMaintenanceScheduleWorkOrderStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineSetup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineSetupStockSize.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineSetupTurret.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineSetupType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineUsageReading.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MachineUsageReadingType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Manifest.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestDropLocation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestLoad.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestLoadDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestLoadDetailStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestLoadType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ManifestStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MaterialSource.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MemorizedJournalEntry.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MemorizedJournalEntryLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MieSystemData.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MieSystemStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MieTrakConnectionManager.cs" />
+    <Compile Include="MieTrak\MieTrakDB.Context.cs">
+      <DependentUpon>MieTrakDB.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MieTrak\MieTrakDB.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MieTrak\MieTrakDB.Designer.cs">
+      <DependentUpon>MieTrakDB.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MieTrak\MissingStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Module.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ModulePermission.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MRP.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\MRPDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\NotesContactType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Operation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\OperationFormula.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\OperationFormulaType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\OperationFormulaVariable.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\OperationFormulaVariableType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\OperationOperationRelation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Organization.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\OverheadRateType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Party.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PartyBuyer.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PartyCustomerGroup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PartyDivision.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PartySalesperson.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PartySupplier.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PartyUserNote.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PaymentMethod.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PayPeriod.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PayrollCycle.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PickList.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PickListGroup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PickListItem.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Picture.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PriceType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Project.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ProjectStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderBidStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderLineRequirement.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderLineStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderReceiving.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderReceivingLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderReceivingLineRequirement.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderReceivingLineStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderReceivingStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderRequest.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderRequestStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseOrderSupplier.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseRFQ.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseRFQLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseRFQStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseRFQSupplier.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\PurchaseRFQSupplierLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QualityControl.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QualityControlContainmentAction.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QualityControlStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QualityLevel.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuickView.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuickViewMaster.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuickViewParameter.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuickViewParameterMaster.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuickViewParameterType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuickViewUser.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Quote.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteAssembly.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteAssemblyCutAnalyzer.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteAssemblyFormulaVariable.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteAssemblyMachine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteBuyer.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteQuantity.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteSalesperson.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\QuoteStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Reconciliation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReconciliationLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReconciliationStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Region.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RejectionType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReminderType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReorderPolicy.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Report.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReportDivision.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReportDivisionUser.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReportFilterCriteria.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReportGroup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReportTemplate.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ReportType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RequestForQuote.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RequestForQuoteLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RequestForQuoteLineQuantity.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RequestForQuoteStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Router.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RouterStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RouterWorkCenter.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\RouterWorkCenterMachine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderCorrespondance.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderCorrespondanceType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderExplodedBillOfMaterial.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderLine.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderLineItemInventoryLocation.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderLineItemType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderLineLot.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderLineLotStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderSalesperson.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesOrderStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesTax.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesTaxRoundingType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SalesTaxType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Schedule.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleDetailEmployee.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleDetailMaterial.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleDetailPredecessor.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleResource.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleResourceException.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScheduleType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SchedulingMode.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ScrapReason.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SecurityGroup.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SecurityGroupModule.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SecurityGroupModulePermission.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Shift.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ShiftBreak.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ShippingMethodType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ShipVia.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Site.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SparePart.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\StartupWidget.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\State.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Statement.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\StatementDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\StatementExplosion.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\StatementType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\SupplierAging.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\sysdiagram.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskActivity.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskActivityStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskActivityType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskJournal.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskJournalContent.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskJournalNote.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskWorkFlow.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskWorkFlowTemplate.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TaskWorkFlowTemplateDetail.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\Term.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TermMultipleDueDate.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TermType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TimeCard.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TimeCardTotal.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TimeClockAccrual.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TimeClockEntry.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TimeClockEntryType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TrackingComment.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TrailerType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TrainingHelp.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\TransactionLog.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UnitOfMeasure.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UnitOfMeasureSet.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\User.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UserAccrual.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UserAccrualLog.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UserCodeCategory.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UserCodeItem.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UserDivision.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\UserStartupWidget.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\ViewLog.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WhiteBoard.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkCenter.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkCenterDaysOff.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkCenterEmployee.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkCenterType.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderAssembly.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderAssemblyBOMStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderAssemblyLaborStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderCollection.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderCompletion.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderIssuing.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderJob.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderNest.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderNestJob.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderNestStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderProgram.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderProgramCollection.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderProgramLayout.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderProgramLayoutStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderProgramLayoutWorkOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderProgramWorkOrder.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderRelease.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderSplit.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderStatu.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderTotal.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MieTrak\WorkOrderTypeOfHour.cs">
+      <DependentUpon>MieTrakDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="MieTrak\MieTrakDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MieTrakDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="MieTrak\MieTrakDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MieTrakDB.edmx</DependentUpon>
+      <LastGenOutput>MieTrakDB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MieTrak\MieTrakDB.edmx.diagram">
+      <DependentUpon>MieTrakDB.edmx</DependentUpon>
+    </None>
+    <None Include="MieTrak\MieTrakDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MieTrakDB.edmx</DependentUpon>
+      <LastGenOutput>MieTrakDB.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

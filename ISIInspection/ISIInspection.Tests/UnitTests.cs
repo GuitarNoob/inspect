@@ -13,8 +13,10 @@ namespace ISIInspection.Tests
         [TestCase]
         public void AddTest()
         {
-            ISIInspectionEngine isiEngine = new ISIInspectionEngine();            
-            
+            ISIInspectionEngine isiEngine = new ISIInspectionEngine();
+
+            isiEngine.GetMeasurements();
+            isiEngine.AddMeasurement(new Models.PartMeasurementActual() { });
             //int result = helper.Add(20, 10);
             //Assert.AreEqual(30, result);
         }

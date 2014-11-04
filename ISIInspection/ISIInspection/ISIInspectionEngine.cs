@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ISIInspection.Models;
-using ISIInspection.MieTrak;
 
 namespace ISIInspection
 {
     public class ISIInspectionEngine
     {
-        public MieTrakConnectionManager MieTrakInspectionDb = new MieTrakConnectionManager(s);
+        //public MieTrakConnectionManager MieTrakInspectionDb = new MieTrakConnectionManager();
         public InspectionContext InspectionDb = new InspectionContext();     
 
         public List<PartMeasurementActual> GetMeasurements()

@@ -1,0 +1,11 @@
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\ISIInspection.Tests.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\ISIInspection.Tests.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\ISIInspection.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\nunit.framework.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\EntityFramework.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\ISIInspection.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\nunit.framework.xml
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\bin\Debug\EntityFramework.xml
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\obj\Debug\ISIInspection.Tests.csprojResolveAssemblyReference.cache
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\obj\Debug\ISIInspection.Tests.dll
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection.Tests\obj\Debug\ISIInspection.Tests.pdb

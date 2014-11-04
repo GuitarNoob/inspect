@@ -1,0 +1,16 @@
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\TestRunner.exe.config
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\TestRunner.exe
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\TestRunner.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\ISIInspection.dll
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\ISIInspection.Tests.dll
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\nunit.framework.dll
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\EntityFramework.dll
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\ISIInspection.Tests.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\ISIInspection.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\nunit.framework.xml
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\EntityFramework.xml
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\obj\Debug\TestRunner.csprojResolveAssemblyReference.cache
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\obj\Debug\TestRunner.exe
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\obj\Debug\TestRunner.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\EntityFramework.SqlServer.xml

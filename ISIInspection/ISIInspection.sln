@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessInspection", "Proces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIInspection.Tests", "ISIInspection.Tests\ISIInspection.Tests.csproj", "{B07981D7-7A3A-43C9-A936-949E5BBB6D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunner", "TestRunner\TestRunner.csproj", "{159D3EC1-D9D9-4982-A539-A3884E060BA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MieTrakWrapper", "MieTrakWrapper\MieTrakWrapper.csproj", "{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B07981D7-7A3A-43C9-A936-949E5BBB6D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B07981D7-7A3A-43C9-A936-949E5BBB6D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B07981D7-7A3A-43C9-A936-949E5BBB6D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159D3EC1-D9D9-4982-A539-A3884E060BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159D3EC1-D9D9-4982-A539-A3884E060BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159D3EC1-D9D9-4982-A539-A3884E060BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159D3EC1-D9D9-4982-A539-A3884E060BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
