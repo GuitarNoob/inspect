@@ -74,5 +74,7 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="1156,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="1075,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="203,288,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnWorkOrder" Content="View WorkOrder" HorizontalAlignment="Left" Margin="250,0,0,20" Width="108" Height="23" VerticalAlignment="Bottom" Click="BtnWorkOrder_Click"/>
+        <Button x:Name="BtnRouter" Content="View Router" HorizontalAlignment="Left" Margin="369,0,0,20" Width="108" Height="23" VerticalAlignment="Bottom" Click="BtnRouter_Click"/>
     </Grid>
 </Window>

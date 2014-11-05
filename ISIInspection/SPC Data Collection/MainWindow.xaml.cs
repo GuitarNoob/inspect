@@ -19,9 +19,15 @@ namespace SPC_Data_Collection
     /// </summary>
     public partial class MainWindow : Window
     {
+        ISIInspection.ISIInspectionEngine isiEngine;
+        MieTrakWrapper.MieTrak.MieTrakConnectionManager mietrakConn;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            isiEngine = new ISIInspection.ISIInspectionEngine();
+            mietrakConn = new MieTrakWrapper.MieTrak.MieTrakConnectionManager();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -38,6 +44,18 @@ namespace SPC_Data_Collection
         {
             CreatePlan Plan1 = new CreatePlan();
             Plan1.Show();
+        }
+
+        private void BtnWorkOrder_Click(object sender, RoutedEventArgs e)
+        {
+            TestWindow win = new TestWindow(mietrakConn.GetWorkOrders());
+            win.ShowDialog();
+        }
+
+        private void BtnRouter_Click(object sender, RoutedEventArgs e)
+        {
+            TestWindow win = new TestWindow(mietrakConn.GetRouters());
+            win.ShowDialog();
         }
     }
 }
