@@ -14,3 +14,5 @@ C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\obj\Debug\TestRunner.ex
 C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\obj\Debug\TestRunner.pdb
 C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\MieTrakWrapper.dll
+C:\Users\paul\Documents\inspect\ISIInspection\TestRunner\bin\Debug\MieTrakWrapper.pdb

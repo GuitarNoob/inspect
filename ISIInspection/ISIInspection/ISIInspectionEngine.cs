@@ -44,11 +44,7 @@ namespace ISIInspection
 
             item.CompletedTime = measurement.CompletedTime;
             item.MeasuredValue = measurement.MeasuredValue;
-            item.PartNumber = measurement.PartNumber;
-            item.RouterId = measurement.RouterId;
-            item.UserId = measurement.UserId;
-            item.WorkOrderId = measurement.WorkOrderId;
-
+            
             InspectionDb.SaveChanges();
             return true;
         }
@@ -62,8 +58,6 @@ namespace ISIInspection
             item.CharNumber = measurement.CharNumber;
             item.RefLocation = measurement.RefLocation;
             item.Requirement = measurement.Requirement;
-            item.RouterId = measurement.RouterId;
-            item.SetPoint = measurement.SetPoint;
             item.Tolerance = measurement.Tolerance;
             item.Units = measurement.Units;
 

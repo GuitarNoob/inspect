@@ -53,6 +53,10 @@
       <Project>{f7e713ea-de49-464b-8805-a6e321e700e1}</Project>
       <Name>ISIInspection</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MieTrakWrapper\MieTrakWrapper.csproj">
+      <Project>{fbbb9124-9567-4510-ab59-8f4ad3bc9e8f}</Project>
+      <Name>MieTrakWrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

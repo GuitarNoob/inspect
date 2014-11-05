@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MieTrakWrapper.MieTrak;
 
 namespace ISIInspection.Tests
 {
@@ -15,8 +16,11 @@ namespace ISIInspection.Tests
         {
             ISIInspectionEngine isiEngine = new ISIInspectionEngine();
 
-            isiEngine.GetMeasurements();
-            isiEngine.AddMeasurement(new Models.PartMeasurementActual() { });
+            //MieTrakConnectionManager mang = new MieTrakConnectionManager();
+            //List<Router> routers = mang.GetRouters();
+            
+            //isiEngine.GetMeasurements();
+            //isiEngine.AddMeasurement(new Models.PartMeasurementActual() { PartMeasurementActualId = new Guid(), FabricatedPartId = new Guid(), CompletedTime = DateTime.Now,PartMeasurementSPId = new Guid() });
             //int result = helper.Add(20, 10);
             //Assert.AreEqual(30, result);
         }

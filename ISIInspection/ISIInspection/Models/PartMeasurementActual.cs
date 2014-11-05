@@ -12,11 +12,18 @@ namespace ISIInspection.Models
         public DateTime CompletedTime { get; set; }
         public decimal MeasuredValue { get; set; }
 
-        public Guid RouterId { get; set; }
-        public Guid WorkOrderId { get; set; }
+        //Mietrak
+        public int UserId { get; set; }
 
-        public Guid PartNumber { get; set; }
+        //Parent Part
+        public Guid FabricatedPartId { get; set; }
+        public virtual FabricatedPart FabricatedPart { get; set; }
 
-        public Guid UserId { get; set; }
+        //Parent Measurement
+        public Guid PartMeasurementSPId { get; set; }
+        public virtual PartMeasurementSP PartMeasurementSP { get; set; }
+
+        //Child Comments
+        public virtual List<MeasurementComment> Measurements { get; set; }        
     }
 }

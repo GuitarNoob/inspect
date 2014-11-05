@@ -16,6 +16,11 @@ namespace ISIInspection.Models
         public decimal Tolerance { get; set; }
         public string Units { get; set; }
 
-        public Guid RouterId { get; set; }       
+        //Parent Inspection Plan
+        public Guid InspectionPlanId { get; set; }
+        public virtual InspectionPlan InspectionPlan { get; set; }
+
+        //Child Measurement
+        public virtual List<PartMeasurementActual> Measurements { get; set; }  
     }
 }

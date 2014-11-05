@@ -26,3 +26,4 @@ C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFram
 C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
 C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.csprojResolveAssemblyReference.cache

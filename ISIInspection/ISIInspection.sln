@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunner", "TestRunner\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MieTrakWrapper", "MieTrakWrapper\MieTrakWrapper.csproj", "{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPC Data Collection", "SPC Data Collection\SPC Data Collection.csproj", "{6AB1C110-4A22-4694-8577-0F761F25ED02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBBB9124-9567-4510-AB59-8F4AD3BC9E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB1C110-4A22-4694-8577-0F761F25ED02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB1C110-4A22-4694-8577-0F761F25ED02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB1C110-4A22-4694-8577-0F761F25ED02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB1C110-4A22-4694-8577-0F761F25ED02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
