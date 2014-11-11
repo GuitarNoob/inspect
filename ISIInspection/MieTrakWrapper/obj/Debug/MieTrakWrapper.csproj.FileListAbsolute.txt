@@ -7,3 +7,4 @@ C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFra
 C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.dll
 C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.csprojResolveAssemblyReference.cache

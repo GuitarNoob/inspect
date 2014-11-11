@@ -9,7 +9,7 @@ namespace MieTrakWrapper.MieTrak
 {
     public class MieTrakConnectionManager
     {
-        MIETRAKEntities mietrakDb = new MIETRAKEntities();      
+        public MIETRAKEntities mietrakDb = new MIETRAKEntities();      
 
         public List<MieTrak.User> GetUsers()
         {
