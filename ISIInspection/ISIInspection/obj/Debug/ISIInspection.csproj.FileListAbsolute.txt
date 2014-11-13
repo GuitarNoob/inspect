@@ -26,3 +26,12 @@ C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFram
 C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
 C:\Users\paul\Documents\inspect\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\bin\Debug\ISIInspection.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\bin\Debug\ISIInspection.pdb
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\bin\Debug\EntityFramework.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\bin\Debug\EntityFramework.xml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\obj\Debug\ISIInspection.csprojResolveAssemblyReference.cache
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\obj\Debug\ISIInspection.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\ISIInspection\obj\Debug\ISIInspection.pdb

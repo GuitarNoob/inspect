@@ -97,7 +97,6 @@ namespace SPC_Data_Collection
         {
             WorkOrder wo = selectedWO ?? new WorkOrder();
             TxtBoxCustomerId.Text = wo.CustomerFK.ToString();
-            TxtBoxCustomer.Text = "";
             TxtBoxDescription.Text = wo.ItemDescription;
             TxtBoxPartNumber.Text = wo.PartNumber;
             TxtBoxPartRevision.Text = wo.Revision;
@@ -105,6 +104,9 @@ namespace SPC_Data_Collection
             TxtBoxQuantityReq.Text = (wo.QuantityRequired ?? (decimal)0).ToString("0");
             TxtBoxRouter.Text = wo.RouterFK.ToString();
             TxtBoxWorkOrder.Text = wo.WorkOrderPK.ToString();
+
+            Party customer = mietrakConn.mietrakDb.Parties.FirstOrDefault(x => x.PartyPK == wo.CustomerFK);
+            TxtBoxCustomer.Text = customer.Name;
         }
     }
 }

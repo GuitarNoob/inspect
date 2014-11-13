@@ -59,3 +59,30 @@ C:\Users\paul\Documents\inspect\ISIInspection\SPC Data Collection\obj\Debug\SPC_
 C:\Users\paul\Documents\inspect\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.csproj.GenerateResource.Cache
 C:\Users\paul\Documents\inspect\ISIInspection\SPC Data Collection\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\paul\Documents\inspect\ISIInspection\SPC Data Collection\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\SPC Data Collection.exe.config
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\SPC Data Collection.exe
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\SPC Data Collection.pdb
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\EntityFramework.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\ISIInspection.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\MieTrakWrapper.dll
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\ISIInspection.pdb
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\MieTrakWrapper.pdb
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\EntityFramework.xml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.csprojResolveAssemblyReference.cache
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\CreatePlan.baml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\LogonWindow.baml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\MainWindow.baml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\TestWindow.baml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\CreatePlan.g.cs
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\LogonWindow.g.cs
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\MainWindow.g.cs
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\TestWindow.g.cs
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\App.g.cs
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection_MarkupCompile.cache
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.g.resources
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC_Data_Collection.Properties.Resources.resources
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.csproj.GenerateResource.Cache
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.exe
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.pdb

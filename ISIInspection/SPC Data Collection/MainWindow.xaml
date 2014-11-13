@@ -15,7 +15,9 @@
             </ComboBox>
         </GroupBox>
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="10,612,10,0"/>
-        <GroupBox Header="Search Results" HorizontalAlignment="Left" Margin="10,398,0,65" Width="1574" Background="#FFF0F0F0"/>
+        <GroupBox Header="Search Results" HorizontalAlignment="Left" Margin="10,398,0,65" Width="1574" Background="#FFF0F0F0">
+            <DataGrid HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="128" Width="1202"/>
+        </GroupBox>
         <GroupBox Header="W.O. Information" Margin="482,108,10,0" VerticalAlignment="Top" Height="285" Background="#FFF0F0F0" BorderThickness="2"/>
         <TextBox x:Name="TxtBoxWorkOrder" HorizontalAlignment="Left" Height="23" Margin="587,205,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.WorkOrderNumber}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" />
         <Label Content="Work Order" HorizontalAlignment="Left" Margin="587,179,0,0" VerticalAlignment="Top"/>
@@ -76,7 +78,5 @@
         <TextBox x:Name="TxtBoxQuantityReq" HorizontalAlignment="Left" Height="23" Margin="1075,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
         <Button x:Name="BtnWorkOrderSearch" Content="Search" HorizontalAlignment="Left" Margin="200,216,0,0" VerticalAlignment="Top" Width="75" Click="BtnWorkOrderSearch_Click"/>
         <DataGrid x:Name="DataGridResults" Margin="24,247,0,0" SelectionChanged="DataGridResults_SelectionChanged" HorizontalAlignment="Left" Width="439" Height="134" VerticalAlignment="Top"/>
-        <Button x:Name="BtnWorkOrder" Content="View WorkOrder" HorizontalAlignment="Left" Margin="250,0,0,20" Width="108" Height="23" VerticalAlignment="Bottom" Click="BtnWorkOrder_Click"/>
-        <Button x:Name="BtnRouter" Content="View Router" HorizontalAlignment="Left" Margin="369,0,0,20" Width="108" Height="23" VerticalAlignment="Bottom" Click="BtnRouter_Click"/>
     </Grid>
 </Window>
