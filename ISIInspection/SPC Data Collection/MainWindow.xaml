@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         DataContext="{Binding RelativeSource={RelativeSource self}}"
         Title="MainWindow" Height="700
-        " Width="1599.6" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        " Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Name="MainGrid">
         <GroupBox Header="W.O. Search Specifications" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="285" Width="467" Background="#FFF0F0F0" BorderThickness="2">
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,10,0,0" Width="120" SelectedIndex="0">
@@ -14,9 +14,9 @@
                 <ComboBoxItem Content="Cancelled" HorizontalAlignment="Left" Width="120"/>
             </ComboBox>
         </GroupBox>
-        <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="10,612,10,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0" Height="60" VerticalAlignment="Bottom"/>
         <GroupBox Header="Search Results" HorizontalAlignment="Left" Margin="10,398,0,65" Width="1574" Background="#FFF0F0F0">
-            <DataGrid HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="128" Width="1202"/>
+            <DataGrid HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="128" Width="1525"/>
         </GroupBox>
         <GroupBox Header="W.O. Information" Margin="482,108,10,0" VerticalAlignment="Top" Height="285" Background="#FFF0F0F0" BorderThickness="2"/>
         <TextBox x:Name="TxtBoxWorkOrder" HorizontalAlignment="Left" Height="23" Margin="587,205,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.WorkOrderNumber}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" />
@@ -61,7 +61,7 @@
         <Label Content="Inspection Data Colletor" HorizontalAlignment="Center" Margin="479,16,587,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="238"/>
         <Button Content="New" HorizontalAlignment="Left" Margin="35,0,0,20" Width="75" Height="23" VerticalAlignment="Bottom" Click="Button_Click_1"/>
         <Button Content="Close" Margin="0,0,35,20" Height="23" VerticalAlignment="Bottom" Click="Button_Click" HorizontalAlignment="Right" Width="75"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="142,0,0,20" Width="75" Height="23" VerticalAlignment="Bottom"/>
+        <Button Content="Collect" HorizontalAlignment="Left" Margin="142,0,0,20" Width="75" Height="23" VerticalAlignment="Bottom"/>
         <Image HorizontalAlignment="Left" Height="86" Margin="42,10,0,0" VerticalAlignment="Top" Width="244" Source="C:\Users\Stan\Documents\Merlin ISI\Logo\Merlin ISI Logo LinkedIn.jpg"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="786,437,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123" Background="#FFFFFFBE"/>
         <ComboBox x:Name="ComboBoxType" HorizontalAlignment="Left" Margin="182,161,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
@@ -78,5 +78,12 @@
         <TextBox x:Name="TxtBoxQuantityReq" HorizontalAlignment="Left" Height="23" Margin="1075,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
         <Button x:Name="BtnWorkOrderSearch" Content="Search" HorizontalAlignment="Left" Margin="200,216,0,0" VerticalAlignment="Top" Width="75" Click="BtnWorkOrderSearch_Click"/>
         <DataGrid x:Name="DataGridResults" Margin="24,247,0,0" SelectionChanged="DataGridResults_SelectionChanged" HorizontalAlignment="Left" Width="439" Height="134" VerticalAlignment="Top"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="250,0,0,20" Width="75" Height="23" VerticalAlignment="Bottom"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="1240,436,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="1345,436,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+        <Label Content="Inspector" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1240,411,0,0" Width="79"/>
+        <Label Content="Date                " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1345,411,0,0" Width="79"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="1450,436,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+        <Label Content="Time" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1450,411,0,0" Width="79"/>
     </Grid>
 </Window>

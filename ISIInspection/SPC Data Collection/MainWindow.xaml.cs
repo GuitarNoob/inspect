@@ -93,7 +93,7 @@ namespace SPC_Data_Collection
             }
         }
 
-        void FillTextBoxes()
+        private void FillTextBoxes()
         {
             WorkOrder wo = selectedWO ?? new WorkOrder();
             TxtBoxCustomerId.Text = wo.CustomerFK.ToString();
@@ -104,6 +104,7 @@ namespace SPC_Data_Collection
             TxtBoxQuantityReq.Text = (wo.QuantityRequired ?? (decimal)0).ToString("0");
             TxtBoxRouter.Text = wo.RouterFK.ToString();
             TxtBoxWorkOrder.Text = wo.WorkOrderPK.ToString();
+            TxtBoxStatus.Text = wo.WorkOrderStatusFK.ToString();
 
             Party customer = mietrakConn.mietrakDb.Parties.FirstOrDefault(x => x.PartyPK == wo.CustomerFK);
             TxtBoxCustomer.Text = customer.Name;
