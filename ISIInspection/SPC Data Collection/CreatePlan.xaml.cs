@@ -28,5 +28,20 @@ namespace SPC_Data_Collection
         {
 
         }
+
+        private void TextBox_DragLeave(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void TextBox_Initialized(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

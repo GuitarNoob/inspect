@@ -80,7 +80,7 @@ namespace SPC_Data_Collection
             }
         }
 
-        private void DataGridResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void DataGridResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object item = DataGridResults.SelectedItem;
             if (item != null)
