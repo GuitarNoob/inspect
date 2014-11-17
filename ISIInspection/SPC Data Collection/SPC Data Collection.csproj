@@ -84,6 +84,9 @@
     <Compile Include="CreatePlan.xaml.cs">
       <DependentUpon>CreatePlan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataEntry.xaml.cs">
+      <DependentUpon>DataEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <DependentUpon>WorkOrderInfoUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="CreatePlan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

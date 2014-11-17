@@ -212,5 +212,32 @@ namespace SPC_Data_Collection
             MessageBox.Show("Unable to save the measurement criteria.",
                                "Error saving measurement criteria!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void TxtBoxIPType_DropDownClosed(object sender, EventArgs e)
+        {
+            if (TxtBoxIPType.SelectedIndex == 0) /// Auto
+            {                
+                ComboBoxAQL.IsEnabled = true;
+                ComboBoxIpLvl.IsEnabled = true;
+                TxtBoxIPAcceptableDefects.IsEnabled = true;
+                TxtBoxIPFrequency .IsEnabled = false;
+            }
+            if (TxtBoxIPType.SelectedIndex == 1) /// Manual
+            {
+                TxtBoxIPFrequency.IsEnabled = true;
+                TxtBoxIPLotSize.IsEnabled = true;
+                ComboBoxAQL.IsEnabled = false;
+                ComboBoxIpLvl.IsEnabled = false;
+                TxtBoxIPAcceptableDefects.IsEnabled = false;
+            }
+            if (TxtBoxIPType.SelectedIndex == 2) /// First Article
+            {
+                TxtBoxIPFrequency.IsEnabled = false;
+                TxtBoxIPLotSize.IsEnabled = false;
+                ComboBoxAQL.IsEnabled = false;
+                ComboBoxIpLvl.IsEnabled = false;
+                TxtBoxIPAcceptableDefects.IsEnabled = false;
+            }
+        }
     }
 }

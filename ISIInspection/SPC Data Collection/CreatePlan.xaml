@@ -48,7 +48,7 @@
             <ComboBoxItem Content="Positional"/>
             <ComboBoxItem Content="Runout"/>
         </ComboBox>
-        <Label Content="Plan ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="41,27,0,0" Width="60"/>
+        <Label Content="Plan ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="41,29,0,0" Width="60"/>
         <Label Content="Char" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,285,0,0" Width="38"/>
         <Label Content="Ref Location" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,285,0,0" Width="79"/>
         <Label Content="Requirement" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="184,285,0,0" Width="79"/>
@@ -57,8 +57,8 @@
         <Label Content="Lower Limit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="473,285,0,0" Width="79"/>
         <Label Content="Charactoristic Designator" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="568,285,0,0" Width="147"/>
         <Label Content="Type" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,29,0,0" Width="79"/>
-        <Label Content="Lot Size (Qty Fab)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,77,0,0" Width="104"/>
-        <Label Content="Frequency" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,77,0,0" Width="79"/>
+        <Label Content="Lot Size (Qty Fab)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,127,0,0" Width="104"/>
+        <Label Content="Frequency" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,127,0,0" Width="79"/>
         <Label Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="840,286,0,0" Width="79"/>
         <TextBox x:Name="TxtBoxIPID" HorizontalAlignment="Left" Height="23" Margin="40,53,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" ToolTip="Identification Number (Read Only)"/>
         <TextBox HorizontalAlignment="Left" Name="TxtBoxDimCharNum" Height="23" Margin="32,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
@@ -70,8 +70,8 @@
         <TextBox x:Name="TxtBoxIPAcceptableDefects" HorizontalAlignment="Left" Height="23" Margin="184,152,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91" />
         <TextBox HorizontalAlignment="Left" Name="TxtBoxDimComment" Height="23" Margin="841,310,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418"/>
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0" Height="60" VerticalAlignment="Bottom"/>
-        <Label Content="AQL%" HorizontalAlignment="Left" Margin="52,128,0,0" VerticalAlignment="Top"/>
-        <Label Content="Level" HorizontalAlignment="Left" Margin="116,129,0,0" VerticalAlignment="Top"/>
+        <Label Content="AQL%" HorizontalAlignment="Left" Margin="55,78,0,0" VerticalAlignment="Top"/>
+        <Label Content="Level" HorizontalAlignment="Left" Margin="133,78,0,0" VerticalAlignment="Top"/>
         <Label Content="Skip Lot" HorizontalAlignment="Left" Margin="41,174,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="41,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" ToolTip="Skip Inspection after successful lots"/>
         <Button x:Name="ButtonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,31,10" Width="75" Height="20" VerticalAlignment="Bottom" Click="Button_Click"/>
