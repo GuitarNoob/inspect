@@ -12,9 +12,11 @@ namespace ISIInspection.Models
         public string CharNumber { get; set; }
         public string RefLocation { get; set; }
         public string Requirement { get; set; }
-        public decimal SetPoint { get; set; }
-        public decimal Tolerance { get; set; }
         public string Units { get; set; }
+        public decimal UpperLimit { get; set; }
+        public decimal LowerLimit { get; set; }
+        public string CharacteristicDesignator { get; set; }
+        public string InspectionDevice { get; set; }
 
         //Parent Inspection Plan
         public Guid InspectionPlanId { get; set; }
