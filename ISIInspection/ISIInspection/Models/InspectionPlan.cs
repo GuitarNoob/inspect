@@ -10,15 +10,14 @@ namespace ISIInspection.Models
     {
         public Guid InspectionPlanId { get; set; }
         public string Type { get; set; }
-        public decimal Size { get; set; }
         public int Frequency { get; set; }
         public decimal AQLPercentage { get; set; }
-        public int Level { get; set; }
+        public string Level { get; set; }
         public int SkipLot { get; set; }
-        public bool FAI { get; set; } //First article inspection
+        public int AcceptableDefects { get; set; }
 
         //Mietrak
-        int RouterFK { get; set; }
+        public int RouterFK { get; set; }
             
         //Measurements
         public virtual List<PartMeasurementSP> MeasurementCriteria { get; set; } 
