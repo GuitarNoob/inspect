@@ -109,5 +109,11 @@ namespace SPC_Data_Collection
             Party customer = mietrakConn.mietrakDb.Parties.FirstOrDefault(x => x.PartyPK == wo.CustomerFK);
             TxtBoxCustomer.Text = customer.Name;
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DataEntry Entry1 = new DataEntry();
+            Entry1.Show();
+        }
     }
 }

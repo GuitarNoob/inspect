@@ -24,24 +24,37 @@ namespace SPC_Data_Collection
             InitializeComponent();
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_DragLeave(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void TextBox_Initialized(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+        private void TxtBoxIPType_DropDownClosed(object sender, EventArgs e)
+        {
+            if (TxtBoxIPType.SelectedIndex == 0) /// Auto
+            {
+                CmBoxIPAQL.IsEnabled = true;
+                CmBoxIPLevel.IsEnabled = true;
+                TxtBoxIPAD.IsEnabled = true;
+                TxtBoxIPFreq.IsEnabled = false;
+            }
+            if (TxtBoxIPType.SelectedIndex == 1) /// Manual
+            {
+                TxtBoxIPFreq.IsEnabled = true;
+                TxtBoxIPSize.IsEnabled = true;
+                CmBoxIPAQL.IsEnabled = false;
+                CmBoxIPLevel.IsEnabled = false;
+                TxtBoxIPAD.IsEnabled = false;
+            }
+            if (TxtBoxIPType.SelectedIndex == 2) /// First Article
+            {
+                TxtBoxIPFreq.IsEnabled = false;
+                TxtBoxIPSize.IsEnabled = false;
+                CmBoxIPAQL.IsEnabled = false;
+                CmBoxIPLevel.IsEnabled = false;
+                TxtBoxIPAD.IsEnabled = false;
+            }
+        }
+
     }
 }

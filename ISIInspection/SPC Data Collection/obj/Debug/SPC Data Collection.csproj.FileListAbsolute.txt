@@ -86,3 +86,5 @@ C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collect
 C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.csproj.GenerateResource.Cache
 C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.exe
 C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\SPC Data Collection.pdb
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\DataEntry.baml
+C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\SPC Data Collection\obj\Debug\DataEntry.g.cs
