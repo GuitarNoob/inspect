@@ -18,7 +18,7 @@
         <GroupBox Header="W.O. Information" Margin="401,10,9.6,0" VerticalAlignment="Top" Height="222" Background="#FFF0F0F0" BorderThickness="2"/>
 
         <GroupBox Header="Dimensional Criteria" Margin="17,237,9.6,0" VerticalAlignment="Top" Height="469" Background="#FFF0F0F0" BorderThickness="2">
-            <Button Content="Create" HorizontalAlignment="Left" Margin="201,-52,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Create" HorizontalAlignment="Left" Margin="285,-52,0,0" VerticalAlignment="Top" Width="75"/>
         </GroupBox>
         <ComboBox HorizontalAlignment="Left" Margin="562,311,0,0" VerticalAlignment="Top" Width="153" >
             <ComboBoxItem Content="Linear"/>
@@ -57,8 +57,8 @@
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0" Height="60" VerticalAlignment="Bottom"/>
         <Label Content="AQL%" HorizontalAlignment="Left" Margin="55,78,0,0" VerticalAlignment="Top"/>
         <Label Content="Level" HorizontalAlignment="Left" Margin="133,78,0,0" VerticalAlignment="Top"/>
-        <Label Content="Skip Lot" HorizontalAlignment="Left" Margin="41,174,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="41,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80                  " ToolTip="Skip Inspection after successful lots" IsEnabled="False"/>
+        <Label Content="Skip Lot" HorizontalAlignment="Left" Margin="148,174,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="148,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" ToolTip="Skip Inspection after successful lots" IsEnabled="False"/>
         <Button Content="Close" HorizontalAlignment="Left" Margin="30,0,0,20" Width="75" Height="20" VerticalAlignment="Bottom" Click="Button_Click"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="32,264,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="TxtBoxWorkOrder" HorizontalAlignment="Left" Height="23" Margin="484,59,0,0" TextWrapping="Wrap" Text="{Binding selectedWO.WorkOrderNumber}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True" />
@@ -116,6 +116,8 @@
         </ComboBox>
         <Label Content="Acceptable Defects" HorizontalAlignment="Left" Margin="195,78,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TxtBoxIPFreq" HorizontalAlignment="Left" Height="23" Margin="148,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
+        <Label Content="FAI Qty" HorizontalAlignment="Left" Margin="38,175,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtBoxIPFAIQty" HorizontalAlignment="Left" Height="23" Margin="41,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47" IsEnabled="False"/>
 
     </Grid>
 </Window>

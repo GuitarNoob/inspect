@@ -33,26 +33,36 @@ namespace SPC_Data_Collection
         {
             if (TxtBoxIPType.SelectedIndex == 0) /// Auto
             {
+                CmBoxIPAQL.SelectedIndex = -1;
+                CmBoxIPLevel.SelectedIndex = -1;
+                //TxtBoxIPFreq.text = string.Empty;
                 CmBoxIPAQL.IsEnabled = true;
                 CmBoxIPLevel.IsEnabled = true;
                 TxtBoxIPAD.IsEnabled = true;
                 TxtBoxIPFreq.IsEnabled = false;
+                TxtBoxIPFAIQty.IsEnabled = false;
             }
             if (TxtBoxIPType.SelectedIndex == 1) /// Manual
             {
+                CmBoxIPAQL.SelectedIndex = -1;
+                CmBoxIPLevel.SelectedIndex = -1;
                 TxtBoxIPFreq.IsEnabled = true;
                 TxtBoxIPSize.IsEnabled = true;
                 CmBoxIPAQL.IsEnabled = false;
                 CmBoxIPLevel.IsEnabled = false;
                 TxtBoxIPAD.IsEnabled = false;
+                TxtBoxIPFAIQty.IsEnabled = false;
             }
             if (TxtBoxIPType.SelectedIndex == 2) /// First Article
             {
+                CmBoxIPAQL.SelectedIndex = -1;
+                CmBoxIPLevel.SelectedIndex = -1;
                 TxtBoxIPFreq.IsEnabled = false;
                 TxtBoxIPSize.IsEnabled = false;
                 CmBoxIPAQL.IsEnabled = false;
                 CmBoxIPLevel.IsEnabled = false;
                 TxtBoxIPAD.IsEnabled = false;
+                TxtBoxIPFAIQty.IsEnabled = true;
             }
         }
 
