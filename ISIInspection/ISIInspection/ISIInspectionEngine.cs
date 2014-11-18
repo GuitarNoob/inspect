@@ -58,7 +58,7 @@ namespace ISIInspection
             item.CharNumber = measurement.CharNumber;
             item.RefLocation = measurement.RefLocation;
             item.Requirement = measurement.Requirement;
-            item.Tolerance = measurement.Tolerance;
+            item.InspectionDevice = measurement.InspectionDevice;
             item.Units = measurement.Units;
 
             InspectionDb.SaveChanges();

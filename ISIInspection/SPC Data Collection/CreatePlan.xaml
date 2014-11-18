@@ -1,26 +1,41 @@
-﻿<Window
+﻿<Window xmlns:SPC_Data_Collection="clr-namespace:SPC_Data_Collection" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SPC_Data_Collection.CreatePlan"
-        Title="CreatePlan" Height="800" Width="1600" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <Grid ToolTip="">
+        Title="CreatePlan" Height="800" Width="1600" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
+    <Grid Name="MainGrid">
         <GroupBox Header="Inspection Plan" Margin="17,10,1197.6,0" VerticalAlignment="Top" Height="222" Background="#FFF0F0F0" BorderThickness="2">
             <TextBox HorizontalAlignment="Left" Height="23" Margin="130,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61"/>
         </GroupBox>
         <GroupBox Header="Inspection Plan" Margin="17,10,1197.6,0" VerticalAlignment="Top" Height="222" Background="#FFF0F0F0" BorderThickness="2">
-            <ComboBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="85" Margin="126,0,0,150" DropDownClosed="TxtBoxIPType_DropDownClosed">
-                <ComboBoxItem Content="Auto" HorizontalAlignment="Left" Width="75"/>
-                <ComboBoxItem Content="Manual" HorizontalAlignment="Left" Width="75"/>
-                <ComboBoxItem Content="First Article" HorizontalAlignment="Left" Width="75"/>
+            <ComboBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="123" Margin="126,0,0,150" SelectedIndex="0">
+                <ComboBoxItem Content="Auto" HorizontalAlignment="Left" Width="110.4"/>
+                <ComboBoxItem Content="Manual" HorizontalAlignment="Left" Width="110.4"/>
+                <ComboBoxItem Content="First Article" HorizontalAlignment="Left" Width="110.4"/>
             </ComboBox>
         </GroupBox>
 
-        <GroupBox Header="W.O. Information" Margin="401,10,9.6,0" VerticalAlignment="Top" Height="222" Background="#FFF0F0F0" BorderThickness="2"/>
-
-        <GroupBox Header="Dimensional Criteria" Margin="17,237,9.6,0" VerticalAlignment="Top" Height="469" Background="#FFF0F0F0" BorderThickness="2">
-            <Button Content="Create" HorizontalAlignment="Left" Margin="285,-52,0,0" VerticalAlignment="Top" Width="75"/>
+        <GroupBox Header="W.O. Information" Margin="401,10,9.6,0" VerticalAlignment="Top" Height="222" Background="#FFF0F0F0" BorderThickness="2">
+            <SPC_Data_Collection:WorkOrderInfoUserControl x:Name="WorkOrderInfo" HorizontalAlignment="Left"/>
         </GroupBox>
-        <ComboBox HorizontalAlignment="Left" Margin="562,311,0,0" VerticalAlignment="Top" Width="153" >
+        <GroupBox Header="Dimensional Criteria" Margin="17,237,10,63" Background="#FFF0F0F0" BorderThickness="2">
+            <ListView Name="DataGridResults" Margin="10,92,-2,6" SelectionChanged="DataGrid_SelectionChanged" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Char" Width="75" DisplayMemberBinding="{Binding CharNumber}"/>
+                        <GridViewColumn Header="Ref" Width="75" DisplayMemberBinding="{Binding RefLocation}"/>
+                        <GridViewColumn Header="Requirement" Width="75" DisplayMemberBinding="{Binding Requirement}"/>
+                        <GridViewColumn Header="UofM" Width="75" DisplayMemberBinding="{Binding Units}"/>
+                        <GridViewColumn Header="Upper Limit" Width="75" DisplayMemberBinding="{Binding UpperLimit}"/>
+                        <GridViewColumn Header="Lower Limit" Width="75" DisplayMemberBinding="{Binding LowerLimit}"/>
+                        <GridViewColumn Header="Characteristic Designator" Width="150" DisplayMemberBinding="{Binding CharacteristicDesignator}"/>
+                        <GridViewColumn Header="Inspection Device" Width="150" DisplayMemberBinding="{Binding InspectionDevice}"/>
+                        <GridViewColumn Header="Comment" Width="Auto" DisplayMemberBinding="{Binding Revision}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <ComboBox Name="ComboBoxCharDesig" HorizontalAlignment="Left" Margin="562,311,0,0" VerticalAlignment="Top" Width="153" SelectedIndex="0">
             <ComboBoxItem Content="Linear"/>
             <ComboBoxItem Content="Angularity"/>
             <ComboBoxItem Content="Cirularlarity"/>
@@ -45,79 +60,59 @@
         <Label Content="Lot Size (Qty Fab)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,127,0,0" Width="104"/>
         <Label Content="Frequency" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="149,127,0,0" Width="79"/>
         <Label Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="840,286,0,0" Width="79"/>
-        <TextBox x:Name="TxtBoxIPID" HorizontalAlignment="Left" Height="23" Margin="40,53,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" ToolTip="Identification Number (Read Only)" IsReadOnly="True"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="32,311,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="62"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="179,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" ToolTip="Dimensional Requirement"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="358,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="461,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
-        <TextBox x:Name="TxtBoxIPSize" HorizontalAlignment="Left" Height="23" Margin="40,152,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" ToolTip="Quantity of the lot size" IsReadOnly="True" IsEnabled="False"/>
-        <TextBox x:Name="TxtBoxIPAD" HorizontalAlignment="Left" Height="23" Margin="193,102,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="117" IsEnabled="False" IsReadOnly="True"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="841,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418"/>
+        <TextBox x:Name="TxtBoxIPID" HorizontalAlignment="Left" Height="23" Margin="40,53,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" ToolTip="Identification Number (Read Only)"/>
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxDimCharNum" Height="23" Margin="32,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxDimRefLoc" Height="23" Margin="100,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74"/>
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxDimReq" Height="23" Margin="179,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" ToolTip="Dimensional Requirement"/>
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxDimUpperLimit" Height="23" Margin="358,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxDimLowerLimit" Height="23" Margin="461,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
+        <TextBox x:Name="TxtBoxIPLotSize" HorizontalAlignment="Left" Height="23" Margin="40,102,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103" ToolTip="Quantity of the lot size"/>
+        <TextBox x:Name="TxtBoxIPAcceptableDefects" HorizontalAlignment="Left" Height="23" Margin="184,152,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91" />
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxDimComment" Height="23" Margin="841,310,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418"/>
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0" Height="60" VerticalAlignment="Bottom"/>
         <Label Content="AQL%" HorizontalAlignment="Left" Margin="55,78,0,0" VerticalAlignment="Top"/>
         <Label Content="Level" HorizontalAlignment="Left" Margin="133,78,0,0" VerticalAlignment="Top"/>
-        <Label Content="Skip Lot" HorizontalAlignment="Left" Margin="148,174,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="148,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" ToolTip="Skip Inspection after successful lots" IsEnabled="False"/>
-        <Button Content="Close" HorizontalAlignment="Left" Margin="30,0,0,20" Width="75" Height="20" VerticalAlignment="Bottom" Click="Button_Click"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="32,264,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="TxtBoxWorkOrder" HorizontalAlignment="Left" Height="23" Margin="484,59,0,0" TextWrapping="Wrap" Text="{Binding selectedWO.WorkOrderNumber}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True" />
-        <Label Content="Work Order" HorizontalAlignment="Left" Margin="484,33,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxStatus" HorizontalAlignment="Left" Height="23" Margin="624,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <Label Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,102,0,0" RenderTransformOrigin="1.735,-0.5"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="624,33,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxRouter" HorizontalAlignment="Left" Height="23" Margin="770,59,0,0" TextWrapping="Wrap" Text="{Binding selectedWO.RouterFK}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <Label Content="Router" HorizontalAlignment="Left" Margin="768,33,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxCustomer" HorizontalAlignment="Left" Height="23" Margin="484,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <TextBox x:Name="TxtBoxPartNumber" HorizontalAlignment="Left" Height="23" Margin="484,156,0,0" TextWrapping="Wrap" Text="{Binding selectedWO.PartNumber}" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <Label Content="Part Number" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="401,153,0,0"/>
-        <TextBox x:Name="TxtBoxPartRevision" HorizontalAlignment="Left" Height="23" Margin="837,156,0,0" TextWrapping="Wrap"  Text="{Binding selectedWO.Revision}" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <Label Content="Revision" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="895,153,0,0"/>
-        <TextBox x:Name="TxtBoxCustomerId" HorizontalAlignment="Left" Height="23" Margin="837,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <Label Content="ID                " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="850,102,0,0" Width="26"/>
-        <TextBox x:Name="TxtBoxDescription" HorizontalAlignment="Left" Height="23" Margin="484,186,0,0" TextWrapping="Wrap" Text="{Binding selectedWO.ItemDescription}" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE" IsReadOnly="True"/>
-        <Label Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="406,186,0,0"/>
-        <Label Content="Qty Fab" HorizontalAlignment="Left" Margin="1053,101,0,0" VerticalAlignment="Top"/>
-        <Label Content="Qty Req" HorizontalAlignment="Left" Margin="972,102,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxQuantityFab" HorizontalAlignment="Left" Height="23" Margin="1053,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
-        <TextBox x:Name="TxtBoxQuantityReq" HorizontalAlignment="Left" Height="23" Margin="972,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
+        <Label Content="Skip Lot" HorizontalAlignment="Left" Margin="41,174,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="41,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" ToolTip="Skip Inspection after successful lots"/>
+        <Button x:Name="ButtonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,31,10" Width="75" Height="20" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button x:Name="ButtonSaveMeasurement" Content="Save" HorizontalAlignment="Right" Margin="0,313,31,0" VerticalAlignment="Top" Width="75" Click="ButtonSaveMeasurement_Click"/>
         <Label Content="Inspection Device&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="734,286,0,0" Width="156" Height="26"/>
-        <ComboBox HorizontalAlignment="Left" Margin="269,312,0,0" VerticalAlignment="Top" Width="84" >
+        <ComboBox Name="ComboBoxUofM" HorizontalAlignment="Left" Margin="269,312,0,0" VerticalAlignment="Top" Width="84" SelectedIndex="0">
             <ComboBoxItem Content="In" HorizontalAlignment="Left" Width="91.2"/>
             <ComboBoxItem Content="mm" HorizontalAlignment="Left" Width="91.2"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="720,312,0,0" VerticalAlignment="Top" Width="116" >
+        <ComboBox Name="ComboBoxInspectionDevice" HorizontalAlignment="Left" Margin="720,310,0,0" VerticalAlignment="Top" Width="116" SelectedIndex="0">
             <ComboBoxItem Content="Calipers"/>
             <ComboBoxItem Content="Micrometer"/>
             <ComboBoxItem Content="Height Gage"/>
         </ComboBox>
-        <ComboBox x:Name="CmBoxIPAQL" HorizontalAlignment="Left" Margin="41,102,0,0" VerticalAlignment="Top" Width="70" ToolTip="Acceptance Quality Limit'" IsEnabled="False">
-            <ComboBoxItem Content=".010" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".015" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".020" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".040" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".065" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".10" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".15" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".25" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".40" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content=".65" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="1.00" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="1.50" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="2.50" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="4.00" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="6.50" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="10.0" HorizontalAlignment="Left" Width="70"/>
+        <ComboBox Name="ComboBoxAQL" HorizontalAlignment="Left" Margin="41,154,0,0" VerticalAlignment="Top" Width="70" ToolTip="Acceptance Quality Limit'" SelectedIndex="0">
+            <ComboBoxItem Content=".010" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".015" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".020" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".040" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".065" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".10" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".15" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".25" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".40" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content=".65" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="1.00" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="1.50" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="2.50" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="4.00" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="6.50" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="10.0" HorizontalAlignment="Left" Width="88"/>
         </ComboBox>
-        <ComboBox x:Name="CmBoxIPLevel" HorizontalAlignment="Left" Margin="116,102,0,0" VerticalAlignment="Top" Width="70" IsEnabled="False">
-            <ComboBoxItem Content="I" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="II" HorizontalAlignment="Left" Width="70"/>
-            <ComboBoxItem Content="III" HorizontalAlignment="Left" Width="70"/>
+        <ComboBox Name="ComboBoxIpLvl" HorizontalAlignment="Left" Margin="116,154,0,0" VerticalAlignment="Top" Width="62" SelectedIndex="0">
+            <ComboBoxItem Content="I" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="II" HorizontalAlignment="Left" Width="88"/>
+            <ComboBoxItem Content="III" HorizontalAlignment="Left" Width="88"/>
         </ComboBox>
-        <Label Content="Acceptable Defects" HorizontalAlignment="Left" Margin="195,78,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxIPFreq" HorizontalAlignment="Left" Height="23" Margin="148,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
-        <Label Content="FAI Qty" HorizontalAlignment="Left" Margin="38,175,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxIPFAIQty" HorizontalAlignment="Left" Height="23" Margin="41,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47" IsEnabled="False"/>
+        <Label Content="Acceptable Defects" HorizontalAlignment="Left" Margin="184,126,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Name="TxtBoxIPFrequency" Height="23" Margin="148,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
+        <Button x:Name="ButtonAddMeasurement" Content="Add" HorizontalAlignment="Right" Margin="0,313,116,0" VerticalAlignment="Top" Width="75" Click="ButtonAddMeasurement_Click"/>
+        <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Right" Margin="0,0,116,10" Width="75" Height="20" VerticalAlignment="Bottom" Click="ButtonSave_Click"/>
 
     </Grid>
 </Window>

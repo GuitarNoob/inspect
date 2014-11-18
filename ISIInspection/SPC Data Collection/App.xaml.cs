@@ -13,5 +13,7 @@ namespace SPC_Data_Collection
     /// </summary>
     public partial class App : Application
     {
+        public static ISIInspection.ISIInspectionEngine isiEngine = new ISIInspection.ISIInspectionEngine();
+        public static MieTrakWrapper.MieTrak.MieTrakConnectionManager mietrakConn = new MieTrakWrapper.MieTrak.MieTrakConnectionManager();
     }
 }
