@@ -8,8 +8,8 @@
             <TextBox HorizontalAlignment="Left" Height="23" Margin="130,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61"/>
         </GroupBox>
         <GroupBox Header="Inspection Plan" Margin="17,10,1197.6,0" VerticalAlignment="Top" Height="222" Background="#FFF0F0F0" BorderThickness="2">
-            <ComboBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="123" Margin="126,0,0,150" SelectedIndex="0">
-                <ComboBoxItem Content="Auto" HorizontalAlignment="Left" Width="110.4"/>
+            <ComboBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="123" Margin="126,0,0,150" SelectedIndex="0" DropDownClosed="TxtBoxIPType_DropDownClosed">
+                <ComboBoxItem Content="Auto" HorizontalAlignment="Left" Width="110.4"/> 
                 <ComboBoxItem Content="Manual" HorizontalAlignment="Left" Width="110.4"/>
                 <ComboBoxItem Content="First Article" HorizontalAlignment="Left" Width="110.4"/>
             </ComboBox>
