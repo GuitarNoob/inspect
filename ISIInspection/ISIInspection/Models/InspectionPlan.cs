@@ -20,6 +20,6 @@ namespace ISIInspection.Models
         public int RouterFK { get; set; }
             
         //Measurements
-        public virtual List<PartMeasurementSP> MeasurementCriteria { get; set; } 
+        public virtual List<PartMeasurementSP> MeasurementCriteria { get; set; }
     }
 }

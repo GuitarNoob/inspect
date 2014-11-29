@@ -17,48 +17,108 @@ using System.Windows.Shapes;
 
 namespace SPC_Data_Collection
 {
-   /// <summary>
-   /// Interaction logic for CollectDataWindow.xaml
-   /// </summary>
-   public partial class CollectDataWindow : Window
-   {
-      ObservableCollection<MeasurementCollector> measurementCollectors = new ObservableCollection<MeasurementCollector>();
+    /// <summary>
+    /// Interaction logic for CollectDataWindow.xaml
+    /// </summary>
+    public partial class CollectDataWindow : Window
+    {
+        ObservableCollection<MeasurementCollector> measurementCollectors = new ObservableCollection<MeasurementCollector>();
 
-      public CollectDataWindow(WorkOrder workOrder, InspectionPlan inspectionPlan)
-      {
-         InitializeComponent();
-      }
+        public CollectDataWindow(WorkOrder workOrder, InspectionPlan inspectionPlan)
+        {
+            InitializeComponent();
+            LoadRows(workOrder, inspectionPlan);
 
-      void LoadRows(WorkOrder wo, InspectionPlan iplan)
-      {
-         string code = AQLSamplingHelper.GetSampleSizeCode((int)(wo.QuantityRequired ?? 0), (InspectionLevel)Enum.Parse(typeof(InspectionLevel), iplan.Level));
-         int samplingSize = -1;
-         int samplingError = -1;
-         AQLSamplingHelper.GetSampleSize(code, iplan.AQLPercentage, out samplingSize, out samplingError);
+            DataGridMeasurements.AddHandler(CommandManager.PreviewExecutedEvent,
+                (ExecutedRoutedEventHandler)((sender, args) =>
+                {
+                    if (args.Command == DataGrid.BeginEditCommand)
+                    {
+                        DataGrid dataGrid = (DataGrid)sender;
+                        DependencyObject focusScope = FocusManager.GetFocusScope(dataGrid);
+                        FrameworkElement focusedElement = (FrameworkElement)FocusManager.GetFocusedElement(focusScope);
+                        MeasurementCollector model = (MeasurementCollector)focusedElement.DataContext;
+                        if (model.IsReadOnly)
+                        {
+                            args.Handled = true;
+                        }
+                    }
+                }));
+        }
 
-         foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
-         {
-            for (int i = 0; i < samplingSize; i++)
-               measurementCollectors.Add(new MeasurementCollector(sp));
-         }
-         DataGridMeasurements.ItemsSource = measurementCollectors;
-      }      
+        void LoadRows(WorkOrder wo, InspectionPlan iplan)
+        {
+            string code = AQLSamplingHelper.GetSampleSizeCode((int)(wo.QuantityRequired ?? 0), (InspectionLevel)Enum.Parse(typeof(InspectionLevel), iplan.Level));
+            int samplingSize = -1;
+            int samplingError = -1;
+            AQLSamplingHelper.GetSampleSize(code, iplan.AQLPercentage, out samplingSize, out samplingError);
 
-      private void Window_Loaded(object sender, RoutedEventArgs e)
-      {
+            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
+            {
+                foreach (PartMeasurementActual measurement in sp.Measurements)
+                    measurementCollectors.Add(new MeasurementCollector(measurement));
+            }
+            DataGridMeasurements.ItemsSource = measurementCollectors;
+        }
 
-      }
-   }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
 
-   public class MeasurementCollector
-   {
-      public PartMeasurementSP SetPoint { get; set; }
-      public decimal Measured { get; set; }
-      public bool IsReadOnly = false;
+        }
 
-      public MeasurementCollector(PartMeasurementSP sp)
-      {
-         SetPoint = sp;
-      }
-   }   
+        private void BtmSave_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (MeasurementCollector collector in measurementCollectors)
+            {
+                if (collector.IsUpdated)
+                {
+                    var spOriginal = App.isiEngine.InspectionDb.MeasurementActual.Find(collector.ActualMeasurement.PartMeasurementActualId);
+                    if (spOriginal != null)
+                    {
+                        spOriginal.CompletedTime = DateTime.Now;
+                        spOriginal.MeasuredValue = collector.Measured;
+                    }
+                }
+            }
+            App.isiEngine.InspectionDb.SaveChanges();
+            this.Close();
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+    }
+
+    public class MeasurementCollector
+    {
+        public PartMeasurementSP SetPoint { get; set; }
+        public PartMeasurementActual ActualMeasurement { get; set; }
+        public bool IsReadOnly = false;
+        public bool IsUpdated = false;
+
+        private decimal m_Measured = -1;
+        public decimal Measured
+        {
+            get { return m_Measured; }
+            set
+            {
+                IsUpdated = true;
+                m_Measured = value;
+            }
+        }
+
+        public MeasurementCollector(PartMeasurementActual actual)
+        {
+            SetPoint = actual.PartMeasurementSP;
+            ActualMeasurement = actual;
+            m_Measured = actual.MeasuredValue;
+
+            if (actual.CompletedTime > new DateTime(1975, 1, 1))
+            {
+                IsReadOnly = true;
+            }
+        }
+
+    }
 }
