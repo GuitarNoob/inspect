@@ -53,7 +53,7 @@ namespace SPC_Data_Collection
             int samplingError = -1;
             AQLSamplingHelper.GetSampleSize(code, iplan.AQLPercentage, out samplingSize, out samplingError);
 
-            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
+            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x=>x.CharNumber))
             {
                 foreach (PartMeasurementActual measurement in sp.Measurements)
                     measurementCollectors.Add(new MeasurementCollector(measurement));
@@ -87,6 +87,20 @@ namespace SPC_Data_Collection
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+       
+        private void DataGridMeasurements_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            try
+            {
+                if (((MeasurementCollector)e.Row.DataContext).IsReadOnly)                
+                {                   
+                    e.Row.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFBE"));
+                }                              
+            }
+            catch
+            {
+            }
         }
     }
 
