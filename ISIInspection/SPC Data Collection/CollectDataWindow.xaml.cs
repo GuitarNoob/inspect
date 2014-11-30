@@ -48,11 +48,6 @@ namespace SPC_Data_Collection
 
         void LoadRows(WorkOrder wo, InspectionPlan iplan)
         {
-            string code = AQLSamplingHelper.GetSampleSizeCode((int)(wo.QuantityRequired ?? 0), (InspectionLevel)Enum.Parse(typeof(InspectionLevel), iplan.Level));
-            int samplingSize = -1;
-            int samplingError = -1;
-            AQLSamplingHelper.GetSampleSize(code, iplan.AQLPercentage, out samplingSize, out samplingError);
-
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x=>x.CharNumber))
             {
                 foreach (PartMeasurementActual measurement in sp.Measurements)

@@ -50,13 +50,15 @@ namespace SPC_Data_Collection
         {
             InspectionPlan ip = m_inspectionPlan;
             TxtBoxIPID.Text = ip.InspectionPlanId.ToString();
-            TxtBoxIPType.SelectedItem = ip.Type;
+            TxtBoxIPType.Text = ip.Type;
             TxtBoxIPLotSize.Text = m_workOrder.QuantityRequired.ToString();
-//            TxtBoxIPFrequency.Text = ip.Frequency.ToString();
-            ComboBoxAQL.SelectedItem = ip.AQLPercentage.ToString();
-            ComboBoxIpLvl.SelectedItem = ip.Level;
+            ComboBoxAQL.Text = ip.AQLPercentage.ToString();
+            ComboBoxIpLvl.Text = ip.Level;
             TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
             TxtBoxIPAcceptableDefects.Text = ip.AcceptableDefects.ToString();
+            TxtBoxIPSampleSize.Text = ip.SampleSize.ToString();
+            TxtBoxIPFAIQty.Text = ip.FAIQuantity.ToString();
+            TxtBoxIPCodeLetter.Text = ip.CodeLetter;
         }
 
         InspectionPlan GetInspectionPlan()
@@ -67,15 +69,35 @@ namespace SPC_Data_Collection
             ip.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
 
             ip.Type = TxtBoxIPType.Text;
-//            ip.Frequency = Convert.ToInt32(TxtBoxIPFrequency.Text);
+
             if (ComboBoxAQL.Text == "")
                 ip.AQLPercentage = 0;
             else
                 ip.AQLPercentage = Convert.ToDecimal(ComboBoxAQL.Text);
 
             ip.Level = ComboBoxIpLvl.Text;
-            ip.SkipLot = Convert.ToInt32(TxtBoxIPSkipLot.Text);
-            ip.AcceptableDefects = Convert.ToInt32(TxtBoxIPAcceptableDefects.Text);
+
+            if (TxtBoxIPSkipLot.Text != "")
+                ip.SkipLot = Convert.ToInt32(TxtBoxIPSkipLot.Text);
+            else
+                ip.SkipLot = 0;
+
+            if (TxtBoxIPAcceptableDefects.Text != "")
+                ip.AcceptableDefects = Convert.ToInt32(TxtBoxIPAcceptableDefects.Text);
+            else
+                ip.AcceptableDefects = 0;
+
+            ip.CodeLetter = TxtBoxIPCodeLetter.Text;
+
+            if (TxtBoxIPSampleSize.Text != "")
+                ip.SampleSize = Convert.ToInt32(TxtBoxIPSampleSize.Text);
+            else
+                ip.SampleSize = 0;
+
+            if (TxtBoxIPFAIQty.Text != "")
+                ip.FAIQuantity = Convert.ToInt32(TxtBoxIPFAIQty.Text);
+            else
+                ip.FAIQuantity = 0;
 
             return ip;
         }
@@ -203,7 +225,7 @@ namespace SPC_Data_Collection
             }
             catch
             {
-                ShowErrorMessage();   
+                ShowErrorMessage();
             }
         }
 
@@ -299,7 +321,7 @@ namespace SPC_Data_Collection
         }
         private void BtnIPCalculate_Click_1(object sender, RoutedEventArgs e)
         {
-            string AQLCodeLetter ="";
+            string AQLCodeLetter = "";
             string AQLAccept;
             string AQLReject;
             int AQLSampleSize;

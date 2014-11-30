@@ -20,16 +20,14 @@
                 <TextBox Name="TxtBoxIPType" HorizontalAlignment="Left" Height="23" Margin="71,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
                 <Label Content="Type" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="71,0,0,0" Width="147"/>
                 <TextBox Name="TxtBoxIPId" HorizontalAlignment="Left" Height="23" Margin="6,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="#FFFFFFBE"/>
-                <TextBox Name="TxtBoxIPFreq" HorizontalAlignment="Left" Height="23" Margin="223,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="Frequency" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="223,0,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPAql" HorizontalAlignment="Left" Height="23" Margin="375,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="AQL%" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="375,0,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPLvl" HorizontalAlignment="Left" Height="23" Margin="527,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="Level" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="527,1,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="679,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="Acceptable Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="679,0,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="831,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="Skip Lot" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="831,0,0,0" Width="147"/>
+                <TextBox Name="TxtBoxIPAql" HorizontalAlignment="Left" Height="23" Margin="221,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <Label Content="AQL%" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,0,0,0" Width="147"/>
+                <TextBox Name="TxtBoxIPLvl" HorizontalAlignment="Left" Height="23" Margin="373,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <Label Content="Level" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="373,1,0,0" Width="147"/>
+                <TextBox Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="525,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <Label Content="Acceptable Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="525,0,0,0" Width="147"/>
+                <TextBox Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="677,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <Label Content="Skip Lot" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="677,0,0,0" Width="147"/>
                 <ListView x:Name="DataGridMeasurements" Margin="6,54,6,6">
                     <ListView.View>
                         <GridView>

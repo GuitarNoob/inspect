@@ -133,22 +133,8 @@ namespace SPC_Data_Collection
         void FillIPTextBoxes()
         {
             InspectionPlan ip = selectedInspectionPlan ?? new InspectionPlan();
-            try
-            {
-                TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
-                TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
-                TxtBoxIPFreq.Text = ip.Frequency.ToString();
-                TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
-                TxtBoxIPLvl.Text = ip.Level.ToString();
-                TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
-                TxtBoxIPType.Text = ip.Type;
-            }
-            catch 
-            {
-
             TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
             TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
-            TxtBoxIPFreq.Text = ip.Frequency.ToString();
             TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
             TxtBoxIPLvl.Text = ip.Level;
             TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
@@ -168,17 +154,18 @@ namespace SPC_Data_Collection
 
         void CheckInspectionPlan(WorkOrder wo, InspectionPlan iplan)
         {
-            string code = AQLSamplingHelper.GetSampleSizeCode((int)(wo.QuantityRequired ?? 0), (InspectionLevel)Enum.Parse(typeof(InspectionLevel), iplan.Level));
-            int samplingSize = -1;
-            int samplingError = -1;
-            AQLSamplingHelper.GetSampleSize(code, iplan.AQLPercentage, out samplingSize, out samplingError);
-
+            int sampleSize = 0;
+            
+            if (iplan.Type == "FAI")
+                sampleSize = iplan.FAIQuantity;
+            else
+                sampleSize = iplan.SampleSize;
 
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
             {
                 if (sp.Measurements != null)
                 {
-                    if (sp.Measurements.Count != samplingSize && sp.Measurements.Count != 0)
+                    if (sp.Measurements.Count != sampleSize && sp.Measurements.Count != 0)
                     {
                         MessageBox.Show("Error sample size does not match!");
                     }
@@ -186,7 +173,7 @@ namespace SPC_Data_Collection
 
                 if (sp.Measurements == null || sp.Measurements.Count == 0)
                 {
-                    for (int i = 0; i < samplingSize; i++)
+                    for (int i = 0; i < sampleSize; i++)
                     {
                         PartMeasurementActual measurement = new PartMeasurementActual();
                         measurement.PartMeasurementActualId = Guid.NewGuid();
@@ -196,7 +183,7 @@ namespace SPC_Data_Collection
                     }
                 }
             }
-            
+
             App.isiEngine.InspectionDb.SaveChanges();
         }
     }
