@@ -15,9 +15,9 @@ namespace ISIInspection.Models
         //Mietrak
         public int UserId { get; set; }
 
-        //Parent Part
-        public Guid FabricatedPartId { get; set; }
-        public virtual FabricatedPart FabricatedPart { get; set; }
+        ////Parent Part
+        //public Guid FabricatedPartId { get; set; }
+        //public virtual FabricatedPart FabricatedPart { get; set; }
 
         //Parent Measurement
         public Guid PartMeasurementSPId { get; set; }

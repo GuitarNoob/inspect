@@ -20,7 +20,7 @@ namespace SPC_Data_Collection
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {        
+    {
         public WorkOrder selectedWO { get; set; }
         public InspectionPlan selectedInspectionPlan { get; set; }
 
@@ -28,7 +28,7 @@ namespace SPC_Data_Collection
         {
             InitializeComponent();
             MainGrid.DataContext = this;
-            EnableDisableButtons();          
+            EnableDisableButtons();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,17 +50,17 @@ namespace SPC_Data_Collection
                 return;
             }
             CreatePlan createPlan = null;
-            
-            if (selectedInspectionPlan == null)            
+
+            if (selectedInspectionPlan == null)
                 createPlan = new CreatePlan(selectedWO);
             else
                 createPlan = new CreatePlan(selectedWO, selectedInspectionPlan);
-            
+
             createPlan.Owner = this;
             createPlan.ShowDialog();
             ReloadUI();
         }
-        
+
         private void BtnWorkOrderSearch_Click(object sender, RoutedEventArgs e)
         {
             string type = ((ComboBoxType.SelectedItem ?? "") as ComboBoxItem).Content.ToString();
@@ -105,7 +105,7 @@ namespace SPC_Data_Collection
         void GetInspectionPlan()
         {
             //find the inspection plans with this router
-            List<InspectionPlan> iPlans = App.isiEngine.InspectionDb.InspectionPlans.Where(x=>x.RouterFK == selectedWO.RouterFK).ToList();
+            List<InspectionPlan> iPlans = App.isiEngine.InspectionDb.InspectionPlans.Where(x => x.RouterFK == selectedWO.RouterFK).ToList();
             if (iPlans.Count > 0)
                 selectedInspectionPlan = iPlans[0];
             else
@@ -125,7 +125,7 @@ namespace SPC_Data_Collection
         }
 
         void FillWOTextBoxes()
-        {            
+        {
             WorkOrder wo = selectedWO ?? new WorkOrder();
             WorkOrderInfo.FillTextBoxes(wo);
         }
@@ -146,9 +146,58 @@ namespace SPC_Data_Collection
             catch 
             {
 
-            }
+            TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
+            TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
+            TxtBoxIPFreq.Text = ip.Frequency.ToString();
+            TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
+            TxtBoxIPLvl.Text = ip.Level;
+            TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
+            TxtBoxIPType.Text = ip.Type;
+
             DataGridMeasurements.ItemsSource = null;
             DataGridMeasurements.ItemsSource = ip.MeasurementCriteria;
-        }        
+        }
+
+        private void ButtonCollectIP_Click(object sender, RoutedEventArgs e)
+        {
+            CheckInspectionPlan(selectedWO, selectedInspectionPlan);
+            GetInspectionPlan();
+            CollectDataWindow win = new CollectDataWindow(selectedWO, selectedInspectionPlan);
+            win.ShowDialog();
+        }
+
+        void CheckInspectionPlan(WorkOrder wo, InspectionPlan iplan)
+        {
+            string code = AQLSamplingHelper.GetSampleSizeCode((int)(wo.QuantityRequired ?? 0), (InspectionLevel)Enum.Parse(typeof(InspectionLevel), iplan.Level));
+            int samplingSize = -1;
+            int samplingError = -1;
+            AQLSamplingHelper.GetSampleSize(code, iplan.AQLPercentage, out samplingSize, out samplingError);
+
+
+            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
+            {
+                if (sp.Measurements != null)
+                {
+                    if (sp.Measurements.Count != samplingSize && sp.Measurements.Count != 0)
+                    {
+                        MessageBox.Show("Error sample size does not match!");
+                    }
+                }
+
+                if (sp.Measurements == null || sp.Measurements.Count == 0)
+                {
+                    for (int i = 0; i < samplingSize; i++)
+                    {
+                        PartMeasurementActual measurement = new PartMeasurementActual();
+                        measurement.PartMeasurementActualId = Guid.NewGuid();
+                        measurement.PartMeasurementSPId = sp.PartMeasurementSPId;
+                        measurement.CompletedTime = new DateTime(1975, 1, 1);
+                        App.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
+                    }
+                }
+            }
+            
+            App.isiEngine.InspectionDb.SaveChanges();
+        }
     }
 }

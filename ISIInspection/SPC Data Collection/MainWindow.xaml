@@ -53,7 +53,7 @@
         <Label Content="Inspection Data Collector" HorizontalAlignment="Center" Margin="479,16,587,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="238"/>
         <Button x:Name="ButtonAddIP" Content="Create / Edit New Inspection Plan" HorizontalAlignment="Left" Margin="35,0,0,20" Width="251" Height="23" VerticalAlignment="Bottom" Click="ButtonCreateEdit_Click"/>
         <Button Content="Close" Margin="0,0,35,20" Height="23" VerticalAlignment="Bottom" Click="Button_Click" HorizontalAlignment="Right" Width="75"/>
-        <Button x:Name="ButtonCollectIP" Content="Collect Inspection Data" HorizontalAlignment="Left" Margin="291,0,0,20" Width="250" Height="23" VerticalAlignment="Bottom"/>
+        <Button x:Name="ButtonCollectIP" Content="Collect Inspection Data" HorizontalAlignment="Left" Margin="291,0,0,20" Width="250" Height="23" VerticalAlignment="Bottom" Click="ButtonCollectIP_Click"/>
         <Image HorizontalAlignment="Left" Height="86" Margin="42,10,0,0" VerticalAlignment="Top" Width="244" Source="C:\Users\Stan\Documents\Merlin ISI\Logo\Merlin ISI Logo LinkedIn.jpg"/>
         <ComboBox x:Name="ComboBoxType" HorizontalAlignment="Left" Margin="182,161,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
             <ComboBoxItem Content="W.O. Number" HorizontalAlignment="Left" Width="118.4"/>

@@ -81,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AQLSamplingHelper.cs" />
+    <Compile Include="CollectDataWindow.xaml.cs">
+      <DependentUpon>CollectDataWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreatePlan.xaml.cs">
       <DependentUpon>CreatePlan.xaml</DependentUpon>
     </Compile>
@@ -90,12 +94,19 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MeasurementCollectionUserControl.xaml.cs">
+      <DependentUpon>MeasurementCollectionUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestWindow.xaml.cs">
       <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkOrderInfoUserControl.xaml.cs">
       <DependentUpon>WorkOrderInfoUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="CollectDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreatePlan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +128,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MeasurementCollectionUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
