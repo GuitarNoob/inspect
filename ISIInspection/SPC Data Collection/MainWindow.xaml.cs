@@ -133,15 +133,20 @@ namespace SPC_Data_Collection
         void FillIPTextBoxes()
         {
             InspectionPlan ip = selectedInspectionPlan ?? new InspectionPlan();
+            try
+            {
+                TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
+                TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
+                TxtBoxIPFreq.Text = ip.Frequency.ToString();
+                TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
+                TxtBoxIPLvl.Text = ip.Level.ToString();
+                TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
+                TxtBoxIPType.Text = ip.Type;
+            }
+            catch 
+            {
 
-            TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
-            TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
-            TxtBoxIPFreq.Text = ip.Frequency.ToString();
-            TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
-            TxtBoxIPLvl.Text = ip.Level.ToString();
-            TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
-            TxtBoxIPType.Text = ip.Type;
-
+            }
             DataGridMeasurements.ItemsSource = null;
             DataGridMeasurements.ItemsSource = ip.MeasurementCriteria;
         }        

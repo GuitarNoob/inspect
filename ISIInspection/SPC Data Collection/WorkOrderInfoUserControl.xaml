@@ -5,25 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="215" Width="659">
     <Grid >
-        <TextBox x:Name="TxtBoxWorkOrder" HorizontalAlignment="Left" Height="23" Margin="83,27,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.WorkOrderNumber}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" />
-        <Label Content="Work Order" HorizontalAlignment="Left" Margin="83,1,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxStatus" HorizontalAlignment="Left" Height="23" Margin="223,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE"/>
-        <Label Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="83,70,0,0" RenderTransformOrigin="1.735,-0.5"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="223,1,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxRouter" HorizontalAlignment="Left" Height="23" Margin="369,27,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.RouterFK}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE"/>
-        <Label Content="Router" HorizontalAlignment="Left" Margin="367,1,0,0" VerticalAlignment="Top"/>
-        <Label Content="Qty Fab" HorizontalAlignment="Left" Margin="585,67,0,0" VerticalAlignment="Top"/>
-        <Label Content="Qty Req" HorizontalAlignment="Left" Margin="526,67,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TxtBoxQuantityFab" HorizontalAlignment="Left" Height="23" Margin="584,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
-        <TextBox x:Name="TxtBoxQuantityReq" HorizontalAlignment="Left" Height="23" Margin="526,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
-        <TextBox x:Name="TxtBoxCustomer" HorizontalAlignment="Left" Height="23" Margin="83,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE"/>
-        <TextBox x:Name="TxtBoxPartNumber" HorizontalAlignment="Left" Height="23" Margin="83,124,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.PartNumber}" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE"/>
-        <Label Content="Part Number" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,121,0,0"/>
-        <TextBox x:Name="TxtBoxPartRevision" HorizontalAlignment="Left" Height="23" Margin="436,124,0,0" TextWrapping="Wrap"  Text="{Binding Path=selectedWO.Revision}" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
-        <Label Content="Revision" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="494,121,0,0"/>
-        <TextBox x:Name="TxtBoxCustomerId" HorizontalAlignment="Left" Height="23" Margin="436,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE"/>
-        <Label Content="ID                " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,70,0,0"/>
-        <TextBox x:Name="TxtBoxDescription" HorizontalAlignment="Left" Height="23" Margin="83,156,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.ItemDescription}" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE"/>
-        <Label Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,156,0,0"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="136*"/>
+            <ColumnDefinition Width="443*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="TxtBoxWorkOrder" HorizontalAlignment="Left" Height="23" Margin="3,27,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.WorkOrderNumber}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="1" />
+        <Label Content="Work Order" HorizontalAlignment="Left" Margin="3,1,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="TxtBoxStatus" HorizontalAlignment="Left" Height="23" Margin="7.2,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="2"/>
+        <Label Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,70,0,0" RenderTransformOrigin="1.735,-0.5" Grid.Column="1"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="7.2,1,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <TextBox x:Name="TxtBoxRouter" HorizontalAlignment="Left" Height="23" Margin="153.2,27,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.RouterFK}" VerticalAlignment="Top" Width="120" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="2"/>
+        <Label Content="Router" HorizontalAlignment="Left" Margin="151.2,1,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Qty Fab" HorizontalAlignment="Left" Margin="369.2,67,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Qty Req" HorizontalAlignment="Left" Margin="310.2,67,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <TextBox x:Name="TxtBoxQuantityFab" HorizontalAlignment="Left" Height="23" Margin="368.2,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="2"/>
+        <TextBox x:Name="TxtBoxQuantityReq" HorizontalAlignment="Left" Height="23" Margin="310.2,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="2"/>
+        <TextBox x:Name="TxtBoxCustomer" HorizontalAlignment="Left" Height="23" Margin="3,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TxtBoxPartNumber" HorizontalAlignment="Left" Height="23" Margin="3,140,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.PartNumber}" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE" Grid.Column="1" Grid.ColumnSpan="2" IsReadOnly="True"/>
+        <Label Content="Part Number" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,116,0,0" Grid.Column="1"/>
+        <TextBox x:Name="TxtBoxPartRevision" HorizontalAlignment="Left" Height="23" Margin="220.2,140,0,0" TextWrapping="Wrap"  Text="{Binding Path=selectedWO.Revision}" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE" Grid.Column="2" IsReadOnly="True"/>
+        <Label Content="Revision" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="218.2,121,0,0" Grid.Column="2"/>
+        <TextBox x:Name="TxtBoxCustomerId" HorizontalAlignment="Left" Height="23" Margin="220.2,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" Background="#FFFFFFBE" IsReadOnly="True" Grid.Column="2"/>
+        <Label Content="ID                " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220.2,70,0,0" Grid.Column="2"/>
+        <TextBox x:Name="TxtBoxDescription" HorizontalAlignment="Left" Height="23" Margin="3,187,0,0" TextWrapping="Wrap" Text="{Binding Path=selectedWO.ItemDescription}" VerticalAlignment="Top" Width="348" Background="#FFFFFFBE" Grid.Column="1" Grid.ColumnSpan="2" IsReadOnly="True"/>
+        <Label Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,162,0,0" Grid.Column="1"/>
     </Grid>
 </UserControl>

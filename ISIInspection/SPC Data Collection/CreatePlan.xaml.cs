@@ -52,7 +52,7 @@ namespace SPC_Data_Collection
             TxtBoxIPID.Text = ip.InspectionPlanId.ToString();
             TxtBoxIPType.SelectedItem = ip.Type;
             TxtBoxIPLotSize.Text = m_workOrder.QuantityRequired.ToString();
-            TxtBoxIPFrequency.Text = ip.Frequency.ToString();
+//            TxtBoxIPFrequency.Text = ip.Frequency.ToString();
             ComboBoxAQL.SelectedItem = ip.AQLPercentage.ToString();
             ComboBoxIpLvl.SelectedItem = ip.Level;
             TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
@@ -67,7 +67,7 @@ namespace SPC_Data_Collection
             ip.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
 
             ip.Type = TxtBoxIPType.Text;
-            ip.Frequency = Convert.ToInt32(TxtBoxIPFrequency.Text);
+//            ip.Frequency = Convert.ToInt32(TxtBoxIPFrequency.Text);
             if (ComboBoxAQL.Text == "")
                 ip.AQLPercentage = 0;
             else
@@ -212,31 +212,584 @@ namespace SPC_Data_Collection
             MessageBox.Show("Unable to save the measurement criteria.",
                                "Error saving measurement criteria!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
-        private void TxtBoxIPType_DropDownClosed(object sender, EventArgs e)
+        private void WorkOrderInfo_Loaded(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void TxtBoxIPType_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            var bc = new BrushConverter();
             if (TxtBoxIPType.SelectedIndex == 0) /// Auto
-            {                
+            {
+                BtnIPCalculate.Visibility = Visibility.Visible;
+                ComboBoxAQL.SelectedIndex = 10;
+                ComboBoxIpLvl.SelectedIndex = 1;
                 ComboBoxAQL.IsEnabled = true;
                 ComboBoxIpLvl.IsEnabled = true;
+                LabelSampleSize.Opacity = 1.0;
+                LabelFAI.Opacity = 0.25;
+                LabelAQL.Opacity = 1.0;
+                LabelLevel.Opacity = 1.0;
+                LabelCodeLetter.Opacity = 1.0;
+                LabelAccDefects.Opacity = 1.0;
+                LabelLotSize.Opacity = 1.0;
+                TxtBoxIPCodeLetter.IsEnabled = true;
                 TxtBoxIPAcceptableDefects.IsEnabled = true;
-                TxtBoxIPFrequency .IsEnabled = false;
+                //TxtBoxIPRejectNumber.IsEnabled = true;
+                TxtBoxIPAcceptableDefects.Text = "";
+                TxtBoxIPSampleSize.IsEnabled = true;
+                TxtBoxIPSampleSize.IsReadOnly = true;
+                TxtBoxIPFAIQty.IsEnabled = false;
+                TxtBoxIPSampleSize.Text = "";
+                TxtBoxIPSampleSize.Background = (Brush)bc.ConvertFrom("#FFFFFFBE");
+
             }
             if (TxtBoxIPType.SelectedIndex == 1) /// Manual
             {
-                TxtBoxIPFrequency.IsEnabled = true;
-                TxtBoxIPLotSize.IsEnabled = true;
+                BtnIPCalculate.Visibility = Visibility.Hidden;
+                ComboBoxAQL.SelectedIndex = -1;
+                ComboBoxIpLvl.SelectedIndex = -1;
                 ComboBoxAQL.IsEnabled = false;
                 ComboBoxIpLvl.IsEnabled = false;
+                LabelAQL.Opacity = 0.25;
+                LabelLevel.Opacity = 0.25;
+                LabelCodeLetter.Opacity = 0.25;
+                LabelFAI.Opacity = 0.25;
+                LabelAccDefects.Opacity = 0.25;
+                LabelSampleSize.Opacity = 1.0;
+                LabelLotSize.Opacity = 1.0;
+                TxtBoxIPLotSize.IsEnabled = true;
+                TxtBoxIPFAIQty.IsEnabled = false;
+                TxtBoxIPCodeLetter.IsEnabled = false;
+                TxtBoxIPCodeLetter.Text = "";
                 TxtBoxIPAcceptableDefects.IsEnabled = false;
+                TxtBoxIPAcceptableDefects.Text = "";
+                TxtBoxIPSampleSize.Text = "";
+                TxtBoxIPSampleSize.IsReadOnly = false;
+                TxtBoxIPSampleSize.Background = Brushes.White;
             }
             if (TxtBoxIPType.SelectedIndex == 2) /// First Article
             {
-                TxtBoxIPFrequency.IsEnabled = false;
-                TxtBoxIPLotSize.IsEnabled = false;
+                BtnIPCalculate.Visibility = Visibility.Hidden;
+                ComboBoxAQL.SelectedIndex = -1;
+                ComboBoxIpLvl.SelectedIndex = -1;
                 ComboBoxAQL.IsEnabled = false;
                 ComboBoxIpLvl.IsEnabled = false;
+                LabelSampleSize.Opacity = 0.25;
+                LabelFAI.Opacity = 1.0;
+                LabelAQL.Opacity = 0.25;
+                LabelLevel.Opacity = 0.25;
+                LabelCodeLetter.Opacity = 0.25;
+                LabelAccDefects.Opacity = 0.25;
+                LabelLotSize.Opacity = 1.0;
+                TxtBoxIPLotSize.IsEnabled = true;
                 TxtBoxIPAcceptableDefects.IsEnabled = false;
+                TxtBoxIPFAIQty.IsEnabled = true;
+                TxtBoxIPCodeLetter.IsEnabled = false;
+                TxtBoxIPSampleSize.IsEnabled = false;
+                TxtBoxIPSampleSize.Background = (Brush)bc.ConvertFrom("#FFFFFFBE");
+            }
+
+        }
+
+        private void ComboBoxAQL_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void BtnIPCalculate_Click_1(object sender, RoutedEventArgs e)
+        {
+            string AQLCodeLetter ="";
+            string AQLAccept;
+            string AQLReject;
+            int AQLSampleSize;
+            string AQLLevelValue = ((ComboBoxIpLvl.SelectedItem ?? "") as ComboBoxItem).Content.ToString();
+            int LotSizeInt = Convert.ToInt32(m_workOrder.QuantityRequired);
+            //MessageBox.Show(AQLLevelValue.ToString());
+            //MessageBox.Show(m_workOrder.QuantityRequired.ToString());
+            string AQLValue = ((ComboBoxAQL.SelectedItem ?? "") as ComboBoxItem).Content.ToString();
+            //MessageBox.Show(AQLValue.ToString());
+            //
+            // Start Letter decoder
+            //
+            if (LotSizeInt >= 2 && LotSizeInt <= 8)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "A";
+                }
+            }
+            if (LotSizeInt >= 9 && LotSizeInt <= 15)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "A";
+                }
+            }
+            if (LotSizeInt >= 16 && LotSizeInt <= 25)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "D";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "B";
+                }
+            }
+            if (LotSizeInt >= 26 && LotSizeInt <= 50)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "D";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "E";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "A";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "C";
+                }
+            }
+            if (LotSizeInt >= 51 && LotSizeInt <= 90)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "E";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "F";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "C";
+                }
+            }
+            if (LotSizeInt >= 91 && LotSizeInt <= 150)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "D";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "F";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "G";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "D";
+                }
+            }
+            if (LotSizeInt >= 151 && LotSizeInt <= 280)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "E";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "G";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "H";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "D";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "E";
+                }
+            }
+            if (LotSizeInt >= 281 && LotSizeInt <= 500)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "F";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "H";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "J";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "B";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "D";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "E";
+                }
+            }
+            if (LotSizeInt >= 501 && LotSizeInt <= 1200)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "G";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "J";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "K";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "E";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "F";
+                }
+            }
+            if (LotSizeInt >= 1201 && LotSizeInt <= 3200)
+            {
+                if (AQLLevelValue == "I")
+                {
+                    AQLCodeLetter = "H";
+                }
+                if (AQLLevelValue == "II")
+                {
+                    AQLCodeLetter = "K";
+                }
+                if (AQLLevelValue == "III")
+                {
+                    AQLCodeLetter = "L";
+                }
+                if (AQLLevelValue == "S-1")
+                {
+                    AQLCodeLetter = "C";
+                }
+                if (AQLLevelValue == "S-2")
+                {
+                    AQLCodeLetter = "D";
+                }
+                if (AQLLevelValue == "S-3")
+                {
+                    AQLCodeLetter = "E";
+                }
+                if (AQLLevelValue == "S-4")
+                {
+                    AQLCodeLetter = "G";
+                }
+            }
+            //
+            // A
+            //
+            if (AQLCodeLetter == "A")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 2;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "B")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 3;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "C" && Convert.ToDouble(AQLValue) < 6.50)
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 5;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "C" && Convert.ToDouble(AQLValue) >= 6.50)
+            {
+                AQLAccept = "1";
+                AQLReject = "2";
+                AQLSampleSize = 5;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "D")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 8;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "E")
+            {
+                AQLAccept = "0";
+                AQLReject = "13";
+                AQLSampleSize = 5;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "F")
+            {
+                AQLAccept = "0";
+                AQLReject = "20";
+                AQLSampleSize = 5;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "G")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 32;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "H")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 50;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "J")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 80;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "K")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 125;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "L")
+            {
+                AQLAccept = "0";
+                AQLReject = "200";
+                AQLSampleSize = 5;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "M")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 315;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "N")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 500;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "P")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 800;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "Q")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 1250;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
+            }
+            if (AQLCodeLetter == "R")
+            {
+                AQLAccept = "0";
+                AQLReject = "1";
+                AQLSampleSize = 2000;
+                TxtBoxIPSampleSize.Text = AQLSampleSize.ToString();
+                TxtBoxIPAcceptableDefects.Text = AQLAccept;
+                //TxtBoxIPRejectNumber.Text = AQLReject;
+                TxtBoxIPCodeLetter.Text = AQLCodeLetter;
             }
         }
     }
