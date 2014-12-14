@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MieTrakWrapper.MieTrak;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,20 +21,47 @@ namespace SPC_Data_Collection
     /// </summary>
     public partial class LogonWindow : Window
     {
+        Dictionary<string, User> userList = new Dictionary<string, User>();
+
         public LogonWindow()
         {
             InitializeComponent();
+            LoadUsers();
         }
 
-        private void buttonTest_Click(object sender, RoutedEventArgs e)
+        void LoadUsers()
         {
-            MainWindow SPC1 = new MainWindow();
-            SPC1.Show();
+            userList.Clear();
+            List<User> mietrakUsers = App.mietrakConn.mietrakDb.Users.ToList();
+            foreach (User user in mietrakUsers)
+            {
+                string comboBoxName = App.GetUserDisplayName(user);
+                userList.Add(comboBoxName, user);
+            }
+
+            ComboBoxUsers.ItemsSource = userList.Keys;
+            ComboBoxUsers.Focus();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLogon_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            object selectedItem = ComboBoxUsers.SelectedItem;
+            if (selectedItem != null)
+            {
+                if (userList.ContainsKey((selectedItem as string)))
+                {
+                    User selectedUser = userList[selectedItem as string];
+                    if (UserPassword.Password == selectedUser.Password)
+                    {
+                        App.LogonUser(selectedUser);
+                        this.DialogResult = true;
+                    }
+                    else
+                        MessageBox.Show("Incorrect password entered.");
+                }
+            }
+            else
+                MessageBox.Show("The user selected cannot be found.");
         }
     }
 }

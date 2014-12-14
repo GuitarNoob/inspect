@@ -92,6 +92,26 @@
                 <DataGridTextColumn Header="Comment" Width="Auto" Binding="{Binding SetPoint.Comment}" IsReadOnly="True">                    
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Measured Value" Width="Auto" Binding="{Binding Measured, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="User" Width="Auto" Binding="{Binding UserDisplayName}" IsReadOnly="True">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" 
+                                Value="{StaticResource clBr}" />
+                            <Setter Property="Foreground" 
+                                Value="{StaticResource blk}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Measured Time" Width="Auto" Binding="{Binding CompletedTime}" IsReadOnly="True">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" 
+                                Value="{StaticResource clBr}" />
+                            <Setter Property="Foreground" 
+                                Value="{StaticResource blk}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">

@@ -72,5 +72,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <SPC_Data_Collection:UserStatus Margin="0,10,10,0" VerticalAlignment="Top" Width="257" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

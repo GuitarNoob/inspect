@@ -48,7 +48,7 @@ namespace SPC_Data_Collection
 
         void LoadRows(WorkOrder wo, InspectionPlan iplan)
         {
-            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x=>x.CharNumber))
+            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x => x.CharNumber))
             {
                 foreach (PartMeasurementActual measurement in sp.Measurements)
                     measurementCollectors.Add(new MeasurementCollector(measurement));
@@ -72,6 +72,7 @@ namespace SPC_Data_Collection
                     {
                         spOriginal.CompletedTime = DateTime.Now;
                         spOriginal.MeasuredValue = collector.Measured;
+                        spOriginal.UserId = App.CurrentUser.UserPK;
                     }
                 }
             }
@@ -83,15 +84,15 @@ namespace SPC_Data_Collection
         {
             this.Close();
         }
-       
+
         private void DataGridMeasurements_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             try
             {
-                if (((MeasurementCollector)e.Row.DataContext).IsReadOnly)                
-                {                   
+                if (((MeasurementCollector)e.Row.DataContext).IsReadOnly)
+                {
                     e.Row.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFBE"));
-                }                              
+                }
             }
             catch
             {
@@ -117,6 +118,21 @@ namespace SPC_Data_Collection
             }
         }
 
+        private int m_userPK = -1;
+        private User m_user = null;
+        private string m_userDisplayName = "";
+        public string UserDisplayName
+        {
+            get { return m_userDisplayName; }
+            set { }
+        }
+
+        public string CompletedTime
+        {
+            get;
+            set;
+        }
+
         public MeasurementCollector(PartMeasurementActual actual)
         {
             SetPoint = actual.PartMeasurementSP;
@@ -125,9 +141,22 @@ namespace SPC_Data_Collection
 
             if (actual.CompletedTime > new DateTime(1975, 1, 1))
             {
+                this.CompletedTime = actual.CompletedTime.ToString();
                 IsReadOnly = true;
+                GetUser(actual.UserId);
             }
         }
 
+        private void GetUser(int userPk)
+        {
+            List<User> usersMatch = App.mietrakConn.mietrakDb.Users.Where(x => x.UserPK == userPk).ToList();
+            if (usersMatch != null && usersMatch.Count > 0)
+            {
+                m_user = usersMatch[0];
+                m_userDisplayName = App.GetUserDisplayName(m_user);
+            }
+            else
+                m_userDisplayName = "Unknown";
+        }
     }
 }
