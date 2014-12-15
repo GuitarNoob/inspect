@@ -4,6 +4,7 @@ using MieTrakWrapper.MieTrak;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -109,69 +110,84 @@ namespace SPC_Data_Collection
 
         private void ExportToCSV()
         {
-            SaveFileDialog diag = new SaveFileDialog();
-            diag.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
-            bool? result = diag.ShowDialog();
-            if (diag.FileName == "" || result == false)
-                return;
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("Char");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("Ref");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("Requirement");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("UofM");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("UpperLimit");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("LowerLimit");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("CharDesignator");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("InspectionDevice");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("Comment");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("MeasureValue");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("User");
-            sb.Append(SEPERATOR_CHAR);
-            sb.Append("MeasuredTime");
-            sb.Append(Environment.NewLine);
-
-            for (int i = 0; i < measurementCollectors.Count; i++)
+            try
             {
-                sb.Append(measurementCollectors[i].SetPoint.CharNumber);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.RefLocation);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.Requirement);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.Units);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.UpperLimit);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.LowerLimit);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].SetPoint.InspectionDevice);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append("");
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].Measured);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].UserDisplayName);
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append(measurementCollectors[i].CompletedTime);
-                sb.Append(Environment.NewLine);
-            }
+                //have the user select a save path
+                SaveFileDialog diag = new SaveFileDialog();
+                diag.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+                bool? result = diag.ShowDialog();
+                if (diag.FileName == "" || result == false)
+                    return;
 
-            File.WriteAllText(diag.FileName, sb.ToString());
-        }        
+                //concat the class into csv file
+                StringBuilder sb = new StringBuilder();
+
+                //write the headers
+                sb.Append("Char");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("Ref");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("Requirement");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("UofM");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("UpperLimit");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("LowerLimit");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("CharDesignator");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("InspectionDevice");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("Comment");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("MeasureValue");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("User");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("MeasuredTime");
+                sb.Append(Environment.NewLine);
+
+                //write each row
+                for (int i = 0; i < measurementCollectors.Count; i++)
+                {
+                    sb.Append(measurementCollectors[i].SetPoint.CharNumber);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.RefLocation);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.Requirement);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.Units);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.UpperLimit);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.LowerLimit);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.InspectionDevice);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(""); //need to add comment
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].Measured);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].UserDisplayName);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].CompletedTime);
+                    sb.Append(Environment.NewLine);
+                }
+
+                //write the string out to disk
+                File.WriteAllText(diag.FileName, sb.ToString());
+
+                //open the file in windows
+                Process.Start(diag.FileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 
     public class MeasurementCollector
@@ -201,19 +217,15 @@ namespace SPC_Data_Collection
             set { }
         }
 
-        public string CompletedTime
-        {
-            get;
-            set;
-        }
+        public string CompletedTime { get; set; }
 
         public MeasurementCollector(PartMeasurementActual actual)
-        {
+        {            
             SetPoint = actual.PartMeasurementSP;
             ActualMeasurement = actual;
             m_Measured = actual.MeasuredValue;
 
-            if (actual.CompletedTime > new DateTime(1975, 1, 1))
+            if (actual.CompletedTime > new DateTime(1975, 1, 1)) // this is the min time that can be saved into MS SQL
             {
                 this.CompletedTime = actual.CompletedTime.ToString();
                 IsReadOnly = true;
