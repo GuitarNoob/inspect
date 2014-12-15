@@ -1,8 +1,10 @@
 ﻿using ISIInspection.Models;
+using Microsoft.Win32;
 using MieTrakWrapper.MieTrak;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace SPC_Data_Collection
     /// </summary>
     public partial class CollectDataWindow : Window
     {
+        const string SEPERATOR_CHAR = ",";
         ObservableCollection<MeasurementCollector> measurementCollectors = new ObservableCollection<MeasurementCollector>();
 
         public CollectDataWindow(WorkOrder workOrder, InspectionPlan inspectionPlan)
@@ -98,6 +101,77 @@ namespace SPC_Data_Collection
             {
             }
         }
+
+        private void BtmExport_Click(object sender, RoutedEventArgs e)
+        {
+            ExportToCSV();
+        }
+
+        private void ExportToCSV()
+        {
+            SaveFileDialog diag = new SaveFileDialog();
+            diag.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+            bool? result = diag.ShowDialog();
+            if (diag.FileName == "" || result == false)
+                return;
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("Char");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("Ref");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("Requirement");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("UofM");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("UpperLimit");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("LowerLimit");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("CharDesignator");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("InspectionDevice");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("Comment");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("MeasureValue");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("User");
+            sb.Append(SEPERATOR_CHAR);
+            sb.Append("MeasuredTime");
+            sb.Append(Environment.NewLine);
+
+            for (int i = 0; i < measurementCollectors.Count; i++)
+            {
+                sb.Append(measurementCollectors[i].SetPoint.CharNumber);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.RefLocation);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.Requirement);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.Units);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.UpperLimit);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.LowerLimit);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].SetPoint.InspectionDevice);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].Measured);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].UserDisplayName);
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append(measurementCollectors[i].CompletedTime);
+                sb.Append(Environment.NewLine);
+            }
+
+            File.WriteAllText(diag.FileName, sb.ToString());
+        }        
     }
 
     public class MeasurementCollector
