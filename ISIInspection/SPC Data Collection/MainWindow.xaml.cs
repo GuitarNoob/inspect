@@ -186,5 +186,9 @@ namespace SPC_Data_Collection
 
             App.isiEngine.InspectionDb.SaveChanges();
         }
+        private void UserControl1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

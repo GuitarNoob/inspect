@@ -4,6 +4,8 @@
         DataContext="{Binding RelativeSource={RelativeSource self}}"
         Title="MainWindow" Height="700" Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Name="MainGrid">
+        <SPC_Data_Collection:UserControl1 HorizontalAlignment="Left" Margin="56,4,0,0" VerticalAlignment="Top" Loaded="UserControl1_Loaded" Width="485"/>
+
         <GroupBox Header="W.O. Search Specifications" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="285" Width="467" Background="#FFF0F0F0" BorderThickness="2">
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,10,0,0" Width="120" SelectedIndex="0">
                 <ComboBoxItem Content="All" HorizontalAlignment="Left" Width="120" Height="23"/>
@@ -17,17 +19,17 @@
         <GroupBox Header="Inspection Plan" Margin="10,398,8,65" Background="#FFF0F0F0">
             <Grid>
                 <Label Content="ID                " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,0,0,0" Width="24"/>
-                <TextBox Name="TxtBoxIPType" HorizontalAlignment="Left" Height="23" Margin="71,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <TextBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" Height="23" Margin="71,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
                 <Label Content="Type" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="71,0,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPId" HorizontalAlignment="Left" Height="23" Margin="6,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="#FFFFFFBE"/>
-                <TextBox Name="TxtBoxIPAql" HorizontalAlignment="Left" Height="23" Margin="221,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <TextBox x:Name="TxtBoxIPId" HorizontalAlignment="Left" Height="23" Margin="6,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="#FFFFFFBE"/>
+                <TextBox x:Name="TxtBoxIPAql" HorizontalAlignment="Left" Height="23" Margin="221,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
                 <Label Content="AQL%" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,0,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPLvl" HorizontalAlignment="Left" Height="23" Margin="373,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <TextBox x:Name="TxtBoxIPLvl" HorizontalAlignment="Left" Height="23" Margin="373,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
                 <Label Content="Level" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="373,1,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="525,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="Acceptable Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="525,0,0,0" Width="147"/>
-                <TextBox Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="677,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
-                <Label Content="Skip Lot" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="677,0,0,0" Width="147"/>
+                <TextBox x:Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="1085,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <Label Content="Acceptable Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1085,0,0,0" Width="147"/>
+                <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="1237,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" Background="#FFFFFFBE"/>
+                <Label Content="Skip Lot" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1237,0,0,0" Width="147"/>
                 <ListView x:Name="DataGridMeasurements" Margin="6,54,6,6">
                     <ListView.View>
                         <GridView>
@@ -48,11 +50,10 @@
         <GroupBox Header="W.O. Information" Margin="482,108,10,0" VerticalAlignment="Top" Height="285" Background="#FFF0F0F0" BorderThickness="2">
             <SPC_Data_Collection:WorkOrderInfoUserControl x:Name="WorkOrderInfo" HorizontalAlignment="Left"/>
         </GroupBox>
-        <Label Content="Inspection Data Collector" HorizontalAlignment="Center" Margin="479,16,587,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="238"/>
+        <Label Content="IDC" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="46"/>
         <Button x:Name="ButtonAddIP" Content="Create / Edit New Inspection Plan" HorizontalAlignment="Left" Margin="35,0,0,20" Width="251" Height="23" VerticalAlignment="Bottom" Click="ButtonCreateEdit_Click"/>
         <Button Content="Close" Margin="0,0,35,20" Height="23" VerticalAlignment="Bottom" Click="Button_Click" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="ButtonCollectIP" Content="Collect Inspection Data" HorizontalAlignment="Left" Margin="291,0,0,20" Width="250" Height="23" VerticalAlignment="Bottom" Click="ButtonCollectIP_Click"/>
-        <Image HorizontalAlignment="Left" Height="86" Margin="42,10,0,0" VerticalAlignment="Top" Width="244" Source="C:\Users\Stan\Documents\Merlin ISI\Logo\Merlin ISI Logo LinkedIn.jpg"/>
         <ComboBox x:Name="ComboBoxType" HorizontalAlignment="Left" Margin="182,161,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
             <ComboBoxItem Content="W.O. Number" HorizontalAlignment="Left" Width="118.4"/>
             <ComboBoxItem Content="Part Number" HorizontalAlignment="Left" Width="118.4"/>
@@ -63,7 +64,7 @@
         <Label Content="Type" HorizontalAlignment="Left" Margin="139,161,0,0" VerticalAlignment="Top"/>
         <Label Content="Value" HorizontalAlignment="Left" Margin="132,187,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BtnWorkOrderSearch" Content="Search" HorizontalAlignment="Left" IsDefault="True" Margin="200,216,0,0" VerticalAlignment="Top" Width="75" Click="BtnWorkOrderSearch_Click"/>
-        <ListView Name="DataGridResults" Margin="24,247,0,0" SelectionChanged="DataGridResults_SelectionChanged" HorizontalAlignment="Left" Width="439" Height="134" VerticalAlignment="Top">
+        <ListView x:Name="DataGridResults" Margin="24,247,0,0" SelectionChanged="DataGridResults_SelectionChanged" HorizontalAlignment="Left" Width="439" Height="134" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Work Order" Width="120" DisplayMemberBinding="{Binding WorkOrderPK}"/>
@@ -72,5 +73,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
     </Grid>
 </Window>
