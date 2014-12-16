@@ -27,8 +27,25 @@ namespace SPC_Data_Collection
         public MainWindow()
         {
             InitializeComponent();
+            App.UserChanged += App_UserChanged;
+
             MainGrid.DataContext = this;
             EnableDisableButtons();
+            CheckUser();
+        }
+
+        void App_UserChanged(object sender, EventArgs e)
+        {
+            CheckUser();
+        }
+
+        private void CheckUser()
+        {
+            if (App.CurrentUser == null)
+            {
+                LogonWindow logon = new LogonWindow();                
+                logon.ShowDialog();
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -155,11 +172,18 @@ namespace SPC_Data_Collection
         void CheckInspectionPlan(WorkOrder wo, InspectionPlan iplan)
         {
             int sampleSize = 0;
-            
+
             if (iplan.Type == "FAI")
                 sampleSize = iplan.FAIQuantity;
             else
                 sampleSize = iplan.SampleSize;
+
+            if (sampleSize == 0)
+            {
+                if (MessageBox.Show("The sample size is 0! The Inspection Plan may have an error. Do you want to continue?", "Error",
+                    MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
+                    return;
+            }
 
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
             {
@@ -167,28 +191,57 @@ namespace SPC_Data_Collection
                 {
                     if (sp.Measurements.Count != sampleSize && sp.Measurements.Count != 0)
                     {
-                        MessageBox.Show("Error sample size does not match!");
+                        if (MessageBox.Show("Error sample size does not match! The Inspection Plan has been mofied and the results no longer match!" +
+                         " Would you like to attempt a merge? (Warning: a merge may result in a loss of saved data)", "Error Inspection Plan has been modified!",
+                         MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        {
+                            if (sp.Measurements.Count > sampleSize)
+                            {
+                                int numToRemove = sp.Measurements.Count - sampleSize;
+                                RemoveMeasurementSP(sp, numToRemove);
+                            }
+                            else
+                            {
+                                int numToAdd = sampleSize - sp.Measurements.Count;
+                                AddMeasurementForSP(sp, numToAdd);
+                            }
+                        }
                     }
                 }
 
                 if (sp.Measurements == null || sp.Measurements.Count == 0)
                 {
-                    for (int i = 0; i < sampleSize; i++)
-                    {
-                        PartMeasurementActual measurement = new PartMeasurementActual();
-                        measurement.PartMeasurementActualId = Guid.NewGuid();
-                        measurement.PartMeasurementSPId = sp.PartMeasurementSPId;
-                        measurement.CompletedTime = new DateTime(1975, 1, 1);
-                        App.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
-                    }
+                    AddMeasurementForSP(sp, sampleSize);
                 }
             }
 
             App.isiEngine.InspectionDb.SaveChanges();
         }
-        private void UserControl1_Loaded(object sender, RoutedEventArgs e)
-        {
 
+        void RemoveMeasurementSP(PartMeasurementSP sp, int measurementsToRemove)
+        {
+            List<PartMeasurementActual> measurements = new List<PartMeasurementActual>();
+            for (int i = 0; i < measurementsToRemove; i++)
+            {
+                measurements.Add(sp.Measurements[((sp.Measurements.Count - 1) - i)]);
+            }
+
+            foreach (PartMeasurementActual measurement in measurements)
+            {
+                App.isiEngine.InspectionDb.MeasurementActual.Remove(measurement);
+            }
+        }
+
+        void AddMeasurementForSP(PartMeasurementSP sp, int measurementsToAdd)
+        {
+            for (int i = 0; i < measurementsToAdd; i++)
+            {
+                PartMeasurementActual measurement = new PartMeasurementActual();
+                measurement.PartMeasurementActualId = Guid.NewGuid();
+                measurement.PartMeasurementSPId = sp.PartMeasurementSPId;
+                measurement.CompletedTime = new DateTime(1975, 1, 1);
+                App.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
+            }
         }
     }
 }

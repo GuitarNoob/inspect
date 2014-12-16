@@ -89,9 +89,29 @@
                         </Style>
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Comment" Width="Auto" Binding="{Binding SetPoint.Comment}" IsReadOnly="True">                    
+                <DataGridTextColumn Header="Comment" Width="Auto" Binding="{Binding SetPoint.Comment}" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Measured Value" Width="Auto" Binding="{Binding Measured, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="User" Width="Auto" Binding="{Binding UserDisplayName}" IsReadOnly="True">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" 
+                                Value="{StaticResource clBr}" />
+                            <Setter Property="Foreground" 
+                                Value="{StaticResource blk}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Measured Time" Width="Auto" Binding="{Binding CompletedTime}" IsReadOnly="True">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" 
+                                Value="{StaticResource clBr}" />
+                            <Setter Property="Foreground" 
+                                Value="{StaticResource blk}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
@@ -108,5 +128,6 @@
         </DataGrid>
         <Button Content="Close" Name="BtnCancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="BtnCancel_Click"/>
         <Button Content="Save" Name="BtmSave" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="75" Click="BtmSave_Click"/>
+        <Button Content="Export" x:Name="BtmExport" HorizontalAlignment="Left" Margin="11,0,0,9" VerticalAlignment="Bottom" Width="75" Click="BtmExport_Click"/>
     </Grid>
 </Window>
