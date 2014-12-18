@@ -143,22 +143,22 @@ namespace SPC_Data_Collection
         {
             InspectionPlan ip = GetInspectionPlan();
 
-            var ipOriginal = App.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);
+            var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);
             if (ipOriginal != null)
-                App.isiEngine.InspectionDb.Entry(ipOriginal).CurrentValues.SetValues(ip);
+                App.Engine.Database.isiEngine.InspectionDb.Entry(ipOriginal).CurrentValues.SetValues(ip);
             else
-                App.isiEngine.InspectionDb.InspectionPlans.Add(ip);
+                App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Add(ip);
 
             foreach (PartMeasurementSP newSetpoint in m_measurementCriteria)
             {
-                var spOriginal = App.isiEngine.InspectionDb.MeasurementSetpoints.Find(newSetpoint.PartMeasurementSPId);
+                var spOriginal = App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Find(newSetpoint.PartMeasurementSPId);
                 if (spOriginal != null)
-                    App.isiEngine.InspectionDb.Entry(spOriginal).CurrentValues.SetValues(newSetpoint);
+                    App.Engine.Database.isiEngine.InspectionDb.Entry(spOriginal).CurrentValues.SetValues(newSetpoint);
                 else
-                    App.isiEngine.InspectionDb.MeasurementSetpoints.Add(newSetpoint);
+                    App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Add(newSetpoint);
             }
 
-            App.isiEngine.InspectionDb.SaveChanges();
+            App.Engine.Database.isiEngine.InspectionDb.SaveChanges();
 
             this.Close();
         }
@@ -171,7 +171,7 @@ namespace SPC_Data_Collection
             if (m_inspectionPlan.MeasurementCriteria != null)
                 m_inspectionPlan.MeasurementCriteria.ForEach(x => m_measurementCriteria.Add(x));
 
-            DataGridResults.ItemsSource = m_measurementCriteria;
+            DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
         }
 
         private void ButtonAddMeasurement_Click(object sender, RoutedEventArgs e)

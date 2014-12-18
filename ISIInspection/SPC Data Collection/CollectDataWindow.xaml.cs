@@ -52,10 +52,15 @@ namespace SPC_Data_Collection
 
         void LoadRows(WorkOrder wo, InspectionPlan iplan)
         {
+            if (iplan.MeasurementCriteria == null)
+                return;
+
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x => x.CharNumber))
             {
-                foreach (PartMeasurementActual measurement in sp.Measurements)
-                    measurementCollectors.Add(new MeasurementCollector(measurement));
+                int index = 1;
+                if (sp.Measurements != null)
+                    foreach (PartMeasurementActual measurement in sp.Measurements)
+                        measurementCollectors.Add(new MeasurementCollector(measurement, index++));
             }
             DataGridMeasurements.ItemsSource = measurementCollectors;
         }
@@ -71,16 +76,16 @@ namespace SPC_Data_Collection
             {
                 if (collector.IsUpdated)
                 {
-                    var spOriginal = App.isiEngine.InspectionDb.MeasurementActual.Find(collector.ActualMeasurement.PartMeasurementActualId);
+                    var spOriginal = App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Find(collector.ActualMeasurement.PartMeasurementActualId);
                     if (spOriginal != null)
                     {
                         spOriginal.CompletedTime = DateTime.Now;
                         spOriginal.MeasuredValue = collector.Measured;
-                        spOriginal.UserId = App.CurrentUser.UserPK;
+                        spOriginal.UserId = App.Engine.CurrentUser.UserPK;
                     }
                 }
             }
-            App.isiEngine.InspectionDb.SaveChanges();
+            App.Engine.Database.isiEngine.InspectionDb.SaveChanges();
             this.Close();
         }
 
@@ -192,6 +197,7 @@ namespace SPC_Data_Collection
 
     public class MeasurementCollector
     {
+        public string DisplayCharNumber { get; set; }
         public PartMeasurementSP SetPoint { get; set; }
         public PartMeasurementActual ActualMeasurement { get; set; }
         public bool IsReadOnly = false;
@@ -219,11 +225,12 @@ namespace SPC_Data_Collection
 
         public string CompletedTime { get; set; }
 
-        public MeasurementCollector(PartMeasurementActual actual)
-        {            
+        public MeasurementCollector(PartMeasurementActual actual, int CharNum)
+        {
             SetPoint = actual.PartMeasurementSP;
             ActualMeasurement = actual;
             m_Measured = actual.MeasuredValue;
+            DisplayCharNumber = SetPoint.CharNumber + "." + CharNum;
 
             if (actual.CompletedTime > new DateTime(1975, 1, 1)) // this is the min time that can be saved into MS SQL
             {
@@ -235,11 +242,11 @@ namespace SPC_Data_Collection
 
         private void GetUser(int userPk)
         {
-            List<User> usersMatch = App.mietrakConn.mietrakDb.Users.Where(x => x.UserPK == userPk).ToList();
+            List<User> usersMatch = App.Engine.Database.mietrakConn.mietrakDb.Users.Where(x => x.UserPK == userPk).ToList();
             if (usersMatch != null && usersMatch.Count > 0)
             {
                 m_user = usersMatch[0];
-                m_userDisplayName = App.GetUserDisplayName(m_user);
+                m_userDisplayName = App.Engine.GetUserDisplayName(m_user);
             }
             else
                 m_userDisplayName = "Unknown";

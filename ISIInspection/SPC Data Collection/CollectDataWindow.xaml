@@ -9,7 +9,7 @@
     <Grid>
         <DataGrid Margin="10,10,10,35" Name="DataGridMeasurements" AutoGenerateColumns="False" LoadingRow="DataGridMeasurements_LoadingRow">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Char" Width="75" Binding="{Binding SetPoint.CharNumber}" IsReadOnly="True">
+                <DataGridTextColumn Header="Char" Width="75" Binding="{Binding DisplayCharNumber}" IsReadOnly="True">
                     <DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
                             <Setter Property="Background" 
