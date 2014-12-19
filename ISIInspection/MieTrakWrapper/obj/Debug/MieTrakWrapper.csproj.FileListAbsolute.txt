@@ -7,3 +7,12 @@ C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\MieTrakWrapper\b
 C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.dll
 C:\Users\Stan\Documents\Merlin ISI\Git\Inspection\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\MieTrakWrapper.dll.config
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\MieTrakWrapper.dll
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\MieTrakWrapper.pdb
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.dll
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.xml
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.dll
+C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.pdb

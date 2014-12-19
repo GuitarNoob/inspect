@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SPC_Data_Collection.LogonWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Height="284.4" Width="340.2" WindowStartupLocation="CenterScreen">
+        Title="Login" Height="284.4" Width="340.2" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <Border BorderThickness="1" Margin="0" Background="#FF00C8FF" Height="55" VerticalAlignment="Bottom"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>

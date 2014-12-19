@@ -22,6 +22,7 @@ namespace SPC_Data_Collection
     public partial class LogonWindow : Window
     {
         Dictionary<string, User> userList = new Dictionary<string, User>();
+        bool loggedIn = false;
 
         public LogonWindow()
         {
@@ -32,10 +33,10 @@ namespace SPC_Data_Collection
         void LoadUsers()
         {
             userList.Clear();
-            List<User> mietrakUsers = App.mietrakConn.mietrakDb.Users.ToList();
+            List<User> mietrakUsers = App.Engine.Database.mietrakConn.mietrakDb.Users.ToList();
             foreach (User user in mietrakUsers)
             {
-                string comboBoxName = App.GetUserDisplayName(user);
+                string comboBoxName = App.Engine.GetUserDisplayName(user);
                 userList.Add(comboBoxName, user);
             }
 
@@ -53,7 +54,8 @@ namespace SPC_Data_Collection
                     User selectedUser = userList[selectedItem as string];
                     if (UserPassword.Password == selectedUser.Password)
                     {
-                        App.LogonUser(selectedUser);
+                        App.Engine.LogonUser(selectedUser);
+                        loggedIn = true;
                         this.DialogResult = true;
                     }
                     else
@@ -62,6 +64,12 @@ namespace SPC_Data_Collection
             }
             else
                 MessageBox.Show("The user selected cannot be found.");
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!loggedIn)
+                e.Cancel = true;
         }
     }
 }

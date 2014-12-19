@@ -23,12 +23,12 @@ namespace SPC_Data_Collection
         public UserStatus()
         {
             InitializeComponent();
-            App.UserChanged += App_UserChanged;
+            App.Engine.UserChanged += App_UserChanged;
         }
 
         void App_UserChanged(object sender, EventArgs e)
         {
-            if (App.CurrentUser == null)
+            if (App.Engine.CurrentUser == null)
             {
                 ButtonLoginLogout.Content = "Login";
                 LabelCurrentUser.Content = "Unknown";
@@ -36,13 +36,13 @@ namespace SPC_Data_Collection
             else
             {
                 ButtonLoginLogout.Content = "Logout";
-                LabelCurrentUser.Content = App.GetUserDisplayName(App.CurrentUser);
+                LabelCurrentUser.Content = App.Engine.GetUserDisplayName(App.Engine.CurrentUser);
             }
         }
 
         private void ButtonLoginLogout_Click(object sender, RoutedEventArgs e)
         {
-            if (App.CurrentUser == null)
+            if (App.Engine.CurrentUser == null)
             {
                 //can this happen?
                 //the main window forces a login window
@@ -51,7 +51,7 @@ namespace SPC_Data_Collection
             }
             else
             {
-                App.LogonUser(null);
+                App.Engine.LogonUser(null);
             }
         }
     }

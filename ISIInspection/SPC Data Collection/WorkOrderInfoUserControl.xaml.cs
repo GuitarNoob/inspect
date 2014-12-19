@@ -39,7 +39,7 @@ namespace SPC_Data_Collection
             TxtBoxWorkOrder.Text = wo.WorkOrderPK.ToString();
             TxtBoxStatus.Text = wo.WorkOrderStatusFK.ToString();
 
-            Party customer = App.mietrakConn.mietrakDb.Parties.FirstOrDefault(x => x.PartyPK == wo.CustomerFK);
+            Party customer = App.Engine.Database.mietrakConn.mietrakDb.Parties.FirstOrDefault(x => x.PartyPK == wo.CustomerFK);
             TxtBoxCustomer.Text = customer.Name;
         }
     }

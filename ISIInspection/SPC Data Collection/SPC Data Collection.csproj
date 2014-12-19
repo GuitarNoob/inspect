@@ -209,6 +209,10 @@
       <Project>{fbbb9124-9567-4510-ab59-8f4ad3bc9e8f}</Project>
       <Name>MieTrakWrapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SPCEngine\SPCEngine.csproj">
+      <Project>{e53a3184-e4f3-4bcb-ac62-6bbebfa09f67}</Project>
+      <Name>SPCEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

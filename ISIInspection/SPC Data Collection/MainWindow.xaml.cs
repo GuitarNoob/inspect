@@ -21,13 +21,12 @@ namespace SPC_Data_Collection
     /// </summary>
     public partial class MainWindow : Window
     {
-        public WorkOrder selectedWO { get; set; }
-        public InspectionPlan selectedInspectionPlan { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            App.UserChanged += App_UserChanged;
+            App.Engine.UserChanged += App_UserChanged;
+            App.Engine.InspectionPlanMgr.WorkOrderChanged += InspectionPlanMgr_WorkOrderChanged;
 
             MainGrid.DataContext = this;
             EnableDisableButtons();
@@ -39,11 +38,16 @@ namespace SPC_Data_Collection
             CheckUser();
         }
 
+        void InspectionPlanMgr_WorkOrderChanged(object sender, EventArgs e)
+        {
+            ReloadUI();
+        }
+
         private void CheckUser()
         {
-            if (App.CurrentUser == null)
+            if (App.Engine.CurrentUser == null)
             {
-                LogonWindow logon = new LogonWindow();                
+                LogonWindow logon = new LogonWindow();
                 logon.ShowDialog();
             }
         }
@@ -60,7 +64,7 @@ namespace SPC_Data_Collection
 
         private void ButtonCreateEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (selectedWO == null)
+            if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
             {
                 MessageBox.Show("No Work Order is currently selected.",
                     "No Work Order selected!", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -68,10 +72,10 @@ namespace SPC_Data_Collection
             }
             CreatePlan createPlan = null;
 
-            if (selectedInspectionPlan == null)
-                createPlan = new CreatePlan(selectedWO);
+            if (App.Engine.InspectionPlanMgr.SelectedIP == null)
+                createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder);
             else
-                createPlan = new CreatePlan(selectedWO, selectedInspectionPlan);
+                createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
 
             createPlan.Owner = this;
             createPlan.ShowDialog();
@@ -84,16 +88,16 @@ namespace SPC_Data_Collection
             string search = TextBoxSearchValue.Text;
             if (search == "")
             {
-                DataGridResults.ItemsSource = App.mietrakConn.mietrakDb.WorkOrders.ToList();
+                DataGridResults.ItemsSource = App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.ToList();
                 return;
             }
             switch (type)
             {
                 case "W.O. Number":
-                    DataGridResults.ItemsSource = App.mietrakConn.mietrakDb.WorkOrders.Where(x => x.WorkOrderNumber.Contains(search)).ToList();
+                    DataGridResults.ItemsSource = App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.WorkOrderNumber.Contains(search)).ToList();
                     break;
                 case "Part Number":
-                    DataGridResults.ItemsSource = App.mietrakConn.mietrakDb.WorkOrders.Where(x => x.PartNumber.Contains(search)).ToList();
+                    DataGridResults.ItemsSource = App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.PartNumber.Contains(search)).ToList();
                     break;
             }
         }
@@ -105,7 +109,7 @@ namespace SPC_Data_Collection
             {
                 if (item is WorkOrder)
                 {
-                    selectedWO = (WorkOrder)item;
+                    App.Engine.InspectionPlanMgr.LoadWorkOrder((WorkOrder)item);
                     ReloadUI();
                 }
             }
@@ -113,25 +117,15 @@ namespace SPC_Data_Collection
 
         void ReloadUI()
         {
-            GetInspectionPlan();
+            App.Engine.InspectionPlanMgr.ReloadInspectionPlan();
             FillWOTextBoxes();
             FillIPTextBoxes();
             EnableDisableButtons();
         }
 
-        void GetInspectionPlan()
-        {
-            //find the inspection plans with this router
-            List<InspectionPlan> iPlans = App.isiEngine.InspectionDb.InspectionPlans.Where(x => x.RouterFK == selectedWO.RouterFK).ToList();
-            if (iPlans.Count > 0)
-                selectedInspectionPlan = iPlans[0];
-            else
-                selectedInspectionPlan = null;
-        }
-
         void EnableDisableButtons()
         {
-            if (selectedWO == null)
+            if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
             {
                 ButtonAddIP.IsEnabled = ButtonCollectIP.IsEnabled = false;
             }
@@ -143,13 +137,13 @@ namespace SPC_Data_Collection
 
         void FillWOTextBoxes()
         {
-            WorkOrder wo = selectedWO ?? new WorkOrder();
+            WorkOrder wo = App.Engine.InspectionPlanMgr.SelectedWorkOrder ?? new WorkOrder();
             WorkOrderInfo.FillTextBoxes(wo);
         }
 
         void FillIPTextBoxes()
         {
-            InspectionPlan ip = selectedInspectionPlan ?? new InspectionPlan();
+            InspectionPlan ip = App.Engine.InspectionPlanMgr.SelectedIP ?? new InspectionPlan();
             TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
             TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
             TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
@@ -158,14 +152,17 @@ namespace SPC_Data_Collection
             TxtBoxIPType.Text = ip.Type;
 
             DataGridMeasurements.ItemsSource = null;
-            DataGridMeasurements.ItemsSource = ip.MeasurementCriteria;
+            if (ip.MeasurementCriteria != null)
+                DataGridMeasurements.ItemsSource = ip.MeasurementCriteria.OrderBy(x => x.CharNumber);
+            else
+                DataGridMeasurements.ItemsSource = null;
         }
 
         private void ButtonCollectIP_Click(object sender, RoutedEventArgs e)
         {
-            CheckInspectionPlan(selectedWO, selectedInspectionPlan);
-            GetInspectionPlan();
-            CollectDataWindow win = new CollectDataWindow(selectedWO, selectedInspectionPlan);
+            CheckInspectionPlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
+            App.Engine.InspectionPlanMgr.ReloadInspectionPlan();
+            CollectDataWindow win = new CollectDataWindow(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
             win.ShowDialog();
         }
 
@@ -215,7 +212,7 @@ namespace SPC_Data_Collection
                 }
             }
 
-            App.isiEngine.InspectionDb.SaveChanges();
+            App.Engine.Database.isiEngine.InspectionDb.SaveChanges();
         }
 
         void RemoveMeasurementSP(PartMeasurementSP sp, int measurementsToRemove)
@@ -228,7 +225,7 @@ namespace SPC_Data_Collection
 
             foreach (PartMeasurementActual measurement in measurements)
             {
-                App.isiEngine.InspectionDb.MeasurementActual.Remove(measurement);
+                App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Remove(measurement);
             }
         }
 
@@ -240,7 +237,7 @@ namespace SPC_Data_Collection
                 measurement.PartMeasurementActualId = Guid.NewGuid();
                 measurement.PartMeasurementSPId = sp.PartMeasurementSPId;
                 measurement.CompletedTime = new DateTime(1975, 1, 1);
-                App.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
+                App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
             }
         }
         private void UserControl1_Loaded(object sender, RoutedEventArgs e)
