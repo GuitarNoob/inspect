@@ -31,6 +31,7 @@ namespace SPC_Data_Collection
         public CollectDataWindow(WorkOrder workOrder, InspectionPlan inspectionPlan)
         {
             InitializeComponent();
+            this.WorkOrderInfo.FillTextBoxes(workOrder);
             LoadRows(workOrder, inspectionPlan);
 
             DataGridMeasurements.AddHandler(CommandManager.PreviewExecutedEvent,

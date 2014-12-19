@@ -8,7 +8,9 @@
         <SolidColorBrush x:Key="blk" Color="Black" />
     </Window.Resources>
     <Grid>
-        <GroupBox Header="W.O. information" HorizontalAlignment="Left" Margin="5,65,0,0" VerticalAlignment="Top" Height="238" Width="802"/>
+        <GroupBox Header="W.O. information" HorizontalAlignment="Left" Margin="5,65,0,0" VerticalAlignment="Top" Height="238" Width="1057">
+            <local:WorkOrderInfoUserControl x:Name="WorkOrderInfo" Margin="2,-2,6,0" VerticalAlignment="Top" Width="Auto"/>
+        </GroupBox>
         <DataGrid Margin="10,308,9.6,37.8" x:Name="DataGridMeasurements" AutoGenerateColumns="False" LoadingRow="DataGridMeasurements_LoadingRow" SelectionChanged="DataGridMeasurements_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Char" Width="75" Binding="{Binding DisplayCharNumber}" IsReadOnly="True">
@@ -132,6 +134,5 @@
         <Button Content="Export" x:Name="BtmExport" HorizontalAlignment="Left" Margin="11,0,0,9" VerticalAlignment="Bottom" Width="75" Click="BtmExport_Click"/>
         <local:UserControl1 x:Name="MainMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <local:UserStatus x:Name="LogIn" HorizontalAlignment="Left" Margin="807,7,0,0" VerticalAlignment="Top"/>
-        <local:WorkOrderInfoUserControl HorizontalAlignment="Left" Margin="9,76,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
