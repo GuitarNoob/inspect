@@ -6,34 +6,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="600">
     <Grid>
-        <Menu HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" Width="432">
+        <Menu HorizontalAlignment="Left" Height="30" Margin="50,0,0,0" VerticalAlignment="Top" Width="382">
             <MenuItem Header="_Plan" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Click="MenuItem_Click" Cursor="" ToolTip="Inspection PLan">
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem Header="Edit" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="Collect" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem Header="Import" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem Header="Export" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="Copy" HorizontalAlignment="Left" Width="144.8"/>
+
             </MenuItem>
-            <MenuItem Header="Users">
-                <MenuItem Header="Log Out" HorizontalAlignment="Left" Width="144.8"/>
-            </MenuItem>
-            <MenuItem Header="Process Controls"/>
             <MenuItem Header="Reports">
-                <MenuItem Header="Form 110" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="Form 120" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
             <MenuItem Header="Options">
                 <MenuItem Header="Default Tolerances" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
             <MenuItem Header="Maintenance">
-                <MenuItem Header="Tool Calibration" HorizontalAlignment="Left" Width="144.8"/>
-                <MenuItem Header="Users" HorizontalAlignment="Left" Width="144.8">
-                    <MenuItem Header="Edit" HorizontalAlignment="Left" Width="144.8"/>
-                    <MenuItem Header="New" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="Tool Calibration" HorizontalAlignment="Left" Width="180"/>
+                <MenuItem Header="Users" HorizontalAlignment="Left" Width="180">
+                    <MenuItem Header="Edit" HorizontalAlignment="Left" Width="180"/>
+                    <MenuItem Header="New" HorizontalAlignment="Left" Width="180"/>
                 </MenuItem>
             </MenuItem>
+            <MenuItem Header="Settings"/>
             <MenuItem Header="Help">
                 <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
         </Menu>
+        <Image HorizontalAlignment="Left" Height="50" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="46" Source="C:\Users\Stan\Documents\Merlin ISI\Logo\Merlin_ISI_Logo_Symbol.jpg"/>
 
     </Grid>
 </UserControl>

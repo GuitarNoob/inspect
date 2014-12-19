@@ -243,5 +243,9 @@ namespace SPC_Data_Collection
                 App.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
             }
         }
+        private void UserControl1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
