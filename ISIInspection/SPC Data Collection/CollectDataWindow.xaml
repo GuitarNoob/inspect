@@ -2,13 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:SPC_Data_Collection" x:Class="SPC_Data_Collection.CollectDataWindow"
-        Title="Data Collection" Height="718.135" Width="1080.35" Loaded="Window_Loaded" WindowState="Maximized">
+        Title="Data Collection" Height="718.135" Width="1080.35" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="clBr" Color="#FFFFFFBE" />
         <SolidColorBrush x:Key="blk" Color="Black" />
     </Window.Resources>
     <Grid>
-        <GroupBox Header="W.O. information" HorizontalAlignment="Left" Margin="5,65,0,0" VerticalAlignment="Top" Height="238" Width="802"/>
+        <GroupBox Header="W.O. information" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="238" Width="1054">
+            <local:WorkOrderInfoUserControl HorizontalAlignment="Left" Margin="13,-3,0,0" VerticalAlignment="Top"/>
+        </GroupBox>
         <DataGrid Margin="10,308,9.6,37.8" x:Name="DataGridMeasurements" AutoGenerateColumns="False" LoadingRow="DataGridMeasurements_LoadingRow" SelectionChanged="DataGridMeasurements_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Char" Width="75" Binding="{Binding DisplayCharNumber}" IsReadOnly="True">
@@ -130,8 +132,5 @@
         <Button Content="Close" x:Name="BtnCancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="BtnCancel_Click"/>
         <Button Content="Save" x:Name="BtmSave" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="75" Click="BtmSave_Click"/>
         <Button Content="Export" x:Name="BtmExport" HorizontalAlignment="Left" Margin="11,0,0,9" VerticalAlignment="Bottom" Width="75" Click="BtmExport_Click"/>
-        <local:UserControl1 x:Name="MainMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <local:UserStatus x:Name="LogIn" HorizontalAlignment="Left" Margin="807,7,0,0" VerticalAlignment="Top"/>
-        <local:WorkOrderInfoUserControl HorizontalAlignment="Left" Margin="9,76,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
