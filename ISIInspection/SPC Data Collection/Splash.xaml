@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Splash" Height="250" Width="300">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="274" Source="C:\Users\Stan\Documents\Merlin ISI\Logo\Merlin ISI Logo LinkedIn.jpg"/>
+        <Image Height="100" Margin="10,10,9.6,0" VerticalAlignment="Top" Source="Images/Merlin ISI Logo IDC.jpg"/>
         <Label Content="Inspection Data Collection&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="13,115,0,0" VerticalAlignment="Top" Width="265" Height="26" FontFamily="BankGothic Md BT" FontSize="16"/>
         <Label Content="Loading ..." HorizontalAlignment="Left" Margin="13,162,0,0" VerticalAlignment="Top" Width="130"/>
 
