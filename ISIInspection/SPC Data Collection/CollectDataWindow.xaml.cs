@@ -52,7 +52,7 @@ namespace SPC_Data_Collection
 
         void LoadRows(WorkOrder wo, InspectionPlan iplan)
         {
-            if (iplan.MeasurementCriteria == null)
+            if (iplan == null || iplan.MeasurementCriteria == null)
                 return;
 
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x => x.CharNumber))

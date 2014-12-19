@@ -21,7 +21,6 @@ namespace SPC_Data_Collection
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -52,11 +51,6 @@ namespace SPC_Data_Collection
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -64,22 +58,7 @@ namespace SPC_Data_Collection
 
         private void ButtonCreateEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
-            {
-                MessageBox.Show("No Work Order is currently selected.",
-                    "No Work Order selected!", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            CreatePlan createPlan = null;
-
-            if (App.Engine.InspectionPlanMgr.SelectedIP == null)
-                createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder);
-            else
-                createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
-
-            createPlan.Owner = this;
-            createPlan.ShowDialog();
-            ReloadUI();
+            App.Current.CreateEditPlan();
         }
 
         private void BtnWorkOrderSearch_Click(object sender, RoutedEventArgs e)
@@ -88,16 +67,16 @@ namespace SPC_Data_Collection
             string search = TextBoxSearchValue.Text;
             if (search == "")
             {
-                DataGridResults.ItemsSource = App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.ToList();
+                DataGridResults.ItemsSource = App.Current.GetAllWorkOrders();
                 return;
             }
             switch (type)
             {
                 case "W.O. Number":
-                    DataGridResults.ItemsSource = App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.WorkOrderNumber.Contains(search)).ToList();
+                    DataGridResults.ItemsSource = App.Current.SearchForWorkOrder(search);
                     break;
                 case "Part Number":
-                    DataGridResults.ItemsSource = App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.PartNumber.Contains(search)).ToList();
+                    DataGridResults.ItemsSource = App.Current.SearchForPartNumber(search);
                     break;
             }
         }
@@ -115,7 +94,7 @@ namespace SPC_Data_Collection
             }
         }
 
-        void ReloadUI()
+        public void ReloadUI()
         {
             App.Engine.InspectionPlanMgr.ReloadInspectionPlan();
             FillWOTextBoxes();
@@ -160,89 +139,21 @@ namespace SPC_Data_Collection
 
         private void ButtonCollectIP_Click(object sender, RoutedEventArgs e)
         {
-            CheckInspectionPlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
-            App.Engine.InspectionPlanMgr.ReloadInspectionPlan();
-            CollectDataWindow win = new CollectDataWindow(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
-            win.ShowDialog();
+            App.Current.CollectDataFromCurrentIP();
         }
-
-        void CheckInspectionPlan(WorkOrder wo, InspectionPlan iplan)
-        {
-            int sampleSize = 0;
-
-            if (iplan.Type == "FAI")
-                sampleSize = iplan.FAIQuantity;
-            else
-                sampleSize = iplan.SampleSize;
-
-            if (sampleSize == 0)
-            {
-                if (MessageBox.Show("The sample size is 0! The Inspection Plan may have an error. Do you want to continue?", "Error",
-                    MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
-                    return;
-            }
-
-            foreach (PartMeasurementSP sp in iplan.MeasurementCriteria)
-            {
-                if (sp.Measurements != null)
-                {
-                    if (sp.Measurements.Count != sampleSize && sp.Measurements.Count != 0)
-                    {
-                        if (MessageBox.Show("Error sample size does not match! The Inspection Plan has been mofied and the results no longer match!" +
-                         " Would you like to attempt a merge? (Warning: a merge may result in a loss of saved data)", "Error Inspection Plan has been modified!",
-                         MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-                        {
-                            if (sp.Measurements.Count > sampleSize)
-                            {
-                                int numToRemove = sp.Measurements.Count - sampleSize;
-                                RemoveMeasurementSP(sp, numToRemove);
-                            }
-                            else
-                            {
-                                int numToAdd = sampleSize - sp.Measurements.Count;
-                                AddMeasurementForSP(sp, numToAdd);
-                            }
-                        }
-                    }
-                }
-
-                if (sp.Measurements == null || sp.Measurements.Count == 0)
-                {
-                    AddMeasurementForSP(sp, sampleSize);
-                }
-            }
-
-            App.Engine.Database.isiEngine.InspectionDb.SaveChanges();
-        }
-
-        void RemoveMeasurementSP(PartMeasurementSP sp, int measurementsToRemove)
-        {
-            List<PartMeasurementActual> measurements = new List<PartMeasurementActual>();
-            for (int i = 0; i < measurementsToRemove; i++)
-            {
-                measurements.Add(sp.Measurements[((sp.Measurements.Count - 1) - i)]);
-            }
-
-            foreach (PartMeasurementActual measurement in measurements)
-            {
-                App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Remove(measurement);
-            }
-        }
-
-        void AddMeasurementForSP(PartMeasurementSP sp, int measurementsToAdd)
-        {
-            for (int i = 0; i < measurementsToAdd; i++)
-            {
-                PartMeasurementActual measurement = new PartMeasurementActual();
-                measurement.PartMeasurementActualId = Guid.NewGuid();
-                measurement.PartMeasurementSPId = sp.PartMeasurementSPId;
-                measurement.CompletedTime = new DateTime(1975, 1, 1);
-                App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
-            }
-        }
+        
         private void UserControl1_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Merlin_ISI_Inspection_Data_Collector_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButton.YesNo, MessageBoxImage.Information)
+                != MessageBoxResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
