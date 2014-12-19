@@ -14,5 +14,7 @@ namespace SPC_Data_Collection
     public partial class App : Application
     {
         public static SPCEngine.SPCEngine Engine = new SPCEngine.SPCEngine();
+
+        public static App Current { get { return (App)Application.Current; } }
     }
 }
