@@ -9,7 +9,7 @@
     </Window.Resources>
     <Grid>
         <GroupBox Header="W.O. information" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="238" Width="1054">
-            <local:WorkOrderInfoUserControl HorizontalAlignment="Left" Margin="13,-3,0,0" VerticalAlignment="Top"/>
+            <local:WorkOrderInfoUserControl x:Name="WorkOrderInfo" HorizontalAlignment="Left" Margin="13,-3,0,0" VerticalAlignment="Top"/>
         </GroupBox>
         <DataGrid Margin="10,308,9.6,37.8" x:Name="DataGridMeasurements" AutoGenerateColumns="False" LoadingRow="DataGridMeasurements_LoadingRow" SelectionChanged="DataGridMeasurements_SelectionChanged">
             <DataGrid.Columns>
