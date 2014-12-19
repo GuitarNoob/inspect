@@ -99,8 +99,8 @@ namespace SPC_Data_Collection
         {
             try
             {
-                if (((MeasurementCollector)e.Row.DataContext).IsReadOnly)
-                {
+                if (((MeasurementCollector)e.Row.DataContext).IsReadOnly == true)
+                {                    
                     e.Row.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFBE"));
                 }
             }
