@@ -12,7 +12,7 @@
             <ColumnDefinition Width="400"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="IPGroupBox" Header="Inspection Plan" Margin="5" VerticalAlignment="Top" Background="#FFF0F0F0" BorderThickness="2">
+        <GroupBox x:Name="IPGroupBox" Header="Inspection Plan" Margin="5,113,5,0" VerticalAlignment="Top" Background="#FFF0F0F0" BorderThickness="2" Grid.RowSpan="2" Height="301">
             <Grid x:Name="IPGrid" HorizontalAlignment="Left" Height="Auto" Margin="5,5,5,5" VerticalAlignment="Top" Width="Auto">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
@@ -86,11 +86,11 @@
                 <Label x:Name="LabelLotSize" Grid.Row="4" Content="Lot Size" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="W.O. Information" Margin="6,10,9.6,0" VerticalAlignment="Top" Height="304" Background="#FFF0F0F0" BorderThickness="2" Grid.Column="1">
+        <GroupBox Header="W.O. Information" Margin="6,118,9.6,0" VerticalAlignment="Top" Height="304" Background="#FFF0F0F0" BorderThickness="2" Grid.Column="1" Grid.RowSpan="2">
             <SPC_Data_Collection:WorkOrderInfoUserControl x:Name="WorkOrderInfo" HorizontalAlignment="Left" Width="659" Loaded="WorkOrderInfo_Loaded" Margin="0,0,0,-1"/>
         </GroupBox>
-        <GroupBox Header="Dimensional Criteria" Margin="17,319,9.6,29.4" Background="#FFF0F0F0" BorderThickness="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
-            <ListView x:Name="DataGridResults" Margin="10,143,-1.6,-45" SelectionChanged="DataGrid_SelectionChanged" >
+        <GroupBox Header="Dimensional Criteria" Margin="5,89.4,9.6,0.4" Background="#FFF0F0F0" BorderThickness="2" Grid.ColumnSpan="2" Grid.Row="1">
+            <ListView x:Name="DataGridResults" Margin="10,65,-1.6,53.8" SelectionChanged="DataGrid_SelectionChanged" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Char" Width="75" DisplayMemberBinding="{Binding CharNumber}"/>
@@ -106,7 +106,7 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <ComboBox x:Name="ComboBoxCharDesig" HorizontalAlignment="Left" Margin="167,34,0,0" VerticalAlignment="Top" Width="153" SelectedIndex="0" Grid.Column="1" Grid.Row="1">
+        <ComboBox x:Name="ComboBoxCharDesig" HorizontalAlignment="Left" Margin="357,134.4,0,0" VerticalAlignment="Top" Width="153" SelectedIndex="0" Grid.Row="1" Grid.ColumnSpan="2">
             <ComboBoxItem Content="Linear"/>
             <ComboBoxItem Content="Angularity"/>
             <ComboBoxItem Content="Cirularlarity"/>
@@ -118,36 +118,55 @@
             <ComboBoxItem Content="Perpendicularity"/>
             <ComboBoxItem Content="Positional"/>
             <ComboBoxItem Content="Runout"/>
+            <ComboBoxItem Content="Thread Callout"/>
         </ComboBox>
-        <Label Content="Char" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,8,0,0" Width="38" Grid.Row="1"/>
-        <Label Content="Ref Location" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,8,0,0" Width="79" Grid.Row="1"/>
-        <Label Content="Requirement" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="184,8,0,0" Width="79" Grid.Row="1"/>
-        <Label Content="UofM" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,8,0,0" Width="79" Grid.Row="1"/>
-        <Label Content="Upper Limit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="376,8,0,0" Width="79" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Label Content="Lower Limit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="78,8,0,0" Width="79" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Charactoristic Designator" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,8,0,0" Width="147" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="445,10,0,0" Width="79" Grid.Column="1" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimCharNum" Height="23" Margin="32,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimRefLoc" Height="23" Margin="100,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimReq" Height="23" Margin="179,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" ToolTip="Dimensional Requirement" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimUpperLimit" Height="23" Margin="358,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimLowerLimit" Height="23" Margin="66,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" Grid.Column="1" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimComment" Height="23" Margin="446,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Char" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,108.4,0,0" Width="38" Grid.Row="1"/>
+        <Label Content="Ref Location" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,108.4,0,0" Width="79" Grid.Row="1"/>
+        <Label Content="Requirement" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="184,108.4,0,0" Width="79" Grid.Row="1"/>
+        <Label Content="UofM" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,108.4,0,0" Width="79" Grid.Row="1"/>
+        <Label Content="Upper Limit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,107.4,0,0" Width="79" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Lower Limit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="361,107.4,0,0" Width="79" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Charactoristic Designator" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="359,108.4,0,0" Width="147" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label Content="Note/Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="611,107.4,0,0" Width="95" Grid.Column="1" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimCharNum" Height="23" Margin="32,134.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimRefLoc" Height="23" Margin="100,134.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimReq" Height="23" Margin="179,134.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" ToolTip="Dimensional Requirement" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimUpperLimit" Height="23" Margin="241,133.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" Grid.Row="1" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimLowerLimit" Height="23" Margin="349,133.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" Grid.Column="1" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimComment" Height="23" Margin="573,133.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418" Grid.Column="1" Grid.Row="1"/>
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0,0,-0.4,0.4" Height="60" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Row="1"/>
         <Button x:Name="ButtonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,30.6,10.4" Width="75" Height="20" VerticalAlignment="Bottom" Click="Button_Click" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="ButtonSaveMeasurement" Content="Save" HorizontalAlignment="Right" Margin="0,36,30.6,0" VerticalAlignment="Top" Width="75" Click="ButtonSaveMeasurement_Click" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Inspection Device&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="339,9,0,0" Width="156" Height="26" Grid.Column="1" Grid.Row="1"/>
-        <ComboBox x:Name="ComboBoxUofM" HorizontalAlignment="Left" Margin="269,35,0,0" VerticalAlignment="Top" Width="84" SelectedIndex="0" Grid.Row="1">
+        <Button x:Name="ButtonSaveMeasurement" Content="Save" HorizontalAlignment="Right" Margin="0,136.4,30.6,0" VerticalAlignment="Top" Width="75" Click="ButtonSaveMeasurement_Click" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Inspection Device&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,109.4,0,0" Width="103" Height="26" Grid.Column="1" Grid.Row="1"/>
+        <ComboBox x:Name="ComboBoxUofM" HorizontalAlignment="Left" Margin="269,135.4,0,0" VerticalAlignment="Top" Width="84" SelectedIndex="0" Grid.Row="1">
             <ComboBoxItem Content="In" HorizontalAlignment="Left" Width="91.2"/>
             <ComboBoxItem Content="mm" HorizontalAlignment="Left" Width="91.2"/>
         </ComboBox>
-        <ComboBox x:Name="ComboBoxInspectionDevice" HorizontalAlignment="Left" Margin="325,33,0,0" VerticalAlignment="Top" Width="116" SelectedIndex="0" Grid.Column="1" Grid.Row="1">
+        <ComboBox x:Name="ComboBoxInspectionDevice" HorizontalAlignment="Left" Margin="451,133.4,0,0" VerticalAlignment="Top" Width="116" SelectedIndex="0" Grid.Column="1" Grid.Row="1">
             <ComboBoxItem Content="Calipers"/>
+            <ComboBoxItem Content="CMM"/>
+            <ComboBoxItem Content="Dial Gage"/>
             <ComboBoxItem Content="Micrometer"/>
             <ComboBoxItem Content="Height Gage"/>
+            <ComboBoxItem Content="Pin Gage"/>
+            <ComboBoxItem Content="Thread Gage"/>
+            <ComboBoxItem Content=""/>
+            <ComboBoxItem Content="Scan" HorizontalAlignment="Left" Width="113.6"/>
         </ComboBox>
-        <Button x:Name="ButtonAddMeasurement" Content="Add" HorizontalAlignment="Right" Margin="0,36,115.6,0" VerticalAlignment="Top" Width="75" Click="ButtonAddMeasurement_Click" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="ButtonAddMeasurement" Content="Add" HorizontalAlignment="Right" Margin="0,136.4,115.6,0" VerticalAlignment="Top" Width="75" Click="ButtonAddMeasurement_Click" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Right" Margin="0,0,115.6,10.4" Width="75" Height="20" VerticalAlignment="Bottom" Click="ButtonSave_Click" Grid.Column="1" Grid.Row="1"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="117,134.4,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1">
+            <ComboBoxItem Content="X" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="X.X" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="X.XX" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="X.XXX" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="X.XXXX" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Bilateral" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Limit" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Symetric" HorizontalAlignment="Left" Width="118.4"/>
+        </ComboBox>
+        <SPC_Data_Collection:UserControl1 HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <SPC_Data_Collection:UserStatus Grid.Column="1" HorizontalAlignment="Left" Margin="927,-1,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

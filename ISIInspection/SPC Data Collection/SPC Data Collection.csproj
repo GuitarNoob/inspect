@@ -81,6 +81,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AQLSamplingHelper.cs" />
     <Compile Include="CollectDataWindow.xaml.cs">
       <DependentUpon>CollectDataWindow.xaml</DependentUpon>
@@ -97,8 +100,14 @@
     <Compile Include="MeasurementCollectionUserControl.xaml.cs">
       <DependentUpon>MeasurementCollectionUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestWindow.xaml.cs">
       <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserStatus.xaml.cs">
       <DependentUpon>UserStatus.xaml</DependentUpon>
@@ -106,6 +115,10 @@
     <Compile Include="WorkOrderInfoUserControl.xaml.cs">
       <DependentUpon>WorkOrderInfoUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CollectDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,7 +151,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +213,12 @@
       <Project>{e53a3184-e4f3-4bcb-ac62-6bbebfa09f67}</Project>
       <Name>SPCEngine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Merlin_ISI_Logo_Symbol.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Merlin ISI Logo IDC.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
