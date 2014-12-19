@@ -6,7 +6,7 @@
         <Border BorderThickness="1" Margin="0" Background="#FF00C8FF" Height="55" VerticalAlignment="Bottom"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="72" Margin="55,4,0,0" VerticalAlignment="Top" Width="219" Source="C:\Users\Stan\Documents\Merlin ISI\Logo\Merlin ISI Logo LinkedIn.jpg"/>
+        <Image HorizontalAlignment="Left" Height="72" Margin="55,4,0,0" VerticalAlignment="Top" Width="219" Source="Images\Merlin ISI Logo IDC.jpg"/>
         <Label Content="Quality Control Department" HorizontalAlignment="Left" Margin="93,74,0,0" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="20,104,0,0" VerticalAlignment="Top" Width="100"/>
         <ComboBox Margin="93,105,14,0" VerticalAlignment="Top" x:Name="ComboBoxUsers"/>

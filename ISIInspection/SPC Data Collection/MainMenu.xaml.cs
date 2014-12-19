@@ -29,5 +29,25 @@ namespace SPC_Data_Collection
         {
 
         }
+
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            App.Engine.LogonUser(null);
+        }
+
+        private void PlanNew_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.CreateEditPlan();
+        }
+
+        private void PlanEdit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.CreateEditPlan();
+        }
+
+        private void PlanCollect_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.CollectDataFromCurrentIP();
+        }        
     }
 }

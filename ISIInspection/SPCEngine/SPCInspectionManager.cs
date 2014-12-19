@@ -47,6 +47,8 @@ namespace SPCEngine
 
         void GetInspectionPlan(WorkOrder wo)
         {
+            if (wo == null)
+                return;
             //find the inspection plans with this router
             List<InspectionPlan> iPlans = m_parent.Database.isiEngine.InspectionDb.InspectionPlans.Where(x => x.RouterFK == wo.RouterFK).ToList();
             if (iPlans.Count > 0)
@@ -59,5 +61,6 @@ namespace SPCEngine
         {
             GetInspectionPlan(selectedWO);
         }
+
     }
 }
