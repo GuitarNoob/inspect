@@ -194,7 +194,7 @@ namespace SPC_Data_Collection
 
                 m_measurementCriteria.Add(measurement);
 
-                DataGridResults.ItemsSource = m_measurementCriteria;
+                DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
                 RefreshIPFields(null);
             }
             catch
@@ -221,7 +221,7 @@ namespace SPC_Data_Collection
                 measurement.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
 
                 DataGridResults.ItemsSource = null;
-                DataGridResults.ItemsSource = m_measurementCriteria;
+                DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
             }
             catch
             {
