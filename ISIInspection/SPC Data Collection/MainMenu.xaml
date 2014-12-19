@@ -14,19 +14,19 @@
                 <MenuItem Name="PlanImport" Header="Import" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
                 <MenuItem Name="PlanExport" Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
             </MenuItem>
-            <MenuItem Header="Reports">
+            <MenuItem Header="_Reports">
                 <MenuItem Header="Form 120" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
             </MenuItem>
-            <MenuItem Header="Options">
+            <MenuItem Header="_Options">
                 <MenuItem Header="Default Tolerances" HorizontalAlignment="Left" IsEnabled="False"/>
             </MenuItem>
-            <MenuItem Header="Maintenance">
+            <MenuItem Header="_Maintenance">
                 <MenuItem Header="Tool Calibration" HorizontalAlignment="Left" Width="180" IsEnabled="False"/>
                 <MenuItem Header="Users" HorizontalAlignment="Left" Width="180">
                     <MenuItem Name="ChangeUser" Header="Change User" HorizontalAlignment="Left" Width="180" Click="ChangeUser_Click"/>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Settings" IsEnabled="False"/>
+            <MenuItem Header="_Settings" IsEnabled="False"/>
             <MenuItem Header="Help">
                 <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
