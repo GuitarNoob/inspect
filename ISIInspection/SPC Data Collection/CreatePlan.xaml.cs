@@ -23,6 +23,7 @@ namespace SPC_Data_Collection
     public partial class CreatePlan : Window
     {
         bool isEdit = false;
+        bool isLoaded = false;
         WorkOrder m_workOrder { get; set; }
         InspectionPlan m_inspectionPlan { get; set; }
         ObservableCollection<PartMeasurementSP> m_measurementCriteria { get; set; }
@@ -172,6 +173,7 @@ namespace SPC_Data_Collection
                 m_inspectionPlan.MeasurementCriteria.ForEach(x => m_measurementCriteria.Add(x));
 
             DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
+            isLoaded = true;
         }
 
         private void ButtonAddMeasurement_Click(object sender, RoutedEventArgs e)
@@ -244,7 +246,8 @@ namespace SPC_Data_Collection
             var bc = new BrushConverter();
             if (TxtBoxIPType.SelectedIndex == 0) /// Auto
             {
-                BtnIPCalculate.Visibility = Visibility.Visible;
+                TxtBoxIPAcceptableDefects.Text = "";
+                TxtBoxIPSampleSize.Text = "";
                 ComboBoxAQL.SelectedIndex = 10;
                 ComboBoxIpLvl.SelectedIndex = 1;
                 ComboBoxAQL.IsEnabled = true;
@@ -259,17 +262,17 @@ namespace SPC_Data_Collection
                 TxtBoxIPCodeLetter.IsEnabled = true;
                 TxtBoxIPAcceptableDefects.IsEnabled = true;
                 //TxtBoxIPRejectNumber.IsEnabled = true;
-                TxtBoxIPAcceptableDefects.Text = "";
                 TxtBoxIPSampleSize.IsEnabled = true;
                 TxtBoxIPSampleSize.IsReadOnly = true;
-                TxtBoxIPFAIQty.IsEnabled = false;
-                TxtBoxIPSampleSize.Text = "";
+                TxtBoxIPFAIQty.IsEnabled = false;                
                 TxtBoxIPSampleSize.Background = (Brush)bc.ConvertFrom("#FFFFFFBE");
 
             }
             if (TxtBoxIPType.SelectedIndex == 1) /// Manual
             {
-                BtnIPCalculate.Visibility = Visibility.Hidden;
+                TxtBoxIPAcceptableDefects.Text = "";
+                TxtBoxIPSampleSize.Text = "";
+                TxtBoxIPCodeLetter.Text = "";
                 ComboBoxAQL.SelectedIndex = -1;
                 ComboBoxIpLvl.SelectedIndex = -1;
                 ComboBoxAQL.IsEnabled = false;
@@ -284,16 +287,13 @@ namespace SPC_Data_Collection
                 TxtBoxIPLotSize.IsEnabled = true;
                 TxtBoxIPFAIQty.IsEnabled = false;
                 TxtBoxIPCodeLetter.IsEnabled = false;
-                TxtBoxIPCodeLetter.Text = "";
-                TxtBoxIPAcceptableDefects.IsEnabled = false;
-                TxtBoxIPAcceptableDefects.Text = "";
-                TxtBoxIPSampleSize.Text = "";
+                TxtBoxIPAcceptableDefects.IsEnabled = false;                
                 TxtBoxIPSampleSize.IsReadOnly = false;
+                TxtBoxIPSampleSize.IsEnabled = true;
                 TxtBoxIPSampleSize.Background = Brushes.White;
             }
             if (TxtBoxIPType.SelectedIndex == 2) /// First Article
             {
-                BtnIPCalculate.Visibility = Visibility.Hidden;
                 ComboBoxAQL.SelectedIndex = -1;
                 ComboBoxIpLvl.SelectedIndex = -1;
                 ComboBoxAQL.IsEnabled = false;
@@ -312,23 +312,32 @@ namespace SPC_Data_Collection
                 TxtBoxIPSampleSize.IsEnabled = false;
                 TxtBoxIPSampleSize.Background = (Brush)bc.ConvertFrom("#FFFFFFBE");
             }
-
         }
 
         private void ComboBoxAQL_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            CalculateAuto();
         }
-        private void BtnIPCalculate_Click_1(object sender, RoutedEventArgs e)
+        
+        void CalculateAuto()
         {
+            if (!this.IsLoaded)
+                return;
+
             string AQLCodeLetter = "";
             string AQLAccept;
             string AQLReject;
             int AQLSampleSize;
+            if (ComboBoxIpLvl.SelectedItem == null)
+                return;
+
             string AQLLevelValue = ((ComboBoxIpLvl.SelectedItem ?? "") as ComboBoxItem).Content.ToString();
             int LotSizeInt = Convert.ToInt32(m_workOrder.QuantityRequired);
             //MessageBox.Show(AQLLevelValue.ToString());
             //MessageBox.Show(m_workOrder.QuantityRequired.ToString());
+            if (ComboBoxAQL.SelectedItem == null)
+                return;
+
             string AQLValue = ((ComboBoxAQL.SelectedItem ?? "") as ComboBoxItem).Content.ToString();
             //MessageBox.Show(AQLValue.ToString());
             //
@@ -813,6 +822,11 @@ namespace SPC_Data_Collection
                 //TxtBoxIPRejectNumber.Text = AQLReject;
                 TxtBoxIPCodeLetter.Text = AQLCodeLetter;
             }
+        }
+
+        private void ComboBoxIpLvl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CalculateAuto();
         }
     }
 }
