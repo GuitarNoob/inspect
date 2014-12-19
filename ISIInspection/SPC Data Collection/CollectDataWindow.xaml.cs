@@ -193,6 +193,11 @@ namespace SPC_Data_Collection
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void DataGridMeasurements_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     public class MeasurementCollector
