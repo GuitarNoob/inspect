@@ -13,8 +13,8 @@ namespace ISIInspection.Models
         public string RefLocation { get; set; }
         public string Requirement { get; set; }
         public string Units { get; set; }
-        public decimal UpperLimit { get; set; }
-        public decimal LowerLimit { get; set; }
+        public decimal PlusTolerance { get; set; }
+        public decimal MinusTolerance { get; set; }
         public string CharacteristicDesignator { get; set; }
         public string InspectionDevice { get; set; }
 
