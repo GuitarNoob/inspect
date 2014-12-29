@@ -119,19 +119,19 @@ namespace SPC_Data_Collection
                 TxtBoxDimLowerLimit.Text = "";
                 ComboBoxUofM.SelectedIndex = 0;
                 ComboBoxCharDesig.SelectedIndex = 0;
-                ComboBoxInspectionDevice.SelectedIndex = 0;
+                //ComboBoxInspectionDevice.SelectedIndex = 0;
             }
             else
             {
                 TxtBoxDimCharNum.Text = measurement.CharNumber;
                 TxtBoxDimRefLoc.Text = measurement.RefLocation;
                 TxtBoxDimReq.Text = measurement.Requirement;
-                TxtBoxDimUpperLimit.Text = measurement.UpperLimit.ToString();
-                TxtBoxDimLowerLimit.Text = measurement.LowerLimit.ToString();
+                TxtBoxDimUpperLimit.Text = measurement.PlusTolerance.ToString();
+                TxtBoxDimLowerLimit.Text = measurement.MinusTolerance.ToString();
 
                 ComboBoxUofM.SelectedItem = measurement.Units;
                 ComboBoxCharDesig.SelectedItem = measurement.CharacteristicDesignator;
-                ComboBoxInspectionDevice.SelectedItem = measurement.InspectionDevice;
+                //ComboBoxInspectionDevice.SelectedItem = measurement.InspectionDevice;
             }
         }
 
@@ -187,10 +187,10 @@ namespace SPC_Data_Collection
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
                 measurement.Requirement = TxtBoxDimReq.Text;
                 measurement.Units = ComboBoxUofM.Text;
-                measurement.UpperLimit = Convert.ToDecimal(TxtBoxDimUpperLimit.Text);
-                measurement.LowerLimit = Convert.ToDecimal(TxtBoxDimLowerLimit.Text);
+                measurement.PlusTolerance = Convert.ToDecimal(TxtBoxDimUpperLimit.Text);
+                measurement.MinusTolerance = Convert.ToDecimal(TxtBoxDimLowerLimit.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
-                measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
+                //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
 
                 measurement.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
 
@@ -215,10 +215,10 @@ namespace SPC_Data_Collection
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
                 measurement.Requirement = TxtBoxDimReq.Text;
                 measurement.Units = ComboBoxUofM.Text;
-                measurement.UpperLimit = Convert.ToDecimal(TxtBoxDimUpperLimit.Text);
-                measurement.LowerLimit = Convert.ToDecimal(TxtBoxDimLowerLimit.Text);
+                measurement.PlusTolerance = Convert.ToDecimal(TxtBoxDimUpperLimit.Text);
+                measurement.MinusTolerance = Convert.ToDecimal(TxtBoxDimLowerLimit.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
-                measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
+                //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
 
                 measurement.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
 

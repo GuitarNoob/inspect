@@ -165,9 +165,9 @@ namespace SPC_Data_Collection
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.Units);
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.UpperLimit);
+                    sb.Append(measurementCollectors[i].SetPoint.PlusTolerance);
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.LowerLimit);
+                    sb.Append(measurementCollectors[i].SetPoint.MinusTolerance);
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
                     sb.Append(SEPERATOR_CHAR);

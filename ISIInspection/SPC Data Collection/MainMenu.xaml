@@ -8,25 +8,27 @@
     <Grid>
         <Menu Height="30" Margin="46,0,0,0" VerticalAlignment="Top">
             <MenuItem Header="_Plan" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Click="MenuItem_Click" Cursor="" ToolTip="Inspection PLan">
+                <MenuItem x:Name="PlanSave" Header="Save" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem x:Name="PlanSaveAs" Header="SaveAs" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem x:Name="PlanOpen" Header="Open" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem x:Name="PlanClose" Header="Close" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem Name="PlanNew" Header="New" HorizontalAlignment="Left" Width="144.8" Click="PlanNew_Click"/>
                 <MenuItem Name="PlanEdit" Header="Edit" HorizontalAlignment="Left" Width="144.8" Click="PlanEdit_Click"/>
                 <MenuItem Name="PlanCollect" Header="Collect" HorizontalAlignment="Left" Width="144.8" Click="PlanCollect_Click"/>
                 <MenuItem Name="PlanImport" Header="Import" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
                 <MenuItem Name="PlanExport" Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
+                <MenuItem x:Name="PlanExit" Header="Exit" HorizontalAlignment="Left" Width="144.8"/>
+
             </MenuItem>
             <MenuItem Header="_Reports">
                 <MenuItem Header="Form 120" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
             </MenuItem>
-            <MenuItem Header="_Options">
-                <MenuItem Header="Default Tolerances" HorizontalAlignment="Left" IsEnabled="False"/>
-            </MenuItem>
             <MenuItem Header="_Maintenance">
                 <MenuItem Header="Tool Calibration" HorizontalAlignment="Left" Width="180" IsEnabled="False"/>
-                <MenuItem Header="Users" HorizontalAlignment="Left" Width="180">
-                    <MenuItem Name="ChangeUser" Header="Change User" HorizontalAlignment="Left" Width="180" Click="ChangeUser_Click"/>
-                </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Settings" IsEnabled="False"/>
+            <MenuItem Header="_Settings">
+                <MenuItem Header="Tolerances" HorizontalAlignment="Left" Width="145"/>
+            </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
