@@ -10,6 +10,7 @@ namespace SPCEngine
     {
         public SPCDatabaseManager Database { get; set; }
         public SPCInspectionManager InspectionPlanMgr { get; set; }
+        public SPCDefaultTolerance DefaultTolerances { get; set; }
 
         private MieTrakWrapper.MieTrak.User m_CurrentUser;
         public MieTrakWrapper.MieTrak.User CurrentUser
@@ -41,6 +42,7 @@ namespace SPCEngine
         {
             Database = new SPCDatabaseManager(this);
             InspectionPlanMgr = new SPCInspectionManager(this);
+            DefaultTolerances = new SPCDefaultTolerance(this);
         }
 
     }

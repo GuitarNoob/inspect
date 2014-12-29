@@ -129,9 +129,9 @@
         <Label Content="Note/Comment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="619,14.4,0,0" Width="95" Grid.Column="1" Grid.Row="1"/>
         <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimCharNum" Height="23" Margin="40,41.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Grid.Row="1"/>
         <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimRefLoc" Height="23" Margin="108,41.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimReq" Height="23" Margin="187,41.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" ToolTip="Dimensional Requirement" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimUpperLimit" Height="23" Margin="373,40.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" Grid.Row="1" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimLowerLimit" Height="23" Margin="477,40.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" Grid.Column="1" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimReq" Height="23" Margin="187,41.4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" ToolTip="Dimensional Requirement" Grid.Row="1" LostFocus="TxtBoxDimReq_LostFocus" KeyDown="TxtBoxDimReq_KeyDown" TextChanged="TxtBoxDimReq_TextChanged" />
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimUpperLimit" Height="23" Margin="373,40.4,0,0" TextWrapping="Wrap" Text="" Background="#FFFFFFBE" IsReadOnly="True" VerticalAlignment="Top" Width="97" Grid.Row="1" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimLowerLimit" Height="23" Margin="477,40.4,0,0" TextWrapping="Wrap" Text="" Background="#FFFFFFBE" IsReadOnly="True" VerticalAlignment="Top" Width="97" Grid.Column="1" Grid.Row="1"/>
         <TextBox HorizontalAlignment="Left" x:Name="TxtBoxDimComment" Height="23" Margin="581,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166" Grid.Column="1" Grid.Row="1"/>
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0,0,-0.4,0.4" Height="60" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Row="1"/>
         <Button x:Name="ButtonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,30.6,10.4" Width="75" Height="20" VerticalAlignment="Bottom" Click="Button_Click" Grid.Column="1" Grid.Row="1"/>
@@ -144,8 +144,8 @@
         <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Right" Margin="0,0,115.6,10.4" Width="75" Height="20" VerticalAlignment="Bottom" Click="ButtonSave_Click" Grid.Column="1" Grid.Row="1"/>
         <Label Content="- Tolerance" Grid.Column="1" HorizontalAlignment="Left" Margin="258,15.4,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1"/>
         <Label Content="+ Tolerance" Grid.Column="1" HorizontalAlignment="Left" Margin="133,14.4,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="248,41.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="123,41.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="TextBoxMinusTolerance" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="248,41.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" TextChanged="TextBoxMinusTolerance_TextChanged" />
+        <TextBox x:Name="TextBoxPlusTolerance" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="123,41.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" TextChanged="TextBoxPlusTolerance_TextChanged" />
 
     </Grid>
 </Window>

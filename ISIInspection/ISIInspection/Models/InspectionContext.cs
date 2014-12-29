@@ -20,6 +20,7 @@ namespace ISIInspection.Models
         public DbSet<MeasurementComment> MeasurementComments { get; set; }
         public DbSet<PartMeasurementSP> MeasurementSetpoints { get; set; }
         public DbSet<PartMeasurementActual> MeasurementActual { get; set; }
-        public DbSet<Calibration> DeviceCalibration { get; set; }        
+        public DbSet<Calibration> DeviceCalibration { get; set; }
+        public DbSet<DefaultTolerance> Tolerances { get; set; }
     }
 }

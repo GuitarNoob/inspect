@@ -47,6 +47,13 @@ namespace SPC_Data_Collection
             win.ShowDialog();
         }
 
+        public void EditDefaultTolerances()
+        {
+            Tolerances win = new Tolerances();
+            win.Owner = App.Current.MainWindow;
+            win.ShowDialog();
+        }
+
         public List<WorkOrder> SearchForWorkOrder(string search)
         {
             return App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.WorkOrderNumber.Contains(search)).ToList();

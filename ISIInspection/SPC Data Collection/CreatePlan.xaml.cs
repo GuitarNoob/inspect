@@ -24,6 +24,7 @@ namespace SPC_Data_Collection
     {
         bool isEdit = false;
         bool isLoaded = false;
+        bool textChanged = false;
         WorkOrder m_workOrder { get; set; }
         InspectionPlan m_inspectionPlan { get; set; }
         ObservableCollection<PartMeasurementSP> m_measurementCriteria { get; set; }
@@ -126,13 +127,15 @@ namespace SPC_Data_Collection
                 TxtBoxDimCharNum.Text = measurement.CharNumber;
                 TxtBoxDimRefLoc.Text = measurement.RefLocation;
                 TxtBoxDimReq.Text = measurement.Requirement;
-                TxtBoxDimUpperLimit.Text = measurement.PlusTolerance.ToString();
-                TxtBoxDimLowerLimit.Text = measurement.MinusTolerance.ToString();
+                TextBoxPlusTolerance.Text = measurement.PlusTolerance.ToString();
+                TextBoxMinusTolerance.Text = measurement.MinusTolerance.ToString();
 
                 ComboBoxUofM.SelectedItem = measurement.Units;
                 ComboBoxCharDesig.SelectedItem = measurement.CharacteristicDesignator;
                 //ComboBoxInspectionDevice.SelectedItem = measurement.InspectionDevice;
             }
+
+            textChanged = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -174,6 +177,7 @@ namespace SPC_Data_Collection
 
             DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
             isLoaded = true;
+            textChanged = false;
         }
 
         private void ButtonAddMeasurement_Click(object sender, RoutedEventArgs e)
@@ -187,8 +191,8 @@ namespace SPC_Data_Collection
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
                 measurement.Requirement = TxtBoxDimReq.Text;
                 measurement.Units = ComboBoxUofM.Text;
-                measurement.PlusTolerance = Convert.ToDecimal(TxtBoxDimUpperLimit.Text);
-                measurement.MinusTolerance = Convert.ToDecimal(TxtBoxDimLowerLimit.Text);
+                measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
+                measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
                 //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
 
@@ -215,8 +219,8 @@ namespace SPC_Data_Collection
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
                 measurement.Requirement = TxtBoxDimReq.Text;
                 measurement.Units = ComboBoxUofM.Text;
-                measurement.PlusTolerance = Convert.ToDecimal(TxtBoxDimUpperLimit.Text);
-                measurement.MinusTolerance = Convert.ToDecimal(TxtBoxDimLowerLimit.Text);
+                measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
+                measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
                 //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
 
@@ -264,7 +268,7 @@ namespace SPC_Data_Collection
                 //TxtBoxIPRejectNumber.IsEnabled = true;
                 TxtBoxIPSampleSize.IsEnabled = true;
                 TxtBoxIPSampleSize.IsReadOnly = true;
-                TxtBoxIPFAIQty.IsEnabled = false;                
+                TxtBoxIPFAIQty.IsEnabled = false;
                 TxtBoxIPSampleSize.Background = (Brush)bc.ConvertFrom("#FFFFFFBE");
 
             }
@@ -287,7 +291,7 @@ namespace SPC_Data_Collection
                 TxtBoxIPLotSize.IsEnabled = true;
                 TxtBoxIPFAIQty.IsEnabled = false;
                 TxtBoxIPCodeLetter.IsEnabled = false;
-                TxtBoxIPAcceptableDefects.IsEnabled = false;                
+                TxtBoxIPAcceptableDefects.IsEnabled = false;
                 TxtBoxIPSampleSize.IsReadOnly = false;
                 TxtBoxIPSampleSize.IsEnabled = true;
                 TxtBoxIPSampleSize.Background = Brushes.White;
@@ -318,7 +322,7 @@ namespace SPC_Data_Collection
         {
             CalculateAuto();
         }
-        
+
         void CalculateAuto()
         {
             if (!this.IsLoaded)
@@ -827,6 +831,130 @@ namespace SPC_Data_Collection
         private void ComboBoxIpLvl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CalculateAuto();
+        }
+
+        void CheckDefaults()
+        {
+            if (!this.textChanged)
+                return;
+            textChanged = false;
+            string desig = (ComboBoxCharDesig.SelectedItem as ComboBoxItem).Content.ToString();
+            string units = (ComboBoxUofM.SelectedItem as ComboBoxItem).Content.ToString();
+            if (desig == "Linear" || desig == "Angularity")
+            {
+                decimal result;
+                if (Decimal.TryParse(TxtBoxDimReq.Text, out result))
+                {
+                    if (MessageBox.Show("Would you like to apply the default tolerances?",
+                        "Apply Default Tolerances?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        if (desig == "Linear")
+                        {
+                            SPCEngine.ToleranceType toleranceType = GetToleranceType(TxtBoxDimReq.Text);
+                            if (units == "In")
+                            {
+                                decimal defaults = App.Engine.DefaultTolerances.GetDefaultTolerance(toleranceType, SPCEngine.ToleranceUnits.Inch);
+                                ApplyDefaults(defaults);
+                            }
+                            else if (units == "mm")
+                            {
+                                decimal defaults = App.Engine.DefaultTolerances.GetDefaultTolerance(toleranceType, SPCEngine.ToleranceUnits.Metric);
+                                ApplyDefaults(defaults);
+                            }
+                        }
+                        else if (desig == "Angularity")
+                        {
+                            if (units == "In")
+                            {
+                                decimal defaults = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.Angular, SPCEngine.ToleranceUnits.Inch);
+                                ApplyDefaults(defaults);
+                            }
+                            else if (units == "mm")
+                            {
+                                decimal defaults = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.Angular, SPCEngine.ToleranceUnits.Metric);
+                                ApplyDefaults(defaults);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        SPCEngine.ToleranceType GetToleranceType(string value)
+        {
+            SPCEngine.ToleranceType returnType = SPCEngine.ToleranceType.Unknown;
+            decimal val;
+            if (Decimal.TryParse(value, out val))
+            {
+                if (value.Contains("."))
+                {
+                    string substring = value.Substring(value.IndexOf("."));
+                    switch (substring.Length)
+                    {
+                        case 1:
+                            returnType = SPCEngine.ToleranceType.X_X;
+                            break;
+                        case 2:
+                            returnType = SPCEngine.ToleranceType.X_XX;
+                            break;
+                        case 3:
+                            returnType = SPCEngine.ToleranceType.X_XXX;
+                            break;
+                        case 4:
+                        default:
+                            returnType = SPCEngine.ToleranceType.X_XXXX;
+                            break;
+                    }
+                }
+                else
+                    returnType = SPCEngine.ToleranceType.X;
+            }
+            return returnType;
+        }
+
+        void ApplyDefaults(decimal defaultVal)
+        {
+            TextBoxMinusTolerance.Text = TextBoxPlusTolerance.Text = defaultVal.ToString();
+        }
+
+        private void TextBoxMinusTolerance_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                decimal req = Convert.ToDecimal(TxtBoxDimReq.Text);
+                //decimal plusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
+                decimal minusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
+                TxtBoxDimLowerLimit.Text = (req - minusTolerance).ToString();
+            }
+            catch { }   
+        }
+
+        private void TextBoxPlusTolerance_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                decimal req = Convert.ToDecimal(TxtBoxDimReq.Text);
+                decimal plusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
+                //decimal minusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
+                TxtBoxDimUpperLimit.Text = (req + plusTolerance).ToString();
+            }
+            catch { }
+        }
+
+        private void TxtBoxDimReq_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CheckDefaults();
+        }
+
+        private void TxtBoxDimReq_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                CheckDefaults();
+        }
+
+        private void TxtBoxDimReq_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textChanged = true;
         }
     }
 }

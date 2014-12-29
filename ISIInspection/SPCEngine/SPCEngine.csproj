@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SPCDatabaseManager.cs" />
+    <Compile Include="SPCDefaultTolerance.cs" />
     <Compile Include="SPCEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SPCInspectionManager.cs" />
