@@ -48,6 +48,11 @@ namespace SPC_Data_Collection
         private void PlanCollect_Click(object sender, RoutedEventArgs e)
         {
             App.Current.CollectDataFromCurrentIP();
+        }
+
+        private void DefaultTolerances_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.EditDefaultTolerances();
         }        
     }
 }

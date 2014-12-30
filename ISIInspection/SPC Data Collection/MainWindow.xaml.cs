@@ -44,6 +44,7 @@ namespace SPC_Data_Collection
 
         private void CheckUser()
         {
+            
             if (App.Engine.CurrentUser == null)
             {
                 LogonWindow logon = new LogonWindow();

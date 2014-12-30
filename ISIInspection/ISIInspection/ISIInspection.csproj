@@ -51,6 +51,7 @@
     <Compile Include="ISIInspectionEngine.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Calibration.cs" />
+    <Compile Include="Models\DefaultTolerance.cs" />
     <Compile Include="Models\FabricatedPart.cs" />
     <Compile Include="Models\InspectionContext.cs" />
     <Compile Include="Models\InspectionPlan.cs" />

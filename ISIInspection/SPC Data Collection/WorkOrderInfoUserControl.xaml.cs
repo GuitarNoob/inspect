@@ -37,10 +37,26 @@ namespace SPC_Data_Collection
             TxtBoxQuantityReq.Text = (wo.QuantityRequired ?? (decimal)0).ToString("0");
             TxtBoxRouter.Text = wo.RouterFK.ToString();
             TxtBoxWorkOrder.Text = wo.WorkOrderPK.ToString();
-            TxtBoxStatus.Text = wo.WorkOrderStatusFK.ToString();
+            TxtBoxStatus.Text = GetStatusEnum(wo.WorkOrderStatusFK).ToString();
 
             Party customer = App.Engine.Database.mietrakConn.mietrakDb.Parties.FirstOrDefault(x => x.PartyPK == wo.CustomerFK);
             TxtBoxCustomer.Text = customer.Name;
         }
+
+        StatusEnum GetStatusEnum(int? enumInt)
+        {
+            if (enumInt == null)
+                return StatusEnum.Unknown;
+            return (StatusEnum)enumInt;
+        }
+    }
+
+    enum StatusEnum
+    {
+        Unknown,
+        Open = 2,
+        Production_Hold = 3,
+        Closed = 4,
+        Cancelled = 5
     }
 }

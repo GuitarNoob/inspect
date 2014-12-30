@@ -33,7 +33,7 @@ namespace SPC_Data_Collection
         void LoadUsers()
         {
             userList.Clear();
-            List<User> mietrakUsers = App.Engine.Database.mietrakConn.mietrakDb.Users.ToList();
+            List<User> mietrakUsers = App.Engine.Database.mietrakConn.mietrakDb.Users.Where(x => (x.Enabled ?? false) == true).ToList();
             foreach (User user in mietrakUsers)
             {
                 string comboBoxName = App.Engine.GetUserDisplayName(user);
