@@ -1,14 +1,15 @@
 namespace ISIInspection.Migrations
 {
+    using ISIInspection.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ISIInspection.Models.InspectionContext>
+    public class Configuration : DbMigrationsConfiguration<ISIInspection.Models.InspectionContext>
     {
         public Configuration()
-        {
+        {            
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
             ContextKey = "ISIInspection.Models.InspectionContext";

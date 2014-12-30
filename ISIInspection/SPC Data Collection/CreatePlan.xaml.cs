@@ -888,7 +888,7 @@ namespace SPC_Data_Collection
             {
                 if (value.Contains("."))
                 {
-                    string substring = value.Substring(value.IndexOf("."));
+                    string substring = value.Substring(value.IndexOf(".") + 1);
                     switch (substring.Length)
                     {
                         case 1:

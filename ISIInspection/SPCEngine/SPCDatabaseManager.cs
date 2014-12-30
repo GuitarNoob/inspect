@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ISIInspection.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace SPCEngine
 
         public SPCDatabaseManager(SPCEngine parent)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<InspectionContext, ISIInspection.Migrations.Configuration>());
             m_parent = parent;
         }
     }
