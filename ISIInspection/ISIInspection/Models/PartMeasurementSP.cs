@@ -15,8 +15,7 @@ namespace ISIInspection.Models
         public string Units { get; set; }
         public decimal PlusTolerance { get; set; }
         public decimal MinusTolerance { get; set; }
-        public string CharacteristicDesignator { get; set; }
-        public string InspectionDevice { get; set; }
+        public string CharacteristicDesignator { get; set; }        
 
         //Parent Inspection Plan
         public Guid InspectionPlanId { get; set; }

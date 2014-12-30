@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +10,10 @@ namespace ISIInspection.Models
 {
     public class InspectionPlan
     {
+        [Key]
         public Guid InspectionPlanId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Int64 InspectionPlanKey { get; set; }
         public string Type { get; set; }
         public decimal AQLPercentage { get; set; }
         public string Level { get; set; }

@@ -11,6 +11,7 @@ namespace ISIInspection.Models
         public Guid PartMeasurementActualId { get; set; }        
         public DateTime CompletedTime { get; set; }
         public decimal MeasuredValue { get; set; }
+        public string InspectionDevice { get; set; }
 
         //Mietrak
         public int UserId { get; set; }

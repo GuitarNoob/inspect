@@ -171,7 +171,7 @@ namespace SPC_Data_Collection
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.InspectionDevice);
+                    sb.Append(""); // inspection device
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(""); //need to add comment
                     sb.Append(SEPERATOR_CHAR);
