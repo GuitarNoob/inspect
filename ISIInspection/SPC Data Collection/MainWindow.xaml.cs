@@ -126,7 +126,7 @@ namespace SPC_Data_Collection
             InspectionPlan ip = App.Engine.InspectionPlanMgr.SelectedIP ?? new InspectionPlan();
             TxtBoxIPAcptDefect.Text = ip.AcceptableDefects.ToString();
             TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
-            TxtBoxIPId.Text = ip.InspectionPlanId.ToString();
+            TxtBoxIPId.Text = ip.InspectionPlanKey.ToString();
             TxtBoxIPLvl.Text = ip.Level;
             TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
             TxtBoxIPType.Text = ip.Type;

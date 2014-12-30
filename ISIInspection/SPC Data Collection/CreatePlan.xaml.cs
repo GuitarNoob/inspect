@@ -51,7 +51,7 @@ namespace SPC_Data_Collection
         void LoadInspectionPlanInfo()
         {
             InspectionPlan ip = m_inspectionPlan;
-            TxtBoxIPID.Text = ip.InspectionPlanId.ToString();
+            TxtBoxIPID.Text = ip.InspectionPlanKey.ToString();
             TxtBoxIPType.Text = ip.Type;
             TxtBoxIPLotSize.Text = m_workOrder.QuantityRequired.ToString();
             ComboBoxAQL.Text = ip.AQLPercentage.ToString();
@@ -69,6 +69,7 @@ namespace SPC_Data_Collection
 
             ip.RouterFK = m_inspectionPlan.RouterFK;
             ip.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
+            ip.InspectionPlanKey = m_inspectionPlan.InspectionPlanKey;
 
             ip.Type = TxtBoxIPType.Text;
 
@@ -147,7 +148,7 @@ namespace SPC_Data_Collection
         {
             InspectionPlan ip = GetInspectionPlan();
 
-            var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);
+            var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);            
             if (ipOriginal != null)
                 App.Engine.Database.isiEngine.InspectionDb.Entry(ipOriginal).CurrentValues.SetValues(ip);
             else
