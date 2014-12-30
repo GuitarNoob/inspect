@@ -95,10 +95,8 @@
                         <GridViewColumn Header="Ref" Width="75" DisplayMemberBinding="{Binding RefLocation}"/>
                         <GridViewColumn Header="Requirement" Width="75" DisplayMemberBinding="{Binding Requirement}"/>
                         <GridViewColumn Header="UofM" Width="65" DisplayMemberBinding="{Binding Units}"/>
-                        <GridViewColumn Header="+ Tolerance" Width="75" DisplayMemberBinding="{Binding PlusTol}"/>
-                        <GridViewColumn Header="- Tolerance" Width="75" DisplayMemberBinding="{Binding MinusTol}"/>
-                        <GridViewColumn Header="Upper Limit" Width="75" DisplayMemberBinding="{Binding UpperLimit}"/>
-                        <GridViewColumn Header="Lower Limit" Width="75" DisplayMemberBinding="{Binding LowerLimit}"/>
+                        <GridViewColumn Header="+ Tolerance" Width="75" DisplayMemberBinding="{Binding PlusTolerance}"/>
+                        <GridViewColumn Header="- Tolerance" Width="75" DisplayMemberBinding="{Binding MinusTolerance}"/>
                         <GridViewColumn Header="Characteristic Designator" Width="150" DisplayMemberBinding="{Binding CharacteristicDesignator}"/>
                         <GridViewColumn Header="Comment" Width="Auto" DisplayMemberBinding="{Binding Revision}"/>
                     </GridView>

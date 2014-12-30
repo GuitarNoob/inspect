@@ -127,7 +127,7 @@ namespace SPC_Data_Collection
             {
                 TxtBoxDimCharNum.Text = measurement.CharNumber;
                 TxtBoxDimRefLoc.Text = measurement.RefLocation;
-                TxtBoxDimReq.Text = measurement.Requirement;
+                TxtBoxDimReq.Text = measurement.Requirement.ToString();
                 TextBoxPlusTolerance.Text = measurement.PlusTolerance.ToString();
                 TextBoxMinusTolerance.Text = measurement.MinusTolerance.ToString();
 
@@ -190,7 +190,7 @@ namespace SPC_Data_Collection
                 measurement.PartMeasurementSPId = Guid.NewGuid();
                 measurement.CharNumber = TxtBoxDimCharNum.Text;
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
-                measurement.Requirement = TxtBoxDimReq.Text;
+                measurement.Requirement = Convert.ToDecimal(TxtBoxDimReq.Text);
                 measurement.Units = ComboBoxUofM.Text;
                 measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
@@ -218,7 +218,7 @@ namespace SPC_Data_Collection
 
                 measurement.CharNumber = TxtBoxDimCharNum.Text;
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
-                measurement.Requirement = TxtBoxDimReq.Text;
+                measurement.Requirement = Convert.ToDecimal(TxtBoxDimReq.Text);
                 measurement.Units = ComboBoxUofM.Text;
                 measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);

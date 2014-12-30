@@ -209,6 +209,9 @@ namespace SPC_Data_Collection
         public bool IsReadOnly = false;
         public bool IsUpdated = false;
 
+        public decimal UpperLimit { get; set; }
+        public decimal LowerLimit { get; set; }
+
         private decimal m_Measured = -1;
         public decimal Measured
         {
@@ -234,6 +237,8 @@ namespace SPC_Data_Collection
         public MeasurementCollector(PartMeasurementActual actual, int CharNum)
         {
             SetPoint = actual.PartMeasurementSP;
+            UpperLimit = SetPoint.Requirement + SetPoint.PlusTolerance;
+            LowerLimit = SetPoint.Requirement - SetPoint.MinusTolerance;
             ActualMeasurement = actual;
             m_Measured = actual.MeasuredValue;
             DisplayCharNumber = SetPoint.CharNumber + "." + CharNum;
