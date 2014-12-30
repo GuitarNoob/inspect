@@ -12,6 +12,7 @@ namespace ISIInspection.Models
         public string CharNumber { get; set; }
         public string RefLocation { get; set; }
         public string Requirement { get; set; }
+        public string Quantity { get; set; }
         public string Units { get; set; }
         public decimal PlusTolerance { get; set; }
         public decimal MinusTolerance { get; set; }
