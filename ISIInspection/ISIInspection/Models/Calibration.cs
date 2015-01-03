@@ -9,8 +9,10 @@ namespace ISIInspection.Models
     public class Calibration
     {
         public Guid CalibrationId { get; set; }
-        public string ToolNumber { get; set; }
-        public string Device { get; set; }
+        public string SerialNumber { get; set; }
+        public string ModelNumber { get; set; }
+        public string Description { get; set; }
+        public string Range { get; set; }
         public string Manufacturer { get; set; }
         public string Location { get; set; }
         public string Interval { get; set; }
