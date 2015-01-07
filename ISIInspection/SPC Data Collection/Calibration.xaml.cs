@@ -66,7 +66,7 @@ namespace SPC_Data_Collection
             this.Close();
         }
 
-        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
+        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)        
         {
             if (DataGrid_Data.SelectedItem == null)
                 return;
