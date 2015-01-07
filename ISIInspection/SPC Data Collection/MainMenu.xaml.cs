@@ -53,6 +53,11 @@ namespace SPC_Data_Collection
         private void DefaultTolerances_Click(object sender, RoutedEventArgs e)
         {
             App.Current.EditDefaultTolerances();
+        }
+
+        private void Calibration_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.EditCalibration();
         }        
     }
 }

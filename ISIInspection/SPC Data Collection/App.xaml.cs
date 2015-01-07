@@ -44,6 +44,14 @@ namespace SPC_Data_Collection
             CheckInspectionPlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
             App.Engine.InspectionPlanMgr.ReloadInspectionPlan();
             CollectDataWindow win = new CollectDataWindow(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
+            win.Owner = App.Current.MainWindow;
+            win.ShowDialog();
+        }
+
+        public void EditCalibration()
+        {
+            Calibration win = new Calibration();
+            win.Owner = App.Current.MainWindow;
             win.ShowDialog();
         }
 
