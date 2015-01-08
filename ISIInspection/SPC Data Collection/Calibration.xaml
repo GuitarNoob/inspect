@@ -5,8 +5,8 @@
         Title="Calibration" Height="700" Width="1600">
     <Grid>
 
-        <local:UserControl1 HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
-        <local:UserStatus Margin="1252,0,0,0" VerticalAlignment="Top" Width="260" Height="60" HorizontalAlignment="Right"/>
+        <local:UserControl1 HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="1237"/>
+        <local:UserStatus Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="352" Height="37" HorizontalAlignment="Right"/>
         <DataGrid HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Height="328" Width="1584">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding DisplayIDNumber}" IsReadOnly="True">

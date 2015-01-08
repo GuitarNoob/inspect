@@ -12,7 +12,7 @@
             <ColumnDefinition Width="400"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="IPGroupBox" Header="Inspection Plan" Margin="10,10,0,0" VerticalAlignment="Top" Background="#FFF0F0F0" BorderThickness="2" Height="301">
+        <GroupBox x:Name="IPGroupBox" Header="Inspection Plan" Margin="10,55,0,0" VerticalAlignment="Top" Background="#FFF0F0F0" BorderThickness="2" Height="251">
             <Grid x:Name="IPGrid" HorizontalAlignment="Left" Height="Auto" Margin="5,5,5,5" VerticalAlignment="Top" Width="Auto">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
@@ -72,9 +72,9 @@
                 <Label x:Name="LabelCodeLetter" Grid.Row="2"  Grid.Column="2" Content="Code Letter" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="72" Opacity="0.25"/>
                 <Label x:Name="LabelAQL" Grid.Row="2" Content="AQL" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="32" Opacity="0.25"/>
                 <Label x:Name="LabelLevel" Grid.Row="2"  Grid.Column="1" Content="Level" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Height="25" Width="36" Opacity="0.25"/>
-                <Label Grid.Row="8" Content="Skip Lot" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Height="26" Width="52" Opacity="0.25"/>
+                <Label Grid.Row="6" Content="Skip Lot" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Height="26" Width="52" Opacity="0.25" Grid.Column="1"/>
                 <Label x:Name="LabelAccDefects" Grid.Row="4" Grid.Column="2" Content="Acc Defects" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Opacity="0.25"/>
-                <TextBox Grid.Row="9" x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Center" Height="24" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" ToolTip="Skip Inspection after successful lots" IsEnabled="False" Width="70"/>
+                <TextBox Grid.Row="7" x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Center" Height="24" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" ToolTip="Skip Inspection after successful lots" IsEnabled="False" Width="70" Grid.Column="1"/>
                 <Label x:Name="LabelFAI" Content="FAI Qty" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Grid.Row="6" Opacity="0.25"/>
                 <TextBox x:Name="TxtBoxIPFAIQty" HorizontalAlignment="Center" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="70" IsEnabled="False" Grid.Row="7"/>
                 <TextBox Grid.Row="5" x:Name="TxtBoxIPLotSize" HorizontalAlignment="Center" Height="23" Margin="0,0,0,0" Background="#FFFFFFBE" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="70" ToolTip="Quantity of the lot size" IsReadOnly="True"/>
@@ -84,7 +84,7 @@
                 <Label x:Name="LabelLotSize" Grid.Row="4" Content="Lot Size" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="W.O. Information" Margin="10,10,5.6,0" VerticalAlignment="Top" Height="304" Background="#FFF0F0F0" BorderThickness="2" Grid.Column="1">
+        <GroupBox Header="W.O. Information" Margin="10,55,5.4,0" VerticalAlignment="Top" Height="251" Background="#FFF0F0F0" BorderThickness="2" Grid.Column="1">
             <SPC_Data_Collection:WorkOrderInfoUserControl x:Name="WorkOrderInfo" HorizontalAlignment="Left" Width="659" Loaded="WorkOrderInfo_Loaded" Margin="0,0,0,-1"/>
         </GroupBox>
         <GroupBox Header="Dimensional Criteria" Margin="13,326,2,65" Background="#FFF0F0F0" BorderThickness="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
@@ -150,6 +150,8 @@
 
         <TextBox x:Name="TextBoxMinusTolerance" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="174,40.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" TextChanged="TextBoxMinusTolerance_TextChanged" />
         <TextBox x:Name="TextBoxPlusTolerance" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="99,40.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" TextChanged="TextBoxPlusTolerance_TextChanged" />
+        <SPC_Data_Collection:UserControl1 HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
+        <SPC_Data_Collection:UserStatus Grid.Column="1" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

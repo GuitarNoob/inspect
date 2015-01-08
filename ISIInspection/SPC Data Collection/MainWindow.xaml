@@ -4,7 +4,7 @@
         DataContext="{Binding RelativeSource={RelativeSource self}}"
         Title="Home" Height="700" Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="Merlin_ISI_Inspection_Data_Collector_Closing">
     <Grid Name="MainGrid">
-        <SPC_Data_Collection:UserControl1 Margin="0,4,272,0" VerticalAlignment="Top" Loaded="UserControl1_Loaded"/>
+        <SPC_Data_Collection:UserControl1 Margin="0,4,367.6,0" VerticalAlignment="Top" Loaded="UserControl1_Loaded"/>
 
         <GroupBox Header="W.O. Search Specifications" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="285" Width="467" Background="#FFF0F0F0" BorderThickness="2">
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,10,0,0" Width="120" SelectedIndex="0">
@@ -72,6 +72,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <SPC_Data_Collection:UserStatus Margin="0,0,10,0" VerticalAlignment="Top" Width="257" HorizontalAlignment="Right"/>
+        <SPC_Data_Collection:UserStatus Margin="0,0,9.6,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right"/>
     </Grid>
 </Window>
