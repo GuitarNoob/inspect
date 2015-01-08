@@ -105,7 +105,7 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <ComboBox x:Name="ComboBoxCharDesig" HorizontalAlignment="Left" Margin="341,41.4,0,0" VerticalAlignment="Top" Width="153" SelectedIndex="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <ComboBox x:Name="ComboBoxCharDesig" HorizontalAlignment="Left" Margin="341,41.4,0,0" VerticalAlignment="Top" Width="153" SelectedIndex="0" Grid.Row="1" Grid.ColumnSpan="2" SelectionChanged="ComboBoxCharDesig_SelectionChanged">
             <ComboBoxItem Content="Linear"/>
             <ComboBoxItem Content="Angularity"/>
             <ComboBoxItem Content="Cirularlarity"/>

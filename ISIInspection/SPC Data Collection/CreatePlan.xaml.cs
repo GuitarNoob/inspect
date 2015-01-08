@@ -129,7 +129,7 @@ namespace SPC_Data_Collection
             }
             else
             {
-                TxtBoxDimCharNum.Text = measurement.CharNumber;
+                TxtBoxDimCharNum.Text = measurement.CharNumber.ToString();
                 TxtBoxDimRefLoc.Text = measurement.RefLocation;
                 TxtBoxDimReq.Text = measurement.Requirement.ToString();
                 TextBoxPlusTolerance.Text = measurement.PlusTolerance.ToString();
@@ -155,7 +155,7 @@ namespace SPC_Data_Collection
         {
             InspectionPlan ip = GetInspectionPlan();
 
-            var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);            
+            var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);
             if (ipOriginal != null)
                 App.Engine.Database.isiEngine.InspectionDb.Entry(ipOriginal).CurrentValues.SetValues(ip);
             else
@@ -186,6 +186,7 @@ namespace SPC_Data_Collection
             DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
             isLoaded = true;
             textChanged = false;
+            CheckNoteSelection();
         }
 
         private void ButtonAddMeasurement_Click(object sender, RoutedEventArgs e)
@@ -195,14 +196,18 @@ namespace SPC_Data_Collection
                 PartMeasurementSP measurement = new PartMeasurementSP();
 
                 measurement.PartMeasurementSPId = Guid.NewGuid();
-                measurement.CharNumber = TxtBoxDimCharNum.Text;
+                measurement.CharNumber = Convert.ToInt32(TxtBoxDimCharNum.Text);
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
                 measurement.Requirement = Convert.ToDecimal(TxtBoxDimReq.Text);
                 measurement.Units = ComboBoxUofM.Text;
                 measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
-                measurement.Quantity = Convert.ToInt32(TextBoxQuantity.Text);
+                int quantity = 1;
+                Int32.TryParse(TextBoxQuantity.Text, out quantity);
+                if (quantity < 1)
+                    quantity = 1;
+                measurement.Quantity = quantity;
                 measurement.Note = TxtBoxDimNote.Text;
                 measurement.Comment = TxtBoxDimComment.Text;
                 //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
@@ -226,14 +231,18 @@ namespace SPC_Data_Collection
             {
                 PartMeasurementSP measurement = DataGridResults.SelectedItem as PartMeasurementSP;
 
-                measurement.CharNumber = TxtBoxDimCharNum.Text;
+                measurement.CharNumber = Convert.ToInt32(TxtBoxDimCharNum.Text);
                 measurement.RefLocation = TxtBoxDimRefLoc.Text;
                 measurement.Requirement = Convert.ToDecimal(TxtBoxDimReq.Text);
                 measurement.Units = ComboBoxUofM.Text;
                 measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
-                measurement.Quantity = Convert.ToInt32(TextBoxQuantity.Text);
+                int quantity = 1;
+                Int32.TryParse(TextBoxQuantity.Text, out quantity);
+                if (quantity < 1)
+                    quantity = 1;
+                measurement.Quantity = quantity;
                 measurement.Note = TxtBoxDimNote.Text;
                 measurement.Comment = TxtBoxDimComment.Text;
 
@@ -941,7 +950,7 @@ namespace SPC_Data_Collection
                 decimal minusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 TxtBoxDimLowerLimit.Text = (req - minusTolerance).ToString();
             }
-            catch { }   
+            catch { }
         }
 
         private void TextBoxPlusTolerance_TextChanged(object sender, TextChangedEventArgs e)
@@ -952,6 +961,40 @@ namespace SPC_Data_Collection
                 decimal plusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 //decimal minusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 TxtBoxDimUpperLimit.Text = (req + plusTolerance).ToString();
+            }
+            catch { }
+        }
+
+        void CheckNoteSelection()
+        {
+            try
+            {
+                if (ComboBoxCharDesig.SelectedItem == null ||
+                    (ComboBoxCharDesig.SelectedItem as ComboBoxItem).Content.ToString() != "Note")
+                {
+                    TxtBoxDimNote.IsEnabled = false;
+                    TxtBoxDimReq.IsEnabled = true;
+                    ComboBoxUofM.IsEnabled = true;
+                    TextBoxPlusTolerance.IsEnabled = true;
+                    TextBoxMinusTolerance.IsEnabled = true;
+                    TextBoxQuantity.IsEnabled = true;
+
+                }
+                else
+                {
+                    TxtBoxDimNote.IsEnabled = true;
+                    TxtBoxDimReq.IsEnabled = false;
+                    ComboBoxUofM.IsEnabled = false;
+                    TextBoxPlusTolerance.IsEnabled = false;
+                    TextBoxMinusTolerance.IsEnabled = false;
+                    TextBoxQuantity.IsEnabled = false;
+
+                    TxtBoxDimReq.Text = "0";
+                    ComboBoxUofM.Text = "0";
+                    TextBoxPlusTolerance.Text = "0";
+                    TextBoxMinusTolerance.Text = "0";
+                    TextBoxQuantity.Text = "0";
+                }
             }
             catch { }
         }
@@ -970,6 +1013,11 @@ namespace SPC_Data_Collection
         private void TxtBoxDimReq_TextChanged(object sender, TextChangedEventArgs e)
         {
             textChanged = true;
+        }
+
+        private void ComboBoxCharDesig_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckNoteSelection();
         }
     }
 }

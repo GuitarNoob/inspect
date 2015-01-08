@@ -239,7 +239,7 @@ namespace SPC_Data_Collection
             SetPoint = actual.PartMeasurementSP;
             UpperLimit = SetPoint.Requirement + SetPoint.PlusTolerance;
             LowerLimit = SetPoint.Requirement - SetPoint.MinusTolerance;
-            ActualMeasurement = actual;
+            ActualMeasurement = actual;           
             m_Measured = actual.MeasuredValue;
             DisplayCharNumber = SetPoint.CharNumber + "." + CharNum;
 

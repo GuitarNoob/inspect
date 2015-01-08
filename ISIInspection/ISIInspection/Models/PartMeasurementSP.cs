@@ -9,7 +9,7 @@ namespace ISIInspection.Models
     public class PartMeasurementSP
     {
         public Guid PartMeasurementSPId { get; set; }        
-        public string CharNumber { get; set; }
+        public int CharNumber { get; set; }
         public string RefLocation { get; set; }
         public decimal Requirement { get; set; }
         public int? Quantity { get; set; }

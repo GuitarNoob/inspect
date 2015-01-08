@@ -100,13 +100,13 @@ namespace SPC_Data_Collection
             {
                 if (sp.Measurements != null)
                 {
-                    if (sp.Measurements.Count != sampleSize && sp.Measurements.Count != 0)
+                    if (sp.Measurements.Count != (sampleSize) && sp.Measurements.Count != 0)
                     {
                         if (MessageBox.Show("Error sample size does not match! The Inspection Plan has been mofied and the results no longer match!" +
                          " Would you like to attempt a merge? (Warning: a merge may result in a loss of saved data)", "Error Inspection Plan has been modified!",
                          MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                         {
-                            if (sp.Measurements.Count > sampleSize)
+                            if (sp.Measurements.Count > (sampleSize))
                             {
                                 int numToRemove = sp.Measurements.Count - sampleSize;
                                 RemoveMeasurementSP(sp, numToRemove);
