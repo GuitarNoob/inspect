@@ -22,6 +22,8 @@ namespace SPC_Data_Collection
     public partial class LogonWindow : Window
     {
         Dictionary<string, User> userList = new Dictionary<string, User>();
+        Dictionary<string, string> userListByID = new Dictionary<string, string>();
+
         bool loggedIn = false;
 
         public LogonWindow()
@@ -33,11 +35,15 @@ namespace SPC_Data_Collection
         void LoadUsers()
         {
             userList.Clear();
+            userListByID.Clear();
             List<User> mietrakUsers = App.Engine.Database.mietrakConn.mietrakDb.Users.Where(x => (x.Enabled ?? false) == true).ToList();
             foreach (User user in mietrakUsers)
             {
                 string comboBoxName = App.Engine.GetUserDisplayName(user);
+                string id = user.Code;
                 userList.Add(comboBoxName, user);
+                if (!userListByID.ContainsKey(id))
+                    userListByID.Add(id, comboBoxName);
             }
 
             ComboBoxUsers.ItemsSource = userList.Keys;
@@ -70,6 +76,12 @@ namespace SPC_Data_Collection
         {
             if (!loggedIn)
                 e.Cancel = true;
+        }
+
+        private void UserID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (userListByID.ContainsKey(UserID.Text))
+                ComboBoxUsers.SelectedItem = userListByID[UserID.Text];
         }
     }
 }

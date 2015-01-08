@@ -23,8 +23,8 @@
             <MenuItem Header="_Reports">
                 <MenuItem Header="Form 120" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
             </MenuItem>
-            <MenuItem Header="_Maintenance">
-                <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150"/>
+            <MenuItem Header="_Maintenance" >
+                <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>
             </MenuItem>
             <MenuItem Header="_Settings">
                 <MenuItem Header="Tolerances" Name="DefaultTolerances" HorizontalAlignment="Left" Width="145" Click="DefaultTolerances_Click"/>
