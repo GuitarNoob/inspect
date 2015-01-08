@@ -12,6 +12,7 @@ namespace ISIInspection.Models
         public DateTime CompletedTime { get; set; }
         public decimal MeasuredValue { get; set; }
         public string InspectionDevice { get; set; }
+        public int QuantityNumber { get; set; }
 
         //Mietrak
         public int UserId { get; set; }

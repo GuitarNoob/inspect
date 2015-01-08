@@ -119,8 +119,12 @@ namespace SPC_Data_Collection
                 TxtBoxDimReq.Text = "";
                 TxtBoxDimUpperLimit.Text = "";
                 TxtBoxDimLowerLimit.Text = "";
+                TextBoxQuantity.Text = "";
                 ComboBoxUofM.SelectedIndex = 0;
                 ComboBoxCharDesig.SelectedIndex = 0;
+                TxtBoxDimNote.Text = "";
+                TxtBoxDimComment.Text = "";
+
                 //ComboBoxInspectionDevice.SelectedIndex = 0;
             }
             else
@@ -130,6 +134,9 @@ namespace SPC_Data_Collection
                 TxtBoxDimReq.Text = measurement.Requirement.ToString();
                 TextBoxPlusTolerance.Text = measurement.PlusTolerance.ToString();
                 TextBoxMinusTolerance.Text = measurement.MinusTolerance.ToString();
+                TextBoxQuantity.Text = measurement.Quantity.ToString();
+                TxtBoxDimNote.Text = measurement.Note;
+                TxtBoxDimComment.Text = measurement.Comment;
 
                 ComboBoxUofM.SelectedItem = measurement.Units;
                 ComboBoxCharDesig.SelectedItem = measurement.CharacteristicDesignator;
@@ -195,6 +202,9 @@ namespace SPC_Data_Collection
                 measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
+                measurement.Quantity = Convert.ToInt32(TextBoxQuantity.Text);
+                measurement.Note = TxtBoxDimNote.Text;
+                measurement.Comment = TxtBoxDimComment.Text;
                 //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
 
                 measurement.InspectionPlanId = m_inspectionPlan.InspectionPlanId;
@@ -223,6 +233,10 @@ namespace SPC_Data_Collection
                 measurement.PlusTolerance = Convert.ToDecimal(TextBoxPlusTolerance.Text);
                 measurement.MinusTolerance = Convert.ToDecimal(TextBoxMinusTolerance.Text);
                 measurement.CharacteristicDesignator = ComboBoxCharDesig.Text;
+                measurement.Quantity = Convert.ToInt32(TextBoxQuantity.Text);
+                measurement.Note = TxtBoxDimNote.Text;
+                measurement.Comment = TxtBoxDimComment.Text;
+
                 //measurement.InspectionDevice = ComboBoxInspectionDevice.Text;
 
                 measurement.InspectionPlanId = m_inspectionPlan.InspectionPlanId;

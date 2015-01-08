@@ -39,9 +39,10 @@
                             <GridViewColumn Header="UofM" Width="75" DisplayMemberBinding="{Binding Units}"/>
                             <GridViewColumn Header="+ Tolerance" Width="75" DisplayMemberBinding="{Binding PlusTolerance}"/>
                             <GridViewColumn Header="- Tolerance" Width="75" DisplayMemberBinding="{Binding MinusTolerance}"/>
+                            <GridViewColumn Header="Quantity" Width="75" DisplayMemberBinding="{Binding Quantity}"/>
                             <GridViewColumn Header="Characteristic Designator" Width="150" DisplayMemberBinding="{Binding CharacteristicDesignator}"/>
-                            <GridViewColumn Header="Inspection Device" Width="150" DisplayMemberBinding="{Binding InspectionDevice}"/>
-                            <GridViewColumn Header="Comment" Width="Auto" DisplayMemberBinding="{Binding Revision}"/>
+                            <GridViewColumn Header="Note" Width="Auto" DisplayMemberBinding="{Binding Note}"/>
+                            <GridViewColumn Header="Comment" Width="Auto" DisplayMemberBinding="{Binding Comment}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
