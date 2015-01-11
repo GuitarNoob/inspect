@@ -105,14 +105,14 @@ namespace SPC_Data_Collection
 
         void EnableDisableButtons()
         {
-            if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
-            {
-                ButtonAddIP.IsEnabled = ButtonCollectIP.IsEnabled = false;
-            }
-            else
-            {
-                ButtonAddIP.IsEnabled = ButtonCollectIP.IsEnabled = true;
-            }
+            //if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
+            //{
+                //ButtonAddIP.IsEnabled = ButtonCollectIP.IsEnabled = false;
+            //}
+            //else
+            //{
+                //ButtonAddIP.IsEnabled = ButtonCollectIP.IsEnabled = true;
+            //}
         }
 
         void FillWOTextBoxes()
@@ -128,7 +128,7 @@ namespace SPC_Data_Collection
             TxtBoxIPAql.Text = ip.AQLPercentage.ToString();
             TxtBoxIPId.Text = ip.InspectionPlanKey.ToString();
             TxtBoxIPLvl.Text = ip.Level;
-            TxtBoxIPSkipLot.Text = ip.SkipLot.ToString();
+            TxtBoxIPQty.Text = ip.FAIQuantity.ToString();
             TxtBoxIPType.Text = ip.Type;
 
             DataGridMeasurements.ItemsSource = null;

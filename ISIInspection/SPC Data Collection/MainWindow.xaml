@@ -5,9 +5,8 @@
         Title="Home" Height="700" Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="Merlin_ISI_Inspection_Data_Collector_Closing">
     <Grid Name="MainGrid">
         <SPC_Data_Collection:UserControl1 Margin="0,4,367.6,0" VerticalAlignment="Top" Loaded="UserControl1_Loaded"/>
-
         <GroupBox Header="W.O. Search Specifications" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="285" Width="467" Background="#FFF0F0F0" BorderThickness="2">
-            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,10,0,0" Width="120" SelectedIndex="0">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,3,0,0" Width="120" SelectedIndex="0">
                 <ComboBoxItem Content="All" HorizontalAlignment="Left" Width="120" Height="23"/>
                 <ComboBoxItem Content="Open" HorizontalAlignment="Left" Width="120"/>
                 <ComboBoxItem Content="Production Hold" HorizontalAlignment="Left" Width="120"/>
@@ -18,7 +17,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0" Height="60" VerticalAlignment="Bottom"/>
         <GroupBox Header="Inspection Plan" Margin="10,339,8,65" Background="#FFF0F0F0">
             <Grid>
-                <Label Content="ID                " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,0,0,0" Width="24"/>
+                <Label Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,0,0,0" Width="24"/>
                 <TextBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" Height="23" Margin="71,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
                 <Label Content="Type" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="71,0,0,0" Width="100"/>
                 <TextBox x:Name="TxtBoxIPId" HorizontalAlignment="Left" Height="23" Margin="6,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="#FFFFFFBE"/>
@@ -28,15 +27,15 @@
                 <Label Content="Level" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="258,1,0,0" Width="146"/>
                 <TextBox x:Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="386,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
                 <Label Content="Acc Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,0,0,0" Width="100"/>
-                <TextBox x:Name="TxtBoxIPSkipLot" HorizontalAlignment="Left" Height="23" Margin="491,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
-                <Label Content="Skip Lot" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="468,0,0,0" Width="146"/>
+                <TextBox x:Name="TxtBoxIPQty" HorizontalAlignment="Left" Height="23" Margin="491,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+                <Label Content="Qty" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="508,0,0,0" Width="65"/>
                 <ListView x:Name="DataGridMeasurements" Margin="6,54,6,6">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Char" Width="75" DisplayMemberBinding="{Binding CharNumber}"/>
-                            <GridViewColumn Header="Ref" Width="75" DisplayMemberBinding="{Binding RefLocation}"/>
+                            <GridViewColumn Header="Char" Width="45" DisplayMemberBinding="{Binding CharNumber}"/>
+                            <GridViewColumn Header="Ref" Width="100" DisplayMemberBinding="{Binding RefLocation}"/>
                             <GridViewColumn Header="Requirement" Width="75" DisplayMemberBinding="{Binding Requirement}"/>
-                            <GridViewColumn Header="UofM" Width="75" DisplayMemberBinding="{Binding Units}"/>
+                            <GridViewColumn Header="UofM" Width="45" DisplayMemberBinding="{Binding Units}"/>
                             <GridViewColumn Header="+ Tolerance" Width="75" DisplayMemberBinding="{Binding PlusTolerance}"/>
                             <GridViewColumn Header="- Tolerance" Width="75" DisplayMemberBinding="{Binding MinusTolerance}"/>
                             <GridViewColumn Header="Quantity" Width="75" DisplayMemberBinding="{Binding Quantity}"/>
@@ -51,28 +50,32 @@
         <GroupBox Header="W.O. Information" Margin="484,54,8,0" VerticalAlignment="Top" Height="285" Background="#FFF0F0F0" BorderThickness="2">
             <SPC_Data_Collection:WorkOrderInfoUserControl x:Name="WorkOrderInfo" HorizontalAlignment="Left"/>
         </GroupBox>
-        <Button x:Name="ButtonAddIP" Content="Create / Edit New Inspection Plan" HorizontalAlignment="Left" Margin="35,0,0,20" Width="251" Height="23" VerticalAlignment="Bottom" Click="ButtonCreateEdit_Click"/>
         <Button Content="Close" Margin="0,0,35,20" Height="23" VerticalAlignment="Bottom" Click="Button_Click" HorizontalAlignment="Right" Width="75"/>
-        <Button x:Name="ButtonCollectIP" Content="Collect Inspection Data" HorizontalAlignment="Left" Margin="291,0,0,20" Width="250" Height="23" VerticalAlignment="Bottom" Click="ButtonCollectIP_Click"/>
-        <ComboBox x:Name="ComboBoxType" HorizontalAlignment="Left" Margin="185,105,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+        <ComboBox x:Name="ComboBoxType" HorizontalAlignment="Left" Margin="175,99,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
             <ComboBoxItem Content="W.O. Number" HorizontalAlignment="Left" Width="118.4"/>
             <ComboBoxItem Content="Part Number" HorizontalAlignment="Left" Width="118.4"/>
             <ComboBoxItem Content="Plan ID" HorizontalAlignment="Left" Width="118.4"/>
         </ComboBox>
-        <TextBox x:Name="TextBoxSearchValue" HorizontalAlignment="Left" Height="23" Margin="185,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="135,75,0,0" VerticalAlignment="Top"/>
-        <Label Content="Type" HorizontalAlignment="Left" Margin="142,105,0,0" VerticalAlignment="Top"/>
-        <Label Content="Value" HorizontalAlignment="Left" Margin="135,131,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="BtnWorkOrderSearch" Content="Search" HorizontalAlignment="Left" IsDefault="True" Margin="200,160,0,0" VerticalAlignment="Top" Width="75" Click="BtnWorkOrderSearch_Click"/>
+        <TextBox x:Name="TextBoxSearchValue" HorizontalAlignment="Left" Height="23" Margin="175,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="125,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type" HorizontalAlignment="Left" Margin="132,97,0,0" VerticalAlignment="Top"/>
+        <Label Content="Value" HorizontalAlignment="Left" Margin="125,125,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnWorkOrderSearch" Content="Search" HorizontalAlignment="Left" IsDefault="True" Margin="387,160,0,0" VerticalAlignment="Top" Width="75" Click="BtnWorkOrderSearch_Click"/>
         <ListView x:Name="DataGridResults" Margin="23,189,0,0" SelectionChanged="DataGridResults_SelectionChanged" HorizontalAlignment="Left" Width="439" Height="134" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding WorkOrderID}"/>
                     <GridViewColumn Header="Work Order" Width="120" DisplayMemberBinding="{Binding WorkOrderPK}"/>
                     <GridViewColumn Header="Part Number" Width="120" DisplayMemberBinding="{Binding PartNumber}"/>
                     <GridViewColumn Header="Revision" Width="120" DisplayMemberBinding="{Binding Revision}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <SPC_Data_Collection:UserStatus Margin="0,0,9.6,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right"/>
+        <SPC_Data_Collection:UserStatus Margin="0,0,9.6,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right" Loaded="UserStatus_Loaded"/>
+        <Button x:Name="BtnWorkOrderFirst" Content="First" HorizontalAlignment="Left" Margin="23,160,0,0" VerticalAlignment="Top" Width="65">
+        </Button>
+        <Button x:Name="BtnWorkOrderPrev" Content="Prev" HorizontalAlignment="Left" Margin="93,160,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="BtnWorkOrderNext" Content="Next" HorizontalAlignment="Left" Margin="163,160,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="BtnWorkOrderLast" Content="Last" HorizontalAlignment="Left" Margin="233,160,0,0" VerticalAlignment="Top" Width="65"/>
     </Grid>
 </Window>

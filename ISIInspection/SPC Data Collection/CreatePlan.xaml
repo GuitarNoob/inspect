@@ -91,10 +91,10 @@
             <ListView x:Name="DataGridResults" Margin="10,100,11,8" SelectionChanged="DataGrid_SelectionChanged" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Char" Width="75" DisplayMemberBinding="{Binding CharNumber}"/>
-                        <GridViewColumn Header="Ref" Width="75" DisplayMemberBinding="{Binding RefLocation}"/>
+                        <GridViewColumn Header="Char" Width="45" DisplayMemberBinding="{Binding CharNumber}"/>
+                        <GridViewColumn Header="Ref" Width="100" DisplayMemberBinding="{Binding RefLocation}"/>
                         <GridViewColumn Header="Dim/Spec" Width="75" DisplayMemberBinding="{Binding Requirement}"/>
-                        <GridViewColumn Header="UofM" Width="80" DisplayMemberBinding="{Binding Units}"/>
+                        <GridViewColumn Header="UofM" Width="70" DisplayMemberBinding="{Binding Units}"/>
                         <GridViewColumn Header="Characteristic Designator" Width="160" DisplayMemberBinding="{Binding CharacteristicDesignator}"/>
                         <GridViewColumn Header="+ Tolerance" Width="75" DisplayMemberBinding="{Binding PlusTolerance}"/>
                         <GridViewColumn Header="- Tolerance" Width="75" DisplayMemberBinding="{Binding MinusTolerance}"/>
@@ -110,12 +110,14 @@
             <ComboBoxItem Content="Angularity"/>
             <ComboBoxItem Content="Cirularlarity"/>
             <ComboBoxItem Content="Cylindricity"/>
+            <ComboBoxItem Content="Depth"/>
             <ComboBoxItem Content="Diametric"/>
             <ComboBoxItem Content="Flatness"/>
             <ComboBoxItem Content="Note"/>
             <ComboBoxItem Content="Parrallelism"/>
             <ComboBoxItem Content="Perpendicularity"/>
             <ComboBoxItem Content="Positional"/>
+            <ComboBoxItem Content="Radius"/>
             <ComboBoxItem Content="Runout"/>
             <ComboBoxItem Content="Thread Callout"/>
         </ComboBox>
