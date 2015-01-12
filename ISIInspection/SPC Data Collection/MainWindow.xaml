@@ -21,14 +21,14 @@
                 <TextBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" Height="23" Margin="71,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
                 <Label Content="Type" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="71,0,0,0" Width="100"/>
                 <TextBox x:Name="TxtBoxIPId" HorizontalAlignment="Left" Height="23" Margin="6,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="#FFFFFFBE"/>
-                <TextBox x:Name="TxtBoxIPAql" HorizontalAlignment="Left" Height="23" Margin="176,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
-                <Label Content="AQL%" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,0,0,0" Width="100"/>
-                <TextBox x:Name="TxtBoxIPLvl" HorizontalAlignment="Left" Height="23" Margin="281,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
-                <Label Content="Level" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="258,1,0,0" Width="146"/>
-                <TextBox x:Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="386,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
-                <Label Content="Acc Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,0,0,0" Width="100"/>
-                <TextBox x:Name="TxtBoxIPQty" HorizontalAlignment="Left" Height="23" Margin="491,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
-                <Label Content="Qty" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="508,0,0,0" Width="65"/>
+                <TextBox x:Name="TxtBoxIPAql" HorizontalAlignment="Left" Height="23" Margin="232,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+                <Label Content="AQL%" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="232,0,0,0" Width="100"/>
+                <TextBox x:Name="TxtBoxIPLvl" HorizontalAlignment="Left" Height="23" Margin="337,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+                <Label Content="Level" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="314,1,0,0" Width="146"/>
+                <TextBox x:Name="TxtBoxIPAcptDefect" HorizontalAlignment="Left" Height="23" Margin="442,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
+                <Label Content="Acc Defects" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="442,0,0,0" Width="100"/>
+                <TextBox x:Name="TxtBoxIPQty" HorizontalAlignment="Left" Height="23" Margin="177,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Background="#FFFFFFBE"/>
+                <Label Content="Qty" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="177,0,0,0" Width="50"/>
                 <ListView x:Name="DataGridMeasurements" Margin="6,54,6,6">
                     <ListView.View>
                         <GridView>
@@ -71,7 +71,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <SPC_Data_Collection:UserStatus Margin="0,0,9.6,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right" Loaded="UserStatus_Loaded"/>
+        <SPC_Data_Collection:UserStatus Margin="0,0,9.6,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right"/>
         <Button x:Name="BtnWorkOrderFirst" Content="First" HorizontalAlignment="Left" Margin="23,160,0,0" VerticalAlignment="Top" Width="65">
         </Button>
         <Button x:Name="BtnWorkOrderPrev" Content="Prev" HorizontalAlignment="Left" Margin="93,160,0,0" VerticalAlignment="Top" Width="65"/>
