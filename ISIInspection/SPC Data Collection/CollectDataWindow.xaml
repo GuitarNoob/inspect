@@ -93,10 +93,10 @@
                         </Style>
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Inspection Device" Width="150" Binding="{Binding SetPoint.InspectionDevice}" IsReadOnly="True"/>
+                <DataGridComboBoxColumn Header="Inspection Device" Width="150" SelectedItemBinding="{Binding InspectionDeviceSelection}" ItemsSource="{Binding Path=InspectionDeviceOptions}" />                
                 <DataGridTextColumn Header="Inspection Device Description" Width="150" Binding="{Binding SetPoint.InspectionDevice}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Measured Value" Width="Auto" Binding="{Binding Measured, Mode=TwoWay}"/>
-                <DataGridTextColumn Header="Inspector Comment" Width="Auto" Binding="{Binding }" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Inspector Comment" Width="Auto" Binding="{Binding InspectionComment, Mode=TwoWay}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="User" Width="Auto" Binding="{Binding UserDisplayName}" IsReadOnly="True">
                     <DataGridTextColumn.CellStyle>
                         <Style TargetType="{x:Type DataGridCell}">

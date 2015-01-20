@@ -28,6 +28,7 @@ namespace SPC_Data_Collection
         WorkOrder m_workOrder { get; set; }
         InspectionPlan m_inspectionPlan { get; set; }
         ObservableCollection<PartMeasurementSP> m_measurementCriteria { get; set; }
+        List<PartMeasurementSP> m_deletedMeasurements = new List<PartMeasurementSP>();
 
         public CreatePlan(WorkOrder workOrder)
         {
@@ -138,8 +139,8 @@ namespace SPC_Data_Collection
                 TxtBoxDimNote.Text = measurement.Note;
                 TxtBoxDimComment.Text = measurement.Comment;
 
-                ComboBoxUofM.SelectedItem = measurement.Units;
-                ComboBoxCharDesig.SelectedItem = measurement.CharacteristicDesignator;
+                ComboBoxUofM.Text = measurement.Units;
+                ComboBoxCharDesig.Text = measurement.CharacteristicDesignator;
                 //ComboBoxInspectionDevice.SelectedItem = measurement.InspectionDevice;
             }
 
@@ -160,6 +161,13 @@ namespace SPC_Data_Collection
                 App.Engine.Database.isiEngine.InspectionDb.Entry(ipOriginal).CurrentValues.SetValues(ip);
             else
                 App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Add(ip);
+
+            foreach (PartMeasurementSP deletedSP in m_deletedMeasurements)
+            {
+                var spOriginal = App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Find(deletedSP.PartMeasurementSPId);
+                if (spOriginal != null)                    
+                    App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Remove(deletedSP);
+            }
 
             foreach (PartMeasurementSP newSetpoint in m_measurementCriteria)
             {
@@ -1018,6 +1026,18 @@ namespace SPC_Data_Collection
         private void ComboBoxCharDesig_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckNoteSelection();
+        }
+
+        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataGridResults.SelectedItem == null)
+                return;
+            ISIInspection.Models.PartMeasurementSP cali = DataGridResults.SelectedItem as ISIInspection.Models.PartMeasurementSP;
+            if (cali == null)
+                return;
+            m_measurementCriteria.Remove(cali);
+            m_deletedMeasurements.Add(cali);
+            DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
         }
     }
 }

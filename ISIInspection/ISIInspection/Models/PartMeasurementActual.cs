@@ -13,6 +13,7 @@ namespace ISIInspection.Models
         public decimal MeasuredValue { get; set; }
         public string InspectionDevice { get; set; }
         public int QuantityNumber { get; set; }
+        public string InspectionComment { get; set; }
 
         //Mietrak
         public int UserId { get; set; }

@@ -56,12 +56,14 @@ namespace SPC_Data_Collection
             if (iplan == null || iplan.MeasurementCriteria == null)
                 return;
 
+            List<ISIInspection.Models.Calibration> inspectionDevices = App.Engine.Database.isiEngine.InspectionDb.DeviceCalibration.ToList();
+
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x => x.CharNumber))
             {
                 int index = 1;
                 if (sp.Measurements != null)
                     foreach (PartMeasurementActual measurement in sp.Measurements)
-                        measurementCollectors.Add(new MeasurementCollector(measurement, index++));
+                        measurementCollectors.Add(new MeasurementCollector(measurement, index++, inspectionDevices));
             }
             DataGridMeasurements.ItemsSource = measurementCollectors;
         }
@@ -82,6 +84,8 @@ namespace SPC_Data_Collection
                     {
                         spOriginal.CompletedTime = DateTime.Now;
                         spOriginal.MeasuredValue = collector.Measured;
+                        spOriginal.InspectionComment = collector.InspectionComment;
+                        spOriginal.InspectionDevice = collector.InspectionDeviceSelection;
                         spOriginal.UserId = App.Engine.CurrentUser.UserPK;
                     }
                 }
@@ -203,14 +207,18 @@ namespace SPC_Data_Collection
 
     public class MeasurementCollector
     {
+        public ObservableCollection<string> InspectionDeviceOptions = new ObservableCollection<string>();
         public string DisplayCharNumber { get; set; }
         public PartMeasurementSP SetPoint { get; set; }
         public PartMeasurementActual ActualMeasurement { get; set; }
         public bool IsReadOnly = false;
         public bool IsUpdated = false;
-
+        
         public decimal UpperLimit { get; set; }
         public decimal LowerLimit { get; set; }
+
+        public string InspectionDeviceSelection { get; set; }
+        public string InspectionComment { get; set; }
 
         private decimal m_Measured = -1;
         public decimal Measured
@@ -234,13 +242,16 @@ namespace SPC_Data_Collection
 
         public string CompletedTime { get; set; }
 
-        public MeasurementCollector(PartMeasurementActual actual, int CharNum)
+        public MeasurementCollector(PartMeasurementActual actual, int CharNum, List<ISIInspection.Models.Calibration> inspectionDeviceOptions)
         {
+            inspectionDeviceOptions.Select(x => x.SerialNumber).ToList().ForEach(x => InspectionDeviceOptions.Add(x));
             SetPoint = actual.PartMeasurementSP;
             UpperLimit = SetPoint.Requirement + SetPoint.PlusTolerance;
             LowerLimit = SetPoint.Requirement - SetPoint.MinusTolerance;
             ActualMeasurement = actual;           
             m_Measured = actual.MeasuredValue;
+            InspectionComment = actual.InspectionComment;
+            InspectionDeviceSelection = actual.InspectionDevice;
             DisplayCharNumber = SetPoint.CharNumber + "." + CharNum;
 
             if (actual.CompletedTime > new DateTime(1975, 1, 1)) // this is the min time that can be saved into MS SQL
