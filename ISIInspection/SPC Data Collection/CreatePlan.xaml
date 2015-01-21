@@ -89,6 +89,11 @@
         </GroupBox>
         <GroupBox Header="Dimensional Criteria" Margin="13,326,2,65" Background="#FFF0F0F0" BorderThickness="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <ListView x:Name="DataGridResults" Margin="10,100,11,8" SelectionChanged="DataGrid_SelectionChanged" >
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Delete Setpoint" Click="MenuItemDelete_Click"></MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Char" Width="45" DisplayMemberBinding="{Binding CharNumber}"/>

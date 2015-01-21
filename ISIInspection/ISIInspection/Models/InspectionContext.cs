@@ -11,12 +11,17 @@ namespace ISIInspection.Models
     {
         public InspectionContext()
             : base("name=INSPECTIONEntities")
-        {            
+        {
             Database.SetInitializer<InspectionContext>(new CreateDatabaseIfNotExists<InspectionContext>());
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DefaultTolerance>().Property(x => x.Value).HasPrecision(16, 4);
+        }
+
         public DbSet<FabricatedPart> FabricatedParts { get; set; }
-        public DbSet<InspectionPlan> InspectionPlans { get; set; }        
+        public DbSet<InspectionPlan> InspectionPlans { get; set; }
         public DbSet<MeasurementComment> MeasurementComments { get; set; }
         public DbSet<PartMeasurementSP> MeasurementSetpoints { get; set; }
         public DbSet<PartMeasurementActual> MeasurementActual { get; set; }
