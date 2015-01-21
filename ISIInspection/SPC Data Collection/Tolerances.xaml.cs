@@ -46,34 +46,34 @@ namespace SPC_Data_Collection
 
         void LoadValues()
         {
-            ToleranceMetricX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X, SPCEngine.ToleranceUnits.Metric).ToString();
-            ToleranceMetricX_X.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_X, SPCEngine.ToleranceUnits.Metric).ToString();
-            ToleranceMetricX_XX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XX, SPCEngine.ToleranceUnits.Metric).ToString();
-            ToleranceMetricX_XXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXX, SPCEngine.ToleranceUnits.Metric).ToString();
-            ToleranceMetricX_XXXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXXX, SPCEngine.ToleranceUnits.Metric).ToString();
+            ToleranceMetricX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X, SPCEngine.ToleranceUnits.Metric).ToString("0");
+            ToleranceMetricX_X.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_X, SPCEngine.ToleranceUnits.Metric).ToString("0.0");
+            ToleranceMetricX_XX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XX, SPCEngine.ToleranceUnits.Metric).ToString("0.00");
+            ToleranceMetricX_XXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXX, SPCEngine.ToleranceUnits.Metric).ToString("0.000");
+            ToleranceMetricX_XXXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXXX, SPCEngine.ToleranceUnits.Metric).ToString("0.0000");
             ToleranceMetricAngular.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.Angular, SPCEngine.ToleranceUnits.Metric).ToString();
 
-            ToleranceInchX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X, SPCEngine.ToleranceUnits.Inch).ToString();
-            ToleranceInchX_X.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_X, SPCEngine.ToleranceUnits.Inch).ToString();
-            ToleranceInchX_XX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XX, SPCEngine.ToleranceUnits.Inch).ToString();
-            ToleranceInchX_XXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXX, SPCEngine.ToleranceUnits.Inch).ToString();
-            ToleranceInchX_XXXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXXX, SPCEngine.ToleranceUnits.Inch).ToString();
+            ToleranceInchX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X, SPCEngine.ToleranceUnits.Inch).ToString("0");
+            ToleranceInchX_X.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_X, SPCEngine.ToleranceUnits.Inch).ToString("0.0");
+            ToleranceInchX_XX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XX, SPCEngine.ToleranceUnits.Inch).ToString("0.00");
+            ToleranceInchX_XXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXX, SPCEngine.ToleranceUnits.Inch).ToString("0.000");
+            ToleranceInchX_XXXX.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.X_XXXX, SPCEngine.ToleranceUnits.Inch).ToString("0.0000");
             ToleranceInchAngular.Text = App.Engine.DefaultTolerances.GetDefaultTolerance(SPCEngine.ToleranceType.Angular, SPCEngine.ToleranceUnits.Inch).ToString();
         }
 
         void Save()
         {
-            decimal toleranceMetricX = Convert.ToDecimal(ToleranceMetricX.Text);
-            decimal toleranceMetricX_X = Convert.ToDecimal(ToleranceMetricX_X.Text);
-            decimal toleranceMetricX_XX = Convert.ToDecimal(ToleranceMetricX_XX.Text);
-            decimal toleranceMetricX_XXX = Convert.ToDecimal(ToleranceMetricX_XXX.Text);
+            decimal toleranceMetricX = Math.Round(Convert.ToDecimal(ToleranceMetricX.Text), 0);
+            decimal toleranceMetricX_X = Math.Round(Convert.ToDecimal(ToleranceMetricX_X.Text), 1);
+            decimal toleranceMetricX_XX = Math.Round(Convert.ToDecimal(ToleranceMetricX_XX.Text), 2);
+            decimal toleranceMetricX_XXX = Math.Round(Convert.ToDecimal(ToleranceMetricX_XXX.Text), 3);
             decimal toleranceMetricX_XXXX = Convert.ToDecimal(ToleranceMetricX_XXXX.Text);
             decimal toleranceMetricAngular = Convert.ToDecimal(ToleranceMetricAngular.Text);
 
-            decimal toleranceInchX = Convert.ToDecimal(ToleranceInchX.Text);
-            decimal toleranceInchX_X = Convert.ToDecimal(ToleranceInchX_X.Text);
-            decimal toleranceInchX_XX = Convert.ToDecimal(ToleranceInchX_XX.Text);
-            decimal toleranceInchX_XXX = Convert.ToDecimal(ToleranceInchX_XXX.Text);
+            decimal toleranceInchX = Math.Round(Convert.ToDecimal(ToleranceInchX.Text), 0);
+            decimal toleranceInchX_X = Math.Round(Convert.ToDecimal(ToleranceInchX_X.Text), 1);
+            decimal toleranceInchX_XX = Math.Round(Convert.ToDecimal(ToleranceInchX_XX.Text), 2);
+            decimal toleranceInchX_XXX = Math.Round(Convert.ToDecimal(ToleranceInchX_XXX.Text), 3);
             decimal toleranceInchX_XXXX = Convert.ToDecimal(ToleranceInchX_XXXX.Text);
             decimal toleranceInchAngular = Convert.ToDecimal(ToleranceInchAngular.Text);
 
