@@ -57,11 +57,6 @@ namespace SPC_Data_Collection
             this.Close();
         }
 
-        private void ButtonCreateEdit_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.CreateEditPlan();
-        }
-
         private void BtnWorkOrderSearch_Click(object sender, RoutedEventArgs e)
         {
             string type = ((ComboBoxType.SelectedItem ?? "") as ComboBoxItem).Content.ToString();
@@ -89,7 +84,7 @@ namespace SPC_Data_Collection
             {
                 if (item is WorkOrder)
                 {
-                    App.Engine.InspectionPlanMgr.LoadWorkOrder((WorkOrder)item);
+                    App.Engine.InspectionPlanMgr.SetSelectedWorkOrder((WorkOrder)item);
                     ReloadUI();
                 }
             }
@@ -101,6 +96,13 @@ namespace SPC_Data_Collection
             FillWOTextBoxes();
             FillIPTextBoxes();
             EnableDisableButtons();
+            ReloadInspectionPlanList();
+        }
+
+        void ReloadInspectionPlanList()
+        {
+            WorkOrder wo = App.Engine.InspectionPlanMgr.SelectedWorkOrder ?? new WorkOrder();
+            DataGridInspectionPlan.ItemsSource = App.Engine.InspectionPlanMgr.GetInspectionPlan(wo);
         }
 
         void EnableDisableButtons()
@@ -155,6 +157,22 @@ namespace SPC_Data_Collection
             {
                 e.Cancel = true;
             }
+        }
+
+        private void DataGridInspectionPlan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object item = DataGridInspectionPlan.SelectedItem;
+            if (item != null)
+            {
+                if (item is InspectionPlan)
+                {
+                    App.Engine.InspectionPlanMgr.LoadInspectionPlan((InspectionPlan)item);                    
+                }
+            }
+            else
+                App.Engine.InspectionPlanMgr.LoadInspectionPlan(null);
+
+            ReloadUI();
         }
     }
 }

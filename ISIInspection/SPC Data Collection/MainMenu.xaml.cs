@@ -37,12 +37,12 @@ namespace SPC_Data_Collection
 
         private void PlanNew_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.CreateEditPlan();
+            App.Current.CreatePlan();
         }
 
         private void PlanEdit_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.CreateEditPlan();
+            App.Current.EditPlan();
         }
 
         private void PlanCollect_Click(object sender, RoutedEventArgs e)

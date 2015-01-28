@@ -15,7 +15,7 @@
             </ComboBox>
         </GroupBox>
         <Border BorderBrush="Black" BorderThickness="1" Background="#FF00C8FF" Margin="0" Height="60" VerticalAlignment="Bottom"/>
-        <GroupBox Header="Inspection Plan" Margin="10,339,8,65" Background="#FFF0F0F0">
+        <GroupBox Header="Inspection Plan" Margin="484,339,8,65" Background="#FFF0F0F0">
             <Grid>
                 <Label Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,0,0,0" Width="24"/>
                 <TextBox x:Name="TxtBoxIPType" HorizontalAlignment="Left" Height="23" Margin="71,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="#FFFFFFBE"/>
@@ -77,5 +77,17 @@
         <Button x:Name="BtnWorkOrderPrev" Content="Prev" HorizontalAlignment="Left" Margin="93,160,0,0" VerticalAlignment="Top" Width="65"/>
         <Button x:Name="BtnWorkOrderNext" Content="Next" HorizontalAlignment="Left" Margin="163,160,0,0" VerticalAlignment="Top" Width="65"/>
         <Button x:Name="BtnWorkOrderLast" Content="Last" HorizontalAlignment="Left" Margin="233,160,0,0" VerticalAlignment="Top" Width="65"/>
+        <GroupBox Header="Inspection Plan Select" HorizontalAlignment="Left" Margin="12,337,0,65" Width="467" Background="#FFF0F0F0" BorderThickness="2">
+            <ListView x:Name="DataGridInspectionPlan" Margin="10,17,0,8" HorizontalAlignment="Left" Width="437" SelectionChanged="DataGridInspectionPlan_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding InspectionPlanKey}"/>
+                        <GridViewColumn Header="Type" Width="120" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="AQL" Width="120" DisplayMemberBinding="{Binding AQLPercentage}"/>
+                        <GridViewColumn Header="Level" Width="120" DisplayMemberBinding="{Binding Level}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
     </Grid>
 </Window>
