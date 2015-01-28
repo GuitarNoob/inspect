@@ -114,6 +114,9 @@
             <ComboBoxItem Content="Linear"/>
             <ComboBoxItem Content="Angularity"/>
             <ComboBoxItem Content="Cirularlarity"/>
+            <ComboBoxItem Content="Chamfer"/>
+            <ComboBoxItem Content="Counterbore"/>
+            <ComboBoxItem Content="Countersink"/>
             <ComboBoxItem Content="Cylindricity"/>
             <ComboBoxItem Content="Depth"/>
             <ComboBoxItem Content="Diametric"/>
@@ -123,6 +126,7 @@
             <ComboBoxItem Content="Perpendicularity"/>
             <ComboBoxItem Content="Positional"/>
             <ComboBoxItem Content="Radius"/>
+            <ComboBoxItem Content="REMOVED"/>
             <ComboBoxItem Content="Runout"/>
             <ComboBoxItem Content="Thread Callout"/>
         </ComboBox>
