@@ -16,7 +16,7 @@ namespace SPCEngine
         public WorkOrder SelectedWorkOrder
         {
             get { return selectedWO; }
-            private set 
+            private set
             {
                 if (selectedWO != value)
                 {
@@ -39,22 +39,29 @@ namespace SPCEngine
             m_parent = parent;
         }
 
-        public void LoadWorkOrder(WorkOrder wo)
+        public void SetSelectedWorkOrder(WorkOrder wo)
         {
-            GetInspectionPlan(wo);
+            SelectedIP = null;
             SelectedWorkOrder = wo;
         }
 
-        void GetInspectionPlan(WorkOrder wo)
+        public void LoadWorkOrderAndIp(WorkOrder wo, InspectionPlan ip)
+        {
+            LoadInspectionPlan(ip);
+            SelectedWorkOrder = wo;
+        }
+
+        public List<InspectionPlan> GetInspectionPlan(WorkOrder wo)
         {
             if (wo == null)
-                return;
+                return null;
             //find the inspection plans with this router
-            List<InspectionPlan> iPlans = m_parent.Database.isiEngine.InspectionDb.InspectionPlans.Where(x => x.RouterFK == wo.RouterFK).ToList();
-            if (iPlans.Count > 0)
-                selectedInspectionPlan = iPlans[0];
-            else
-                selectedInspectionPlan = null;
+            return m_parent.Database.isiEngine.InspectionDb.InspectionPlans.Where(x => x.RouterFK == wo.RouterFK).ToList();
+        }
+
+        public void LoadInspectionPlan(InspectionPlan ip)
+        {
+            selectedInspectionPlan = ip;
         }
 
         public void ReloadInspectionPlan()

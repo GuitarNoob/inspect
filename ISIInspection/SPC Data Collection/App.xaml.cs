@@ -19,7 +19,23 @@ namespace SPC_Data_Collection
 
         public static App Current { get { return (App)Application.Current; } }
 
-        public void CreateEditPlan()
+        public void CreatePlan()
+        {
+            if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
+            {
+                MessageBox.Show("No Work Order is currently selected.",
+                    "No Work Order selected!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            CreatePlan createPlan = null;
+            createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder);
+
+            createPlan.Owner = App.Current.MainWindow;
+            createPlan.ShowDialog();
+            (App.Current.MainWindow as MainWindow).ReloadUI();
+        }
+
+        public void EditPlan()
         {
             if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
             {
@@ -30,9 +46,13 @@ namespace SPC_Data_Collection
             CreatePlan createPlan = null;
 
             if (App.Engine.InspectionPlanMgr.SelectedIP == null)
-                createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder);
-            else
-                createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
+            {
+                MessageBox.Show("No Inspection Plan is currently selected.",
+                    "No Inspection Plan selected!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            createPlan = new CreatePlan(App.Engine.InspectionPlanMgr.SelectedWorkOrder, App.Engine.InspectionPlanMgr.SelectedIP);
 
             createPlan.Owner = App.Current.MainWindow;
             createPlan.ShowDialog();
