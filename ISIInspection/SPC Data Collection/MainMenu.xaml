@@ -15,8 +15,8 @@
                 <MenuItem Name="PlanNew" Header="New" HorizontalAlignment="Left" Width="144.8" Click="PlanNew_Click"/>
                 <MenuItem Name="PlanEdit" Header="Edit" HorizontalAlignment="Left" Width="144.8" Click="PlanEdit_Click"/>
                 <MenuItem Name="PlanCollect" Header="Collect" HorizontalAlignment="Left" Width="144.8" Click="PlanCollect_Click"/>
-                <MenuItem Name="PlanImport" Header="Import" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
-                <MenuItem Name="PlanExport" Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
+                <MenuItem Name="PlanImport" Header="Import" HorizontalAlignment="Left" Width="144.8" Click="PlanImport_Click"/>
+                <MenuItem Name="PlanExport" Header="Export" HorizontalAlignment="Left" Width="144.8" Click="PlanExport_Click"/>
                 <MenuItem x:Name="PlanExit" Header="Exit" HorizontalAlignment="Left" Width="144.8"/>
 
             </MenuItem>

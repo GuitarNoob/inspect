@@ -19,6 +19,39 @@ namespace SPC_Data_Collection
 
         public static App Current { get { return (App)Application.Current; } }
 
+        public void ImportPlan(InspectionPlan ip, bool useSelectedWorkOrder = true)
+        {
+            if (useSelectedWorkOrder)
+            {
+                if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
+                {
+                    MessageBox.Show("No Work Order is currently selected.",
+                        "No Work Order selected!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                ip.RouterFK = App.Engine.InspectionPlanMgr.SelectedWorkOrder.RouterFK ?? -1;
+            }
+            
+            var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);
+            if (ipOriginal != null)
+                throw new Exception("Inspection plan id exists!");
+            else
+                App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Add(ip);
+
+            //NOTE: these will automatically be added when adding the inspection plan in the code above
+            foreach (PartMeasurementSP newSetpoint in ip.MeasurementCriteria)
+            {
+                //just double check they are there and add them if they are not in the database
+                var spOriginal = App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Find(newSetpoint.PartMeasurementSPId);
+                if (spOriginal == null)                                    
+                    App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Add(newSetpoint);
+            }
+
+            App.Engine.Database.isiEngine.InspectionDb.SaveChanges();
+            (App.Current.MainWindow as MainWindow).ReloadUI();
+        }
+
         public void CreatePlan()
         {
             if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)

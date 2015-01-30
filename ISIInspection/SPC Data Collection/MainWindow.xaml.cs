@@ -102,7 +102,7 @@ namespace SPC_Data_Collection
         void ReloadInspectionPlanList()
         {
             WorkOrder wo = App.Engine.InspectionPlanMgr.SelectedWorkOrder ?? new WorkOrder();
-            DataGridInspectionPlan.ItemsSource = App.Engine.InspectionPlanMgr.GetInspectionPlan(wo);
+            DataGridInspectionPlan.ItemsSource = App.Engine.InspectionPlanMgr.GetInspectionPlan(wo).OrderBy(x=>x.InspectionPlanKey);
         }
 
         void EnableDisableButtons()

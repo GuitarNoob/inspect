@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ISIInspection.Models;
+using Microsoft.Win32;
+using SPCEngine.ImportExport;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +61,44 @@ namespace SPC_Data_Collection
         private void Calibration_Click(object sender, RoutedEventArgs e)
         {
             App.Current.EditCalibration();
-        }        
+        }
+
+        private void PlanExport_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Engine.InspectionPlanMgr.SelectedIP == null)
+            {
+                MessageBox.Show("No Inspection Plan loaded! Select an Inspection Plan to export.");
+                return;
+            }
+
+            SaveFileDialog win = new SaveFileDialog();
+            win.Filter = "ISI Inspection Files (.isi)|*.isi|All Files (*.*)|*.*";
+            if (win.ShowDialog() == true)
+            {
+                if (win.FileName != String.Empty)
+                    InspectionPlanExporter.ExportIP(App.Engine.InspectionPlanMgr.SelectedIP, win.FileName);
+            }
+        }
+
+        private void PlanImport_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Engine.InspectionPlanMgr.SelectedWorkOrder == null)
+            {
+                MessageBox.Show("No Work Order seleceted! Select a Work Order to import an inspection plan into.");
+                return;
+            }
+
+            OpenFileDialog win = new OpenFileDialog();
+            win.Filter = "ISI Inspection Files (.isi)|*.isi|All Files (*.*)|*.*";
+            if (win.ShowDialog() == true)
+            {
+                if (win.FileName != String.Empty)
+                {
+                    InspectionPlan importIp = InspectionPlanImporter.ImportIP(win.FileName);
+                    InspectionPlanImporter.CreateNewGuids(importIp);
+                    App.Current.ImportPlan(importIp);
+                }
+            }
+        }
     }
 }
