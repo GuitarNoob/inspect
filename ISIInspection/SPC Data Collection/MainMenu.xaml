@@ -21,13 +21,17 @@
 
             </MenuItem>
             <MenuItem Header="_Reports">
-                <MenuItem Header="Form 120" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
+                <MenuItem Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="True"/>
             </MenuItem>
             <MenuItem Header="_Maintenance" >
                 <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>
             </MenuItem>
             <MenuItem Header="_Settings">
                 <MenuItem Header="Tolerances" Name="DefaultTolerances" HorizontalAlignment="Left" Width="145" Click="DefaultTolerances_Click"/>
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="FAI" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="PPAP" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>
