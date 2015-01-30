@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ISIInspection.Models
 {
+    [Serializable]
     public class PartMeasurementSP
     {
         public Guid PartMeasurementSPId { get; set; }        
@@ -22,9 +24,11 @@ namespace ISIInspection.Models
 
         //Parent Inspection Plan
         public Guid InspectionPlanId { get; set; }
+        [IgnoreDataMember]
         public virtual InspectionPlan InspectionPlan { get; set; }
 
-        //Child Measurement
+        //Child Measurement   
+        [IgnoreDataMember]
         public virtual List<PartMeasurementActual> Measurements { get; set; }  
     }
 }

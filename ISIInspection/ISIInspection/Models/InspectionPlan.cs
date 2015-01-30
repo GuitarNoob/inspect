@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ISIInspection.Models
 {
+    [Serializable]
     public class InspectionPlan
     {
         [Key]

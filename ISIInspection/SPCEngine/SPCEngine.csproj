@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImportExport\InspectionPlanExporter.cs" />
+    <Compile Include="ImportExport\InspectionPlanImporter.cs" />
     <Compile Include="SPCDatabaseManager.cs" />
     <Compile Include="SPCDefaultTolerance.cs" />
     <Compile Include="SPCEngine.cs" />
