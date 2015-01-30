@@ -141,6 +141,8 @@ namespace SPC_Data_Collection
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("UofM");
                 sb.Append(SEPERATOR_CHAR);
+                sb.Append("MeasureValue");
+                sb.Append(SEPERATOR_CHAR);
                 sb.Append("UpperLimit");
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("LowerLimit");
@@ -150,8 +152,6 @@ namespace SPC_Data_Collection
                 sb.Append("InspectionDevice");
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("Comment");
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append("MeasureValue");
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("User");
                 sb.Append(SEPERATOR_CHAR);
@@ -169,6 +169,8 @@ namespace SPC_Data_Collection
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.Units);
                     sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].Measured);
+                    sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.PlusTolerance);
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.MinusTolerance);
@@ -178,8 +180,6 @@ namespace SPC_Data_Collection
                     sb.Append(""); // inspection device
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(""); //need to add comment
-                    sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].Measured);
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].UserDisplayName);
                     sb.Append(SEPERATOR_CHAR);
