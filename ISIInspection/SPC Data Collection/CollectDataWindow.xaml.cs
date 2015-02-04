@@ -27,6 +27,7 @@ namespace SPC_Data_Collection
     {
         const string SEPERATOR_CHAR = ",";
         ObservableCollection<MeasurementCollector> measurementCollectors = new ObservableCollection<MeasurementCollector>();
+        public ObservableCollection<string> InspectionDeviceOptions = new ObservableCollection<string>();
 
         public CollectDataWindow(WorkOrder workOrder, InspectionPlan inspectionPlan)
         {
@@ -57,13 +58,15 @@ namespace SPC_Data_Collection
                 return;
 
             List<ISIInspection.Models.Calibration> inspectionDevices = App.Engine.Database.isiEngine.InspectionDb.DeviceCalibration.ToList();
-
+            InspectionDeviceOptions.Clear();
+            inspectionDevices.ForEach(x => InspectionDeviceOptions.Add(x.SerialNumber));
+            ComboBoxDevice.ItemsSource = InspectionDeviceOptions;
             foreach (PartMeasurementSP sp in iplan.MeasurementCriteria.OrderBy(x => x.CharNumber))
             {
                 int index = 1;
                 if (sp.Measurements != null)
                     foreach (PartMeasurementActual measurement in sp.Measurements)
-                        measurementCollectors.Add(new MeasurementCollector(measurement, index++, inspectionDevices));
+                        measurementCollectors.Add(new MeasurementCollector(measurement, index++));
             }
             DataGridMeasurements.ItemsSource = measurementCollectors;
         }
@@ -207,7 +210,6 @@ namespace SPC_Data_Collection
 
     public class MeasurementCollector
     {
-        public ObservableCollection<string> InspectionDeviceOptions = new ObservableCollection<string>();
         public string DisplayCharNumber { get; set; }
         public PartMeasurementSP SetPoint { get; set; }
         public PartMeasurementActual ActualMeasurement { get; set; }
@@ -242,9 +244,9 @@ namespace SPC_Data_Collection
 
         public string CompletedTime { get; set; }
 
-        public MeasurementCollector(PartMeasurementActual actual, int CharNum, List<ISIInspection.Models.Calibration> inspectionDeviceOptions)
+        public MeasurementCollector(PartMeasurementActual actual, int CharNum)
         {
-            inspectionDeviceOptions.Select(x => x.SerialNumber).ToList().ForEach(x => InspectionDeviceOptions.Add(x));
+            //inspectionDeviceOptions.Select(x => x.SerialNumber).ToList().ForEach(x => InspectionDeviceOptions.Add(x));
             SetPoint = actual.PartMeasurementSP;
             UpperLimit = SetPoint.Requirement + SetPoint.PlusTolerance;
             LowerLimit = SetPoint.Requirement - SetPoint.MinusTolerance;
