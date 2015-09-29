@@ -231,10 +231,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Merlin_ISI_Logo_Symbol.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Merlin ISI Logo IDC.jpg" />
+    <Resource Include="Images\Allegrotek ISI Button.jpg" />
+    <Resource Include="Images\Allegrotek ISI Logo.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
