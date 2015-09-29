@@ -74,6 +74,9 @@ namespace SPC_Data_Collection
                 case "Part Number":
                     DataGridResults.ItemsSource = App.Current.SearchForPartNumber(search);
                     break;
+                case "Plan ID":
+                    //DataGridResults.ItemsSource = App.Current.SearchForPartNumber(search);                    
+                    break;
             }
         }
 

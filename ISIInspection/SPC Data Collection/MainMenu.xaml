@@ -37,7 +37,7 @@
                 <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>
             </MenuItem>
         </Menu>
-        <Image HorizontalAlignment="Left" Height="50" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="46" Source="Images\Merlin_ISI_Logo_Symbol.jpg"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="46" Source="C:\Users\Stan\Documents\Allegrotek ISI\Logo\Allegrotek ISI Button.jpg"/>
 
     </Grid>
 </UserControl>

@@ -125,6 +125,13 @@ namespace SPC_Data_Collection
             return App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.PartNumber.Contains(search)).ToList();
         }
 
+        //public List<WorkOrder> SearchForPlanID(long search)
+        //{
+        //    //List<InspectionPlan> ip = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Where(x => x.InspectionPlanKey == search).ToList();
+        //    //ip[0].RouterFK
+        //    //return App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.Where(x => x.IP.Contains(search)).ToList();
+        //}
+
         public List<WorkOrder> GetAllWorkOrders()
         {
             return App.Engine.Database.mietrakConn.mietrakDb.WorkOrders.ToList();

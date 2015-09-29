@@ -46,7 +46,7 @@ namespace SPC_Data_Collection
                         MeasurementCollector model = (MeasurementCollector)focusedElement.DataContext;
                         if (model.IsReadOnly)
                         {
-                            args.Handled = true;
+                            args.Handled = false;
                         }
                     }
                 }));
@@ -140,25 +140,29 @@ namespace SPC_Data_Collection
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("Ref");
                 sb.Append(SEPERATOR_CHAR);
+                sb.Append("Char Designator");
+                sb.Append(SEPERATOR_CHAR);
                 sb.Append("Requirement");
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("UofM");
                 sb.Append(SEPERATOR_CHAR);
-                sb.Append("MeasureValue");
+                sb.Append("Measured Value");
                 sb.Append(SEPERATOR_CHAR);
-                sb.Append("UpperLimit");
+                sb.Append("Upper Limit");
                 sb.Append(SEPERATOR_CHAR);
-                sb.Append("LowerLimit");
+                sb.Append("Lower Limit");
                 sb.Append(SEPERATOR_CHAR);
-                sb.Append("CharDesignator");
+                sb.Append("Inspection Device");
                 sb.Append(SEPERATOR_CHAR);
-                sb.Append("InspectionDevice");
-                sb.Append(SEPERATOR_CHAR);
-                sb.Append("Comment");
+                sb.Append("Devise Description");
                 sb.Append(SEPERATOR_CHAR);
                 sb.Append("User");
                 sb.Append(SEPERATOR_CHAR);
-                sb.Append("MeasuredTime");
+                sb.Append("Measured Time");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("Note");
+                sb.Append(SEPERATOR_CHAR);
+                sb.Append("Comment");
                 sb.Append(Environment.NewLine);
 
                 //write each row
@@ -168,17 +172,17 @@ namespace SPC_Data_Collection
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.RefLocation);
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.Requirement);
+                    sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
+                    sb.Append(SEPERATOR_CHAR);
+                    sb.Append(measurementCollectors[i].SetPoint.Requirement.ToString("0.000"));
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(measurementCollectors[i].SetPoint.Units);
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].Measured);
+                    sb.Append(measurementCollectors[i].Measured.ToString ("0.000"));
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.PlusTolerance);
+                    sb.Append(measurementCollectors[i].SetPoint.PlusTolerance.ToString("0.000"));
                     sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.MinusTolerance);
-                    sb.Append(SEPERATOR_CHAR);
-                    sb.Append(measurementCollectors[i].SetPoint.CharacteristicDesignator);
+                    sb.Append(measurementCollectors[i].SetPoint.MinusTolerance.ToString("0.000"));
                     sb.Append(SEPERATOR_CHAR);
                     sb.Append(""); // inspection device
                     sb.Append(SEPERATOR_CHAR);
