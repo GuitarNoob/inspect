@@ -227,9 +227,9 @@ namespace SPC_Data_Collection
                 DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
                 RefreshIPFields(null);
             }
-            catch
+            catch (Exception ex)
             {
-                ShowErrorMessage();
+                ShowErrorMessage(ex);
             }
         }
 
@@ -261,15 +261,15 @@ namespace SPC_Data_Collection
                 DataGridResults.ItemsSource = null;
                 DataGridResults.ItemsSource = m_measurementCriteria.OrderBy(x => x.CharNumber);
             }
-            catch
+            catch (Exception ex)
             {
-                ShowErrorMessage();
+                ShowErrorMessage(ex);
             }
         }
 
-        void ShowErrorMessage()
+        void ShowErrorMessage(Exception ex)
         {
-            MessageBox.Show("Unable to save the measurement criteria.",
+            MessageBox.Show("Unable to save the measurement criteria.\n" + ex.ToString(),
                                "Error saving measurement criteria!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void WorkOrderInfo_Loaded(object sender, RoutedEventArgs e)
