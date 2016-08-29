@@ -22,6 +22,7 @@
             </MenuItem>
             <MenuItem Header="_Reports">
                 <MenuItem Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="True"/>
+                <MenuItem Name="WorkOrderReportMenuItem" Header="Work Order Report" HorizontalAlignment="Left" IsEnabled="True" Click="WorkOrderReportMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="_Maintenance" >
                 <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>

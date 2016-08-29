@@ -214,5 +214,14 @@ namespace SPC_Data_Collection
                 App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
             }
         }
+
+        public void ShowWorkOrderReport()
+        {
+            Reports.WorkOrderReport workOrderReport = null;
+            workOrderReport = new Reports.WorkOrderReport();
+
+            workOrderReport.Owner = App.Current.MainWindow;
+            workOrderReport.ShowDialog();
+        }
     }
 }

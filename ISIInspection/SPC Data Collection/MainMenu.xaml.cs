@@ -100,5 +100,10 @@ namespace SPC_Data_Collection
                 }
             }
         }
+
+        private void WorkOrderReportMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.ShowWorkOrderReport();
+        }
     }
 }

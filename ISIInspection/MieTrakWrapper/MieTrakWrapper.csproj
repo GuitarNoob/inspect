@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -1241,6 +1242,7 @@
       <DependentUpon>MieTrakDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\WorkOrderReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="MieTrak\MieTrakDB.edmx">
