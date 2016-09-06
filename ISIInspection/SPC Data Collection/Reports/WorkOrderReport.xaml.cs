@@ -21,15 +21,17 @@ namespace SPC_Data_Collection.Reports
     {
         MieTrakWrapper.Reports.WorkOrderReport report;
         System.Windows.Threading.DispatcherTimer dispatcherTimer;
+        int timeUntilRefreshMax = 60;
+        int timeUntilRefreshCounter = 60;
 
-        public WorkOrderReport()
+        public WorkOrderReport(string query)
         {
             InitializeComponent();
 
             try
             {
-                report = new MieTrakWrapper.Reports.WorkOrderReport();
-                WorkOrderDataGrid.ItemsSource = report.GetQuery().DefaultView;
+                report = new MieTrakWrapper.Reports.WorkOrderReport(query);
+                WorkOrderControl.ItemsSource = report.GetQuery();
             }
             catch (Exception ex)
             {
@@ -44,13 +46,19 @@ namespace SPC_Data_Collection.Reports
         {
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
-            dispatcherTimer.Start();
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();            
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            WorkOrderDataGrid.ItemsSource = report.GetQuery().DefaultView;
+            timeUntilRefreshCounter--;
+            if (timeUntilRefreshCounter < 0)
+            {
+                timeUntilRefreshCounter = timeUntilRefreshMax;
+                WorkOrderControl.ItemsSource = report.GetQuery();
+            }
+            TextBoxCounter.Text = timeUntilRefreshCounter.ToString();            
         }
 
         private void Window_Closed(object sender, EventArgs e)

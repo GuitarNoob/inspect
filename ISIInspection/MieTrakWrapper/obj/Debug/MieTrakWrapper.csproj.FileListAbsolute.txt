@@ -16,3 +16,13 @@ C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFra
 C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.dll
 C:\Users\paul\Documents\inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.pdb
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\MieTrakWrapper.dll.config
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\MieTrakWrapper.dll
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\MieTrakWrapper.pdb
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.dll
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.dll
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.xml
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.xml
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.csprojResolveAssemblyReference.cache
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.dll
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.pdb

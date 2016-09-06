@@ -1243,6 +1243,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\WorkOrderReport.cs" />
+    <Compile Include="Reports\WorkOrderReportEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="MieTrak\MieTrakDB.edmx">

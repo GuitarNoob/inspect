@@ -6,10 +6,40 @@
         xmlns:local="clr-namespace:SPC_Data_Collection.Reports"
         mc:Ignorable="d"
         Title="WorkOrderReport" Height="412.5" Width="571.875" WindowStartupLocation="CenterOwner" WindowState="Maximized" Closed="Window_Closed">
-    <Grid>
+    <Grid Background="LightGray">
         <Grid Height="30" VerticalAlignment="Top">
-            
+            <Label Content="Time until next refresh:" HorizontalAlignment="Right" Margin="0,0,80,0"></Label>
+            <TextBox Width="60" Height="20" HorizontalAlignment="Right" Margin="0,0,20,0" Name="TextBoxCounter"></TextBox>
         </Grid>
-        <DataGrid Name="WorkOrderDataGrid" Margin="30"></DataGrid>
+        <ListView Name="WorkOrderControl" Margin="30">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder }"/>
+                    <GridViewColumn Header="Customer" Width="auto" DisplayMemberBinding="{Binding Customer }"/>
+                    <GridViewColumn Header="Qty To Fab" Width="auto" DisplayMemberBinding="{Binding QtyToFab }"/>
+                    <GridViewColumn Header="Part Number" Width="auto" DisplayMemberBinding="{Binding PartNumber }"/>
+                    <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Operation" Width="auto" DisplayMemberBinding="{Binding Operation }"/>
+                    <GridViewColumn Header="Work Center" Width="auto" DisplayMemberBinding="{Binding WorkCenter }"/>
+                    <GridViewColumn Header="Finish" Width="auto" DisplayMemberBinding="{Binding Finish }"/>
+                    <GridViewColumn Header="Setup Time" Width="auto" DisplayMemberBinding="{Binding SetupTime }"/>
+                    <GridViewColumn Header="Run Time" Width="auto" DisplayMemberBinding="{Binding RunTime }"/>
+                    <GridViewColumn Header="Op Complete Date" Width="auto" DisplayMemberBinding="{Binding OpCompleteDate }"/>
+                    <GridViewColumn Header="Due Date" Width="auto" DisplayMemberBinding="{Binding DueDate }"/>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLate}" Value="1">
+                            <Setter Property="Background" Value="Tomato"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsAlmostLate}" Value="1">
+                            <Setter Property="Background" Value="Yellow"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
+        </ListView>
     </Grid>
 </Window>
