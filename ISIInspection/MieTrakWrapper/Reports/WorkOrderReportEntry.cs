@@ -23,7 +23,8 @@ namespace MieTrakWrapper.Reports
              string DueDate,
              string DaysOut,
              string AssemblyFK,
-             string SalesOrder
+             string SalesOrder,
+            string WorkOrderStatus
             )
         {
             this.WorkOrder = WorkOrder;
@@ -41,6 +42,7 @@ namespace MieTrakWrapper.Reports
             this.DaysOut = DaysOut;
             this.AssemblyFK = AssemblyFK;
             this.SalesOrderFK = SalesOrder;
+            this.WorkOrderStatus = WorkOrderStatus;
         }
 
         public void SetActiveEmployees(string activeEmployees)
@@ -82,11 +84,17 @@ namespace MieTrakWrapper.Reports
         public string DaysOut { get; set; }
         public string AssemblyFK { get; set; }
         public string SalesOrderFK { get; set; }
+        public string WorkOrderStatus { get; set; }
         public string ActiveEmployee { get; set; }
         public string IsLate { get; set; }
 
         public string IsDueToday { get; set; }
 
         public string IsAlmostLate { get; set; }
+
+        public bool IsInProgress()
+        {
+            return WorkOrderStatus == "1";
+        }
     }
 }

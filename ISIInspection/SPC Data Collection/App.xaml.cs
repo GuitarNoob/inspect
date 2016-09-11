@@ -215,9 +215,7 @@ namespace SPC_Data_Collection
             }
         }
 
-        public void ShowWorkOrderReport()
-        {
-            string queryString = @"SELECT TOP 1000
+        string queryString = @"SELECT TOP 1000
           workorder.WorkOrderPK as 'Work Order'
          ,cust.Name as 'Customer'
               ,workorder.QuantityRequired as 'Qty To Fab'
@@ -233,58 +231,7 @@ namespace SPC_Data_Collection
          ,assem.DaysOut as 'Days Out'
          ,assem.WorkOrderAssemblyPK as 'AssemblyPK'
          ,woJob.SalesOrderFK as 'Sales Order'
-                --,assem.WorkOrderAssemblyLaborStatusFK
-                --,workorder.WorkOrderStatusFK
- 
-  FROM [MIETRAK].[dbo].[WorkOrder] workorder
-   
-  inner join [MIETRAK].[dbo].[WorkOrderAssembly] assem
-  on assem.WorkOrderFK = workorder.WorkOrderPK 
- 
-  inner join [MIETRAK].[dbo].[Operation] op
-  on assem.OperationFK = op.OperationPK  
- 
-  inner join [MIETRAK].[dbo].[Party] cust
-  on workorder.CustomerFK = cust.PartyPK
- 
-  inner join [MIETRAK].[dbo].[WorkCenter] wc
-  on assem.WorkCenterFK = wc.WorkCenterPK
-
-  inner join [MIETRAK].[dbo].[WorkOrderJob] woJob
-  on woJob.WorkOrderFK = workorder.WorkOrderPK 
-
-  WHERE
-  workorder.WorkOrderStatusFK = 2
-  AND
-  assem.WorkOrderAssemblyLaborStatusFK = 1
- 
-  ORDER BY workorder.CustomerOnDockDate, workorder.PartNumber";
-
-            Reports.WorkOrderReport workOrderReport = null;
-            workOrderReport = new Reports.WorkOrderReport(queryString);
-
-            workOrderReport.Owner = App.Current.MainWindow;
-            workOrderReport.ShowDialog();
-        }
-
-        public void ShowWorkOrderReportDetailed()
-        {
-            string queryString = @"SELECT TOP 1000
-          workorder.WorkOrderPK as 'Work Order'
-         ,cust.Name as 'Customer'
-              ,workorder.QuantityRequired as 'Qty To Fab'
-         ,workorder.PartNumber as 'Part Number'
-         ,workorder.ItemDescription 'Description'
-         ,op.Name as 'Operation'
-              ,wc.Description AS 'Work Center'
-         ,assem.OutsideProcessingDescription as 'Finish'
-              ,assem.SetupTime as 'Setup Time'
-              ,assem.MinutesPerPart as 'Run Time'
-         ,assem.TargetDueDate as 'Op Complete Date'
-         ,workorder.CustomerOnDockDate 'Due Date'
-         ,assem.DaysOut as 'Days Out'
-         ,assem.WorkOrderAssemblyPK as 'AssemblyPK'
-         ,woJob.SalesOrderFK as 'Sales Order'
+,assem.WorkOrderAssemblyLaborStatusFK as 'WorkOrderStatus'
                 --,assem.WorkOrderAssemblyLaborStatusFK
                 --,workorder.WorkOrderStatusFK
  
@@ -312,8 +259,20 @@ namespace SPC_Data_Collection
  
   ORDER BY workorder.CustomerOnDockDate, workorder.PartNumber";
 
+        public void ShowWorkOrderReport()
+        {
             Reports.WorkOrderReport workOrderReport = null;
             workOrderReport = new Reports.WorkOrderReport(queryString);
+
+            workOrderReport.Owner = App.Current.MainWindow;
+            workOrderReport.ShowDialog();
+        }
+
+        public void ShowWorkOrderReportDetailed()
+        {            
+
+            Reports.WorkOrderReport workOrderReport = null;
+            workOrderReport = new Reports.WorkOrderReport(queryString, true);
 
             workOrderReport.Owner = App.Current.MainWindow;
             workOrderReport.ShowDialog();

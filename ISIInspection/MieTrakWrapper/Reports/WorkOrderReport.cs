@@ -13,9 +13,11 @@ namespace MieTrakWrapper.Reports
         SqlConnection connection;
         string queryString = "";
         decimal constMultiplier = (decimal)1.5;
+        bool showDetailedReport;
 
-        public WorkOrderReport(string query)
+        public WorkOrderReport(string query, bool showDetailed)
         {
+            showDetailedReport = showDetailed;
             queryString = query;
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MIETRAKReports"].ConnectionString;
             connection = new SqlConnection(connectionString);
@@ -65,14 +67,15 @@ namespace MieTrakWrapper.Reports
                     rdr["Due Date"].ToString(),
                     rdr["Days Out"].ToString(),
                     rdr["AssemblyPK"].ToString(),
-                    rdr["Sales Order"].ToString()
+                    rdr["Sales Order"].ToString(),
+                    rdr["WorkOrderStatus"].ToString()
                         ));
                 }
             }
 
             CheckActiveEmployees(ref returnList, GetActiveEmployees());
             CheckDueDates(ref returnList);
-            return returnList;
+            return FilterReport(returnList);
         }
 
         List<ActiveEmployeeEntry> GetActiveEmployees()
@@ -193,6 +196,20 @@ namespace MieTrakWrapper.Reports
                 }
             }
             return returnDay;
+        }
+
+        List<WorkOrderReportEntry> FilterReport(List<WorkOrderReportEntry> inputList)
+        {
+            List<WorkOrderReportEntry> returnList = new List<WorkOrderReportEntry>();
+            foreach (WorkOrderReportEntry entry in inputList)
+            {
+                if (showDetailedReport
+                    || entry.IsInProgress())
+                {
+                    returnList.Add(entry);
+                }
+            }
+            return returnList;
         }
     }
 }

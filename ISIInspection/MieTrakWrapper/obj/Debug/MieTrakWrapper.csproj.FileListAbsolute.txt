@@ -25,3 +25,4 @@ C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.xml
 C:\DEV\Inspect\ISIInspection\MieTrakWrapper\bin\Debug\EntityFramework.SqlServer.xml
 C:\DEV\Inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.dll
 C:\DEV\Inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.pdb
+C:\DEV\Inspect\ISIInspection\MieTrakWrapper\obj\Debug\MieTrakWrapper.csprojResolveAssemblyReference.cache
