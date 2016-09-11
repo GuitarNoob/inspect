@@ -12,6 +12,7 @@ namespace MieTrakWrapper.Reports
     {
         SqlConnection connection;
         string queryString = "";
+        decimal constMultiplier = (decimal)1.5;
 
         public WorkOrderReport(string query)
         {
@@ -20,8 +21,27 @@ namespace MieTrakWrapper.Reports
             connection = new SqlConnection(connectionString);
         }
 
-        public List<WorkOrderReportEntry> GetQuery()
+        string GetCurrentEmployeeQuery()
         {
+            return @"SELECT TOP 1000 [WorkOrderCollectionPK]
+                    ,assem.WorkOrderFK as 'Work Order'
+	                ,assem.WorkOrderAssemblyPK as 'Assembly'
+	                ,users.FirstName as 'First Name'
+	                ,users.LastName as 'Last Name'  
+                FROM [MIETRAK].[dbo].[WorkOrderCollection] workCollection
+
+                inner join [MIETRAK].[dbo].[WorkOrderAssembly] assem
+                on assem.WorkOrderAssemblyPK = workCollection.WorkOrderAssemblyNumber 
+
+                inner join [MIETRAK].[dbo].[User] users
+                on users.UserPK = workCollection.EmployeeFK
+
+                WHERE workCollection.IsActive != 0";
+        }
+
+        public List<WorkOrderReportEntry> GetQuery(decimal multiplier)
+        {
+            constMultiplier = multiplier;
             List<WorkOrderReportEntry> returnList = new List<WorkOrderReportEntry>();
             SqlCommand command = new SqlCommand(queryString, connection);
             if (connection.State == ConnectionState.Closed)
@@ -43,13 +63,60 @@ namespace MieTrakWrapper.Reports
                     rdr["Run Time"].ToString(),
                     rdr["Op Complete Date"].ToString(),
                     rdr["Due Date"].ToString(),
-                    rdr["Days Out"].ToString()
+                    rdr["Days Out"].ToString(),
+                    rdr["AssemblyPK"].ToString(),
+                    rdr["Sales Order"].ToString()
                         ));
                 }
             }
 
+            CheckActiveEmployees(ref returnList, GetActiveEmployees());
             CheckDueDates(ref returnList);
             return returnList;
+        }
+
+        List<ActiveEmployeeEntry> GetActiveEmployees()
+        {
+            List<ActiveEmployeeEntry> returnList = new List<ActiveEmployeeEntry>();
+            SqlCommand command = new SqlCommand(GetCurrentEmployeeQuery(), connection);
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            using (SqlDataReader rdr = command.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    returnList.Add(new ActiveEmployeeEntry(
+                    rdr["Work Order"].ToString(),
+                    rdr["Assembly"].ToString(),
+                    rdr["First Name"].ToString(),
+                    rdr["Last Name"].ToString()
+                        ));
+                }
+            }
+            return returnList;
+        }
+
+        public void CheckActiveEmployees(ref List<WorkOrderReportEntry> input, List<ActiveEmployeeEntry> activeEmployees)
+        {
+            foreach (WorkOrderReportEntry entry in input)
+            {
+                List<ActiveEmployeeEntry> active = activeEmployees.Where(x => x.WorkOrderAssemblyPK.Equals(entry.AssemblyFK)).ToList();
+                if (active.Count > 0)
+                {
+                    bool firstEmployee = true;
+                    string personNames = "";
+                    foreach (ActiveEmployeeEntry employee in active)
+                    {
+                        if (!firstEmployee)
+                        {
+                            personNames += ", ";
+                        }
+                        personNames += employee.FirstName + " " + employee.LastName;                        
+                        firstEmployee = false;
+                    }
+                    entry.SetActiveEmployees(personNames);
+                }                
+            }
         }
 
         public void CheckDueDates(ref List<WorkOrderReportEntry> input)
@@ -59,7 +126,6 @@ namespace MieTrakWrapper.Reports
             //QuantityRequired Qty To Fab
             //Setup time
             string lastWorkorder = "";
-            decimal constMultiplier = (decimal)1.5;
             int hoursInDay = 8;
             int minutesInDay = hoursInDay * 60;
             int minuteCounter = 0;
@@ -95,8 +161,11 @@ namespace MieTrakWrapper.Reports
                     minuteCounter -= totalTimeInt;
                     if (minuteCounter < 0)
                     {
-                        minuteCounter = minutesInDay;
-                        rollingDueDate = DecementDueDate(rollingDueDate);
+                        while (minuteCounter < 0)
+                        {
+                            minuteCounter += minutesInDay;
+                            rollingDueDate = DecementDueDate(rollingDueDate);
+                        }
                     }
                 }
 

@@ -21,7 +21,9 @@ namespace MieTrakWrapper.Reports
              string RunTime,
              string OpCompleteDate,
              string DueDate,
-             string DaysOut
+             string DaysOut,
+             string AssemblyFK,
+             string SalesOrder
             )
         {
             this.WorkOrder = WorkOrder;
@@ -37,7 +39,15 @@ namespace MieTrakWrapper.Reports
             this.OpCompleteDate = OpCompleteDate;
             this.DueDate = DueDate;
             this.DaysOut = DaysOut;
+            this.AssemblyFK = AssemblyFK;
+            this.SalesOrderFK = SalesOrder;
         }
+
+        public void SetActiveEmployees(string activeEmployees)
+        {
+            this.ActiveEmployee = activeEmployees;
+        }
+
         public string WorkOrder { get; set; }
         public string Customer { get; set; }
         public string QtyToFab { get; set; }
@@ -48,10 +58,31 @@ namespace MieTrakWrapper.Reports
         public string Finish { get; set; }
         public string SetupTime { get; set; }
         public string RunTime { get; set; }
-        public string OpCompleteDate { get; set; }
-        public string DueDate { get; set; }
-        public string DaysOut { get; set; }
 
+        private string _OpCompleteDate;
+        public string OpCompleteDate
+        {
+            get { return _OpCompleteDate; }
+            set
+            {
+                _OpCompleteDate = DateTime.Parse(value).ToLongDateString();
+            }
+        }
+
+        private string _DueDate;
+        public string DueDate
+        {
+            get { return _DueDate; }
+            set
+            {
+                _DueDate = DateTime.Parse(value).ToLongDateString();
+            }
+        }
+
+        public string DaysOut { get; set; }
+        public string AssemblyFK { get; set; }
+        public string SalesOrderFK { get; set; }
+        public string ActiveEmployee { get; set; }
         public string IsLate { get; set; }
 
         public string IsDueToday { get; set; }

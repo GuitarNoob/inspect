@@ -231,6 +231,8 @@ namespace SPC_Data_Collection
          ,assem.TargetDueDate as 'Op Complete Date'
          ,workorder.CustomerOnDockDate 'Due Date'
          ,assem.DaysOut as 'Days Out'
+         ,assem.WorkOrderAssemblyPK as 'AssemblyPK'
+         ,woJob.SalesOrderFK as 'Sales Order'
                 --,assem.WorkOrderAssemblyLaborStatusFK
                 --,workorder.WorkOrderStatusFK
  
@@ -247,7 +249,10 @@ namespace SPC_Data_Collection
  
   inner join [MIETRAK].[dbo].[WorkCenter] wc
   on assem.WorkCenterFK = wc.WorkCenterPK
- 
+
+  inner join [MIETRAK].[dbo].[WorkOrderJob] woJob
+  on woJob.WorkOrderFK = workorder.WorkOrderPK 
+
   WHERE
   workorder.WorkOrderStatusFK = 2
   AND
@@ -278,6 +283,8 @@ namespace SPC_Data_Collection
          ,assem.TargetDueDate as 'Op Complete Date'
          ,workorder.CustomerOnDockDate 'Due Date'
          ,assem.DaysOut as 'Days Out'
+         ,assem.WorkOrderAssemblyPK as 'AssemblyPK'
+         ,woJob.SalesOrderFK as 'Sales Order'
                 --,assem.WorkOrderAssemblyLaborStatusFK
                 --,workorder.WorkOrderStatusFK
  
@@ -295,6 +302,9 @@ namespace SPC_Data_Collection
   inner join [MIETRAK].[dbo].[WorkCenter] wc
   on assem.WorkCenterFK = wc.WorkCenterPK
  
+  inner join [MIETRAK].[dbo].[WorkOrderJob] woJob
+  on woJob.WorkOrderFK = workorder.WorkOrderPK
+
   WHERE
   workorder.WorkOrderStatusFK = 2
   --AND

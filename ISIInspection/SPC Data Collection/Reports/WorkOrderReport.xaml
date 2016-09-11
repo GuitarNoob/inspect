@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPC_Data_Collection.Reports"
         mc:Ignorable="d"
-        Title="WorkOrderReport" Height="412.5" Width="571.875" WindowStartupLocation="CenterOwner" WindowState="Maximized" Closed="Window_Closed">
+        Title="WorkOrderReport" Height="700.099" Width="1008.239" WindowStartupLocation="CenterOwner" WindowState="Maximized" Closed="Window_Closed">
     <Grid Background="LightGray">
         <Grid Height="30" VerticalAlignment="Top">
-            <Label Content="Time until next refresh:" HorizontalAlignment="Right" Margin="0,0,80,0"></Label>
-            <TextBox Width="60" Height="20" HorizontalAlignment="Right" Margin="0,0,20,0" Name="TextBoxCounter"></TextBox>
+            <Label Content="Work Multiplier:" HorizontalAlignment="Left" Margin="30,0,0,0"></Label>
+            <TextBox Width="60" Height="20" HorizontalAlignment="Left" Margin="130,0,0,0" Name="TextBoxMultiplier" TextChanged="TextBoxMultiplier_TextChanged" BorderBrush="Green" BorderThickness="1" Text="1.5"></TextBox>
+            <Label Content="Time until next refresh:" HorizontalAlignment="Right" Margin="0,0,190,0"></Label>
+            <TextBox Width="60" Height="20" HorizontalAlignment="Right" Margin="0,0,130,0" Name="TextBoxCounter" IsEnabled="False"></TextBox>
+            <Button Width="60" Height="20" HorizontalAlignment="Left" Margin="200,0,0,0" Name="MandatoryRefresh" Content="Refresh" Click="MandatoryRefresh_Click"></Button>
+            <Button Width="90" Height="20" HorizontalAlignment="Right" Margin="0,0,30,0" Name="ExportToCSV" Content="Export to CSV" Click="ExportToCSV_Click" ></Button>
         </Grid>
         <ListView Name="WorkOrderControl" Margin="30">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Sales Order" Width="auto" DisplayMemberBinding="{Binding SalesOrderFK }"/>
                     <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder }"/>
                     <GridViewColumn Header="Customer" Width="auto" DisplayMemberBinding="{Binding Customer }"/>
                     <GridViewColumn Header="Qty To Fab" Width="auto" DisplayMemberBinding="{Binding QtyToFab }"/>
@@ -26,13 +31,15 @@
                     <GridViewColumn Header="Run Time" Width="auto" DisplayMemberBinding="{Binding RunTime }"/>
                     <GridViewColumn Header="Op Complete Date" Width="auto" DisplayMemberBinding="{Binding OpCompleteDate }"/>
                     <GridViewColumn Header="Due Date" Width="auto" DisplayMemberBinding="{Binding DueDate }"/>
+                    <GridViewColumn Header="Current Employee" Width="auto" DisplayMemberBinding="{Binding ActiveEmployee}"/>
                 </GridView>
             </ListView.View>
             <ListView.Resources>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding IsLate}" Value="1">
-                            <Setter Property="Background" Value="Tomato"/>
+                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Foreground" Value="White"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding IsAlmostLate}" Value="1">
                             <Setter Property="Background" Value="Yellow"/>
