@@ -61,13 +61,15 @@ namespace MieTrakWrapper.Reports
         public string SetupTime { get; set; }
         public string RunTime { get; set; }
 
+        private string DateFormat = "ddd, MMM dd, yy";
+
         private string _OpCompleteDate;
         public string OpCompleteDate
         {
             get { return _OpCompleteDate; }
             set
             {
-                _OpCompleteDate = DateTime.Parse(value).ToLongDateString();
+                _OpCompleteDate = DateTime.Parse(value).ToString(DateFormat);
             }
         }
 
@@ -77,7 +79,7 @@ namespace MieTrakWrapper.Reports
             get { return _DueDate; }
             set
             {
-                _DueDate = DateTime.Parse(value).ToLongDateString();
+                _DueDate = DateTime.Parse(value).ToString(DateFormat);
             }
         }
 
