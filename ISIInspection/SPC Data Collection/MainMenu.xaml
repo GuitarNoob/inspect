@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="600">
     <Grid>
-        <Menu Height="30" Margin="46,0,0,0" VerticalAlignment="Top">
+        <Menu Height="30" Margin="46,0,0,0" VerticalAlignment="Top" BorderThickness="2" Background="#FFF0F0F0" BorderBrush="#FFD5DFE5">
             <MenuItem Header="_Plan" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Click="MenuItem_Click" Cursor="" ToolTip="Inspection PLan">
                 <MenuItem x:Name="PlanSave" Header="Save" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem x:Name="PlanSaveAs" Header="SaveAs" HorizontalAlignment="Left" Width="144.8"/>
@@ -24,6 +24,10 @@
                 <MenuItem Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="True"/>
                 <MenuItem Name="WorkOrderReportMenuItem" Header="Work Order Current" HorizontalAlignment="Left" IsEnabled="True" Click="WorkOrderReportMenuItem_Click"/>
                 <MenuItem Name="WorkOrderReportDetailedMenuItem" Header="Work Order Detailed" HorizontalAlignment="Left" IsEnabled="True" Click="WorkOrderReportDetailedMenuItem_Click"/>
+                <Separator HorizontalAlignment="Left" Height="2" Width="194"/>
+                <MenuItem Header="By Sales Order" HorizontalAlignment="Left" Width="194"/>
+                <MenuItem Header="Assembly Deburr" HorizontalAlignment="Left" Width="194"/>
+                <MenuItem Header="Shipping/Reiceving" HorizontalAlignment="Left" Width="194"/>
             </MenuItem>
             <MenuItem Header="_Maintenance" >
                 <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>

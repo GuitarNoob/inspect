@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="SPC_Data_Collection.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="600">
+    <Grid>
+        <Menu Height="30" Margin="46,0,0,0" VerticalAlignment="Top">
+            <MenuItem Header="_Plan" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Click="MenuItem_Click" Cursor="" ToolTip="Inspection PLan">
+                <MenuItem x:Name="PlanSave" Header="Save" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem x:Name="PlanSaveAs" Header="SaveAs" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem x:Name="PlanOpen" Header="Open" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem x:Name="PlanClose" Header="Close" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Name="PlanNew" Header="New" HorizontalAlignment="Left" Width="144.8" Click="PlanNew_Click"/>
+                <MenuItem Name="PlanEdit" Header="Edit" HorizontalAlignment="Left" Width="144.8" Click="PlanEdit_Click"/>
+                <MenuItem Name="PlanCollect" Header="Collect" HorizontalAlignment="Left" Width="144.8" Click="PlanCollect_Click"/>
+                <MenuItem Name="PlanImport" Header="Import" HorizontalAlignment="Left" Width="144.8" Click="PlanImport_Click"/>
+                <MenuItem Name="PlanExport" Header="Export" HorizontalAlignment="Left" Width="144.8" Click="PlanExport_Click"/>
+                <MenuItem x:Name="PlanExit" Header="Exit" HorizontalAlignment="Left" Width="144.8"/>
+
+            </MenuItem>
+            <MenuItem Header="_Reports">
+                <MenuItem Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="True"/>
+            </MenuItem>
+            <MenuItem Header="_Maintenance" >
+                <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Settings">
+                <MenuItem Header="Tolerances" Name="DefaultTolerances" HorizontalAlignment="Left" Width="145" Click="DefaultTolerances_Click"/>
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="FAI" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="PPAP" HorizontalAlignment="Left" Width="144.8"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>
+            </MenuItem>
+        </Menu>
+        <Image HorizontalAlignment="Left" Height="50" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="46" Source="Images\Allegrotek ISI Button.jpg"/>
+
+    </Grid>
+</UserControl>
