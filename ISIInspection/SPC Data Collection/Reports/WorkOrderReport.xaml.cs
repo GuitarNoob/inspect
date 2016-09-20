@@ -27,13 +27,13 @@ namespace SPC_Data_Collection.Reports
         int timeUntilRefreshCounter = 60;
         List<WorkOrderReportEntry> lastQuery;
 
-        public WorkOrderReport(string query, bool showDetailed = false)
+        public WorkOrderReport(bool showDetailed = false)
         {
             InitializeComponent();
 
             try
             {
-                report = new MieTrakWrapper.Reports.WorkOrderReport(query, showDetailed);
+                report = new MieTrakWrapper.Reports.WorkOrderReport(showDetailed);
                 lastQuery = report.GetQuery((decimal)1.5);
                 WorkOrderControl.ItemsSource = lastQuery;
                 CreateTimer();

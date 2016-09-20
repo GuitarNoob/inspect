@@ -44,6 +44,7 @@
                     <GridViewColumn Header="Finish" Width="auto" DisplayMemberBinding="{Binding Finish}"/>
                     <GridViewColumn Header="Setup Time" Width="auto" DisplayMemberBinding="{Binding SetupTime}"/>
                     <GridViewColumn Header="Run Time" Width="auto" DisplayMemberBinding="{Binding RunTime}"/>
+                    <GridViewColumn Header="Days Out" Width="auto" DisplayMemberBinding="{Binding DaysOut}"/>
                     <GridViewColumn Header="Op Complete Date" Width="auto" DisplayMemberBinding="{Binding OpCompleteDate}"/>
                     <GridViewColumn Header="Due Date" Width="auto" DisplayMemberBinding="{Binding DueDate}"/>
                     <GridViewColumn Header="Current Employee" Width="auto" DisplayMemberBinding="{Binding ActiveEmployee}"/>
