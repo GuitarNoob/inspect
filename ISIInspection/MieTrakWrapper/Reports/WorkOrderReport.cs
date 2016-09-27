@@ -11,14 +11,55 @@ namespace MieTrakWrapper.Reports
     public class WorkOrderReport
     {
         SqlConnection connection;
-        string queryString = "";
+        string queryString = @"SELECT TOP 1000
+          workorder.WorkOrderPK as 'Work Order'
+         ,cust.Name as 'Customer'
+              ,workorder.QuantityRequired as 'Qty To Fab'
+         ,workorder.PartNumber as 'Part Number'
+         ,workorder.ItemDescription 'Description'
+         ,op.Name as 'Operation'
+              ,wc.Description AS 'Work Center'
+         ,assem.OutsideProcessingDescription as 'Finish'
+              ,assem.SetupTime as 'Setup Time'
+              ,assem.MinutesPerPart as 'Run Time'
+         ,assem.TargetDueDate as 'Op Complete Date'
+         ,workorder.CustomerOnDockDate 'Due Date'
+         ,assem.DaysOut as 'Days Out'
+         ,assem.WorkOrderAssemblyPK as 'AssemblyPK'
+         ,woJob.SalesOrderFK as 'Sales Order'
+,assem.WorkOrderAssemblyLaborStatusFK as 'WorkOrderStatus'
+                --,assem.WorkOrderAssemblyLaborStatusFK
+                --,workorder.WorkOrderStatusFK
+ 
+  FROM [MIETRAK].[dbo].[WorkOrder] workorder
+   
+  inner join [MIETRAK].[dbo].[WorkOrderAssembly] assem
+  on assem.WorkOrderFK = workorder.WorkOrderPK 
+ 
+  inner join [MIETRAK].[dbo].[Operation] op
+  on assem.OperationFK = op.OperationPK  
+ 
+  inner join [MIETRAK].[dbo].[Party] cust
+  on workorder.CustomerFK = cust.PartyPK
+ 
+  inner join [MIETRAK].[dbo].[WorkCenter] wc
+  on assem.WorkCenterFK = wc.WorkCenterPK
+ 
+  inner join [MIETRAK].[dbo].[WorkOrderJob] woJob
+  on woJob.WorkOrderFK = workorder.WorkOrderPK
+
+  WHERE
+  workorder.WorkOrderStatusFK = 2
+  --AND
+  --assem.WorkOrderAssemblyLaborStatusFK = 1
+ 
+  ORDER BY workorder.CustomerOnDockDate, workorder.PartNumber";
         decimal constMultiplier = (decimal)1.5;
         bool showDetailedReport;
 
-        public WorkOrderReport(string query, bool showDetailed)
+        public WorkOrderReport(bool showDetailed)
         {
             showDetailedReport = showDetailed;
-            queryString = query;
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MIETRAKReports"].ConnectionString;
             connection = new SqlConnection(connectionString);
         }

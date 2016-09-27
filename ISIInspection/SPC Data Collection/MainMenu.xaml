@@ -3,11 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="600">
+             mc:Ignorable="d" d:DesignWidth="600" Height="37">
     <Grid>
         <Menu Height="30" Margin="46,0,0,0" VerticalAlignment="Top" BorderThickness="2" Background="#FFF0F0F0" BorderBrush="#FFD5DFE5">
-            <MenuItem Header="_Plan" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Click="MenuItem_Click" Cursor="" ToolTip="Inspection PLan">
+            <MenuItem Header="_Inspection" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Click="MenuItem_Click" Cursor="" ToolTip="Inspection PLan">
                 <MenuItem x:Name="PlanSave" Header="Save" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem x:Name="PlanSaveAs" Header="SaveAs" HorizontalAlignment="Left" Width="144.8"/>
                 <MenuItem x:Name="PlanOpen" Header="Open" HorizontalAlignment="Left" Width="144.8"/>
@@ -21,23 +20,34 @@
 
             </MenuItem>
             <MenuItem Header="_Reports">
-                <MenuItem Header="Export" HorizontalAlignment="Left" Width="144.8" IsEnabled="True"/>
-                <MenuItem Name="WorkOrderReportMenuItem" Header="Work Order Current" HorizontalAlignment="Left" IsEnabled="True" Click="WorkOrderReportMenuItem_Click"/>
-                <MenuItem Name="WorkOrderReportDetailedMenuItem" Header="Work Order Detailed" HorizontalAlignment="Left" IsEnabled="True" Click="WorkOrderReportDetailedMenuItem_Click"/>
-                <Separator HorizontalAlignment="Left" Height="2" Width="194"/>
-                <MenuItem Header="By Sales Order" HorizontalAlignment="Left" Width="194"/>
-                <MenuItem Header="Assembly Deburr" HorizontalAlignment="Left" Width="194"/>
-                <MenuItem Header="Shipping/Reiceving" HorizontalAlignment="Left" Width="194"/>
+                <MenuItem Header="Inspection" HorizontalAlignment="Left" Width="144.8" IsEnabled="True">
+                    <MenuItem Header="Export" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+                <MenuItem Name="WorkOrderReportMenuItem" Header="Work Order" HorizontalAlignment="Left">
+                    <MenuItem Header="In Progress" HorizontalAlignment="Left" Width="195" IsEnabled="True" Click="WorkOrderReportMenuItem_Click"/>
+                    <MenuItem Header="In Progress Exploded" HorizontalAlignment="Left" Width="195" IsEnabled="True" Click="WorkOrderReportDetailedMenuItem_Click"/>
+                    <MenuItem Header="By Sales Order" HorizontalAlignment="Left" Width="195"/>
+                    <MenuItem Header="Assembly/Deburr" HorizontalAlignment="Left" Width="195"/>
+                    <MenuItem Header="Shipping/Receiving" HorizontalAlignment="Left" Width="195"/>
+                    <MenuItem Header="Export" HorizontalAlignment="Left" Width="195"/>
+                    <MenuItem Header="Settings" HorizontalAlignment="Left" Width="195"/>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Maintenance" >
                 <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>
             </MenuItem>
             <MenuItem Header="_Settings">
                 <MenuItem Header="Tolerances" Name="DefaultTolerances" HorizontalAlignment="Left" Width="145" Click="DefaultTolerances_Click"/>
+                <MenuItem Header="WO Multiplier" HorizontalAlignment="Left" Width="163" Margin="0,0,-18,0"/>
             </MenuItem>
             <MenuItem Header="View">
-                <MenuItem Header="FAI" HorizontalAlignment="Left" Width="144.8"/>
-                <MenuItem Header="PPAP" HorizontalAlignment="Left" Width="144.8"/>
+                <MenuItem Header="Refresh" HorizontalAlignment="Left" Width="145" />
+                <MenuItem Header="FAI" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
+                <MenuItem Header="PPAP" HorizontalAlignment="Left" Width="144.8" IsEnabled="False"/>
+            </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem Header="Material Calculator" HorizontalAlignment="Left" Width="190" IsEnabled="False"/>
+                <MenuItem Header="ISI Timer" HorizontalAlignment="Left" Width="190" IsEnabled="False"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About" HorizontalAlignment="Left" Width="144.8"/>

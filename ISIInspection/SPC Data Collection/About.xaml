@@ -4,7 +4,7 @@
         Title="About Inspection Data Collection" Height="300" Width="300">
     <Grid>
         <Image HorizontalAlignment="Left" Height="86" Margin="20,33,0,0" VerticalAlignment="Top" Width="264" Source="Images\Merlin ISI Logo IDC.jpg"/>
-        <Label Content="Merlin ISI, LLC &#xD;&#xA;Inspection Data Collection&#xD;&#xA;Ver 1.0.1&#xD;&#xA;2015 Copyright Merlin ISI, LLC&#xD;&#xA;All Rights Reserved" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Height="90" Width="171"/>
+        <Label Content=" Allegrotek ISI, LLC &#xA;Inspection Data Collection&#xA;Ver 1.0.1&#xA;2015 Copyright Allegrotek ISI, LLC&#xA;All Rights Reserved" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Height="90" Width="171"/>
         <Button Content="Close" HorizontalAlignment="Left" Margin="126,230,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="Button_Click"/>
 
     </Grid>

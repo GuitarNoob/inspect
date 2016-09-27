@@ -110,5 +110,10 @@ namespace SPC_Data_Collection
         {
             App.Current.ShowWorkOrderReportDetailed();
         }
+
+        ///private void MandatoryRefresh_Click(object sender, RoutedEventArgs e)
+        ///{
+           /// Refresh();
+        ///}
     }
 }

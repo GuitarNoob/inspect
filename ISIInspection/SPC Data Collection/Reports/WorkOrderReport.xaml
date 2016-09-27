@@ -14,7 +14,11 @@
             <TextBox Width="60" Height="20" HorizontalAlignment="Left" Margin="130,66,0,-56" x:Name="TextBoxMultiplier" TextChanged="TextBoxMultiplier_TextChanged" BorderBrush="Green" BorderThickness="1" Text="1.5"/>
             <Label Content="Time until next refresh:" HorizontalAlignment="Right" Margin="0,61,190,-61"/>
             <TextBox Width="60" Height="20" HorizontalAlignment="Right" Margin="0,66,130,-56" x:Name="TextBoxCounter" IsEnabled="False" Background="#FFFFFFBE"/>
-            <Button Width="60" Height="20" HorizontalAlignment="Left" Margin="200,66,0,-56" x:Name="MandatoryRefresh" Content="Refresh" Click="MandatoryRefresh_Click"/>
+            <Button Width="60" Height="20" HorizontalAlignment="Left" Margin="200,66,0,-56" x:Name="MandatoryRefresh" Content="Refresh" Click="MandatoryRefresh_Click">
+                <Button.BindingGroup>
+                    <BindingGroup/>
+                </Button.BindingGroup>
+            </Button>
             <Button Width="90" Height="20" HorizontalAlignment="Right" Margin="0,66,30,-56" x:Name="ExportToCSV" Content="Export to CSV" Click="ExportToCSV_Click" />
         </Grid>
         <ListView x:Name="WorkOrderControl" Margin="27,91,33,-31">
@@ -52,6 +56,7 @@
             </ListView.View>
         </ListView>
         <SPC_Data_Collection:UserControl1 Margin="0,4,367.6,0" VerticalAlignment="Top"/>
-        <SPC_Data_Collection:UserStatus Margin="0,0,9.6,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right"/>
+        <SPC_Data_Collection:UserStatus Margin="0,2,10,0" VerticalAlignment="Top" Width="353" HorizontalAlignment="Right"/>
+        <Label x:Name="label" Content="Real Time Schedule" HorizontalAlignment="Center" Margin="298,46,448,0" VerticalAlignment="Top" FontSize="21.333" Width="238" FontFamily="Book Antiqua" FontStyle="Italic" FontWeight="Bold"/>
     </Grid>
 </Window>
