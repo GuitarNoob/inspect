@@ -69,7 +69,14 @@ namespace MieTrakWrapper.Reports
             get { return _OpCompleteDate; }
             set
             {
-                _OpCompleteDate = DateTime.Parse(value).ToString(DateFormat);
+                try
+                {
+                    _OpCompleteDate = DateTime.Parse(value).ToString(DateFormat);
+                }
+                catch (Exception ex)
+                {
+                    _OpCompleteDate = "";
+                }
             }
         }
 
@@ -79,7 +86,14 @@ namespace MieTrakWrapper.Reports
             get { return _DueDate; }
             set
             {
-                _DueDate = DateTime.Parse(value).ToString(DateFormat);
+                try
+                {
+                    _DueDate = DateTime.Parse(value).ToString(DateFormat);
+                }
+                catch (Exception ex)
+                {
+                    _OpCompleteDate = "";
+                }
             }
         }
 
