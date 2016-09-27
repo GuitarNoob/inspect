@@ -24,13 +24,13 @@
                     <MenuItem Header="Export" HorizontalAlignment="Left" Width="140"/>
                 </MenuItem>
                 <MenuItem Name="WorkOrderReportMenuItem" Header="Work Order" HorizontalAlignment="Left">
-                    <MenuItem Header="In Progress" HorizontalAlignment="Left" Width="195" IsEnabled="True" Click="WorkOrderReportMenuItem_Click"/>
-                    <MenuItem Header="In Progress Exploded" HorizontalAlignment="Left" Width="195" IsEnabled="True" Click="WorkOrderReportDetailedMenuItem_Click"/>
-                    <MenuItem Header="By Sales Order" HorizontalAlignment="Left" Width="195"/>
-                    <MenuItem Header="Assembly/Deburr" HorizontalAlignment="Left" Width="195"/>
-                    <MenuItem Header="Shipping/Receiving" HorizontalAlignment="Left" Width="195"/>
-                    <MenuItem Header="Export" HorizontalAlignment="Left" Width="195"/>
-                    <MenuItem Header="Settings" HorizontalAlignment="Left" Width="195"/>
+                    <MenuItem Header="In Progress" HorizontalAlignment="Left" Width="210" IsEnabled="True" Click="WorkOrderReportMenuItem_Click"/>
+                    <MenuItem Header="In Progress MIll/Lathe " HorizontalAlignment="Left" Width="210"/>
+                    <MenuItem Header="In Progress Exploded" HorizontalAlignment="Left" Width="210" IsEnabled="True" Click="WorkOrderReportDetailedMenuItem_Click"/>
+                    <MenuItem Header="In Progress by SO" HorizontalAlignment="Left" Width="210"/>
+                    <MenuItem Header="In Progress Assy/Deburr" HorizontalAlignment="Left" Width="221" Margin="0,0,0,0"/>
+                    <MenuItem Header="In Progress Ship/Receive" HorizontalAlignment="Left" Width="220"/>
+                    <MenuItem Header="Export" HorizontalAlignment="Left" Width="210"/>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Maintenance" >
