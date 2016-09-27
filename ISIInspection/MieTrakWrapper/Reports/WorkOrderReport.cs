@@ -20,7 +20,8 @@ namespace MieTrakWrapper.Reports
     {
         NoFilter,
         AssemblyDeburr,
-        Shipping
+        Shipping,
+        MillLathe
     }
 
     public class WorkOrderReport
@@ -114,6 +115,34 @@ namespace MieTrakWrapper.Reports
             26, //Outside Process
             27, //Packaging
             28 //Shipping
+        };
+
+        public static Int64[] millingNums =
+        {
+            6,//    VF2-1
+            7,//    VF2-2
+            8,//    SMV-1000-1
+            9,//    SMV-1000-2
+            10,//    SMV-600-1
+            11,//    SMV-600-2
+            52,//    VF4-1
+            66,//    VM OP-1
+            67,//    VM OP-2
+            68,//    VM OP-3
+            69,//    VM OP-4
+            70,//    VM OP-5
+            71,//    VM OP-6
+            72,//    VM OP-7
+            73,//    VM OP-8
+            76,//    VM OP-9
+            77,//    VM OP-10
+            78,//    VM OP-11
+            79,//    VM OP-12
+            12,//    TS-814-1 LATHE
+            13,//    WASINO LATHE
+            38,//    CNC Lathe
+            80,//    LT OP-1
+            81 //    LT OP-2
         };
 
         public WorkOrderReport(bool showDetailed)
@@ -357,6 +386,14 @@ namespace MieTrakWrapper.Reports
                         shouldAdd = true;
                     }
                 }
+                else if (filter == WorkOrderReportFilter.MillLathe)
+                {
+                    if (millingNums.Contains(opKey))
+                    {
+                        shouldAdd = true;
+                    }
+                }
+
                 if (shouldAdd)
                 {
                     returnList.Add(entry);

@@ -19,7 +19,7 @@
                     <BindingGroup/>
                 </Button.BindingGroup>
             </Button>
-            <Button Width="90" Height="20" HorizontalAlignment="Right" Margin="0,66,30,-56" x:Name="ExportToCSV" Content="Export to CSV" Click="ExportToCSV_Click" />
+            <Button Width="90" Height="20" HorizontalAlignment="Right" Margin="0,66,30,-56" x:Name="ExportToCSV" Content="Export to CSV" Click="ExportToCSV_Click" IsEnabled="False" />
         </Grid>
         <ListView x:Name="WorkOrderControl" Margin="27,91,33,-31">
             <ListView.Resources>

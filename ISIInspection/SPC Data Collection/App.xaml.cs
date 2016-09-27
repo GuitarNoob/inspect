@@ -255,5 +255,13 @@ namespace SPC_Data_Collection
             workOrderReport.Owner = App.Current.MainWindow;
             workOrderReport.ShowDialog();
         }
+
+        public void ShowWorkOrderReportMillLathe()
+        {
+            Reports.WorkOrderReport workOrderReport = null;
+            workOrderReport = new Reports.WorkOrderReport(false, MieTrakWrapper.Reports.WorkOrderReportSort.WorkOrderSort, MieTrakWrapper.Reports.WorkOrderReportFilter.MillLathe);
+            workOrderReport.Owner = App.Current.MainWindow;
+            workOrderReport.ShowDialog();
+        }
     }
 }

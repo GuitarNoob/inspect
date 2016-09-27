@@ -125,6 +125,11 @@ namespace SPC_Data_Collection
         {
             App.Current.ShowWorkOrderReportShippingReceiving();
         }
+
+        private void MillLatheMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.ShowWorkOrderReportMillLathe();
+        }
         ///private void MandatoryRefresh_Click(object sender, RoutedEventArgs e)
         ///{
         /// Refresh();
