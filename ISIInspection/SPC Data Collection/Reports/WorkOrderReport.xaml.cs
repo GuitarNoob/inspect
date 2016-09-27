@@ -26,15 +26,18 @@ namespace SPC_Data_Collection.Reports
         int timeUntilRefreshMax = 60;
         int timeUntilRefreshCounter = 60;
         List<WorkOrderReportEntry> lastQuery;
+        WorkOrderReportSort sortOrder;
+        WorkOrderReportFilter filter;
 
-        public WorkOrderReport(bool showDetailed = false)
+        public WorkOrderReport(bool showDetailed, WorkOrderReportSort sortOrder, WorkOrderReportFilter filter)
         {
             InitializeComponent();
-
+            this.sortOrder = sortOrder;
+            this.filter = filter;
             try
             {
                 report = new MieTrakWrapper.Reports.WorkOrderReport(showDetailed);
-                lastQuery = report.GetQuery((decimal)1.5);
+                lastQuery = report.GetQuery((decimal)1.5, sortOrder, filter);
                 WorkOrderControl.ItemsSource = lastQuery;
                 CreateTimer();
             }
@@ -74,10 +77,11 @@ namespace SPC_Data_Collection.Reports
         void Refresh()
         {
             timeUntilRefreshCounter = timeUntilRefreshMax;
+
             decimal decResult;
             if (decimal.TryParse(TextBoxMultiplier.Text, out decResult))
             {
-                lastQuery = report.GetQuery(decResult);
+                lastQuery = report.GetQuery(decResult, sortOrder, filter);
                 WorkOrderControl.ItemsSource = lastQuery;
             }
             else
@@ -121,7 +125,7 @@ namespace SPC_Data_Collection.Reports
                 {
                     using (StreamWriter fw = new StreamWriter(dialog.FileName, false))
                     {
-                        fw.WriteLine("Sales Order,Work Order,Customer,Qty To Fab,Part Number,Description,Operation,Work Center,Finish,Setup Time,Run Time,Op Complete Date,Due Date,Current Employee");
+                        fw.WriteLine("Sales Order,Work Order,Customer,Qty To Fab,Qty Complete,Part Number,Description,Operation,Work Center,Finish,Setup Time,Run Time,Days Out,Op Complete Date,Due Date,Current Employee");
                         foreach (WorkOrderReportEntry entry in lastQuery)
                         {
                             string outputLine = "";
@@ -129,6 +133,7 @@ namespace SPC_Data_Collection.Reports
                             outputLine += "\"" + entry.WorkOrder.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.Customer.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.QtyToFab.Replace("\"", "\"\"") + "\",";
+                            outputLine += "\"" + entry.QtyComplete.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.PartNumber.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.Description.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.Operation.Replace("\"", "\"\"") + "\",";
@@ -136,6 +141,7 @@ namespace SPC_Data_Collection.Reports
                             outputLine += "\"" + entry.Finish.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.SetupTime.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.RunTime.Replace("\"", "\"\"") + "\",";
+                            outputLine += "\"" + entry.DaysOut.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.OpCompleteDate.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.DueDate.Replace("\"", "\"\"") + "\",";
                             outputLine += "\"" + entry.ActiveEmployee + "\"";

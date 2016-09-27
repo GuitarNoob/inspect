@@ -24,7 +24,9 @@ namespace MieTrakWrapper.Reports
              string DaysOut,
              string AssemblyFK,
              string SalesOrder,
-            string WorkOrderStatus
+            string WorkOrderStatus,
+            string QtyComplete,
+            string OperationKey
             )
         {
             this.WorkOrder = WorkOrder;
@@ -43,6 +45,8 @@ namespace MieTrakWrapper.Reports
             this.AssemblyFK = AssemblyFK;
             this.SalesOrderFK = SalesOrder;
             this.WorkOrderStatus = WorkOrderStatus;
+            this.QtyComplete = QtyComplete;
+            this.OperationKey = OperationKey;
         }
 
         public void SetActiveEmployees(string activeEmployees)
@@ -80,6 +84,8 @@ namespace MieTrakWrapper.Reports
             }
         }
 
+
+        public DateTime DueDate_DateTime = DateTime.MinValue;
         private string _DueDate;
         public string DueDate
         {
@@ -88,7 +94,8 @@ namespace MieTrakWrapper.Reports
             {
                 try
                 {
-                    _DueDate = DateTime.Parse(value).ToString(DateFormat);
+                    DueDate_DateTime = DateTime.Parse(value);
+                    _DueDate = DueDate_DateTime.ToString(DateFormat);
                 }
                 catch (Exception ex)
                 {
@@ -102,6 +109,15 @@ namespace MieTrakWrapper.Reports
         public string SalesOrderFK { get; set; }
         public string WorkOrderStatus { get; set; }
         public string ActiveEmployee { get; set; }
+        public string QtyComplete { get; set; }
+
+        public Int64 GetOperationKey()
+        {
+            Int64 returnInt = -1;
+            Int64.TryParse(OperationKey, out returnInt);
+            return returnInt;
+        }
+        public string OperationKey { get; set; }
         public string IsLate { get; set; }
 
         public string IsDueToday { get; set; }

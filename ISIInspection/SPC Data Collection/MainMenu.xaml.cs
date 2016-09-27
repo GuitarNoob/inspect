@@ -111,9 +111,23 @@ namespace SPC_Data_Collection
             App.Current.ShowWorkOrderReportDetailed();
         }
 
+        private void SalesOrderMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.ShowWorkOrderReportSalesOrder();
+        }
+
+        private void AssemblyDeburrMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.ShowWorkOrderReportAssemblyDeburr();
+        }
+
+        private void ShippingMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.ShowWorkOrderReportShippingReceiving();
+        }
         ///private void MandatoryRefresh_Click(object sender, RoutedEventArgs e)
         ///{
-           /// Refresh();
+        /// Refresh();
         ///}
     }
 }

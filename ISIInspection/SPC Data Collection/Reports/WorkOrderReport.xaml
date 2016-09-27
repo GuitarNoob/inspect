@@ -41,6 +41,7 @@
                     <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder}"/>
                     <GridViewColumn Header="Customer" Width="auto" DisplayMemberBinding="{Binding Customer}"/>
                     <GridViewColumn Header="Qty To Fab" Width="auto" DisplayMemberBinding="{Binding QtyToFab}"/>
+                    <GridViewColumn Header="Qty Complete" Width="auto" DisplayMemberBinding="{Binding QtyComplete}"/>
                     <GridViewColumn Header="Part Number" Width="auto" DisplayMemberBinding="{Binding PartNumber}"/>
                     <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}"/>
                     <GridViewColumn Header="Operation" Width="auto" DisplayMemberBinding="{Binding Operation}"/>

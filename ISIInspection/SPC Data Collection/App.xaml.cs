@@ -32,7 +32,7 @@ namespace SPC_Data_Collection
 
                 ip.RouterFK = App.Engine.InspectionPlanMgr.SelectedWorkOrder.RouterFK ?? -1;
             }
-            
+
             var ipOriginal = App.Engine.Database.isiEngine.InspectionDb.InspectionPlans.Find(ip.InspectionPlanId);
             if (ipOriginal != null)
                 throw new Exception("Inspection plan id exists!");
@@ -44,7 +44,7 @@ namespace SPC_Data_Collection
             {
                 //just double check they are there and add them if they are not in the database
                 var spOriginal = App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Find(newSetpoint.PartMeasurementSPId);
-                if (spOriginal == null)                                    
+                if (spOriginal == null)
                     App.Engine.Database.isiEngine.InspectionDb.MeasurementSetpoints.Add(newSetpoint);
             }
 
@@ -213,23 +213,45 @@ namespace SPC_Data_Collection
                 measurement.CompletedTime = new DateTime(1975, 1, 1);
                 App.Engine.Database.isiEngine.InspectionDb.MeasurementActual.Add(measurement);
             }
-        }        
+        }
 
         public void ShowWorkOrderReport()
         {
             Reports.WorkOrderReport workOrderReport = null;
-            workOrderReport = new Reports.WorkOrderReport();
-
+            workOrderReport = new Reports.WorkOrderReport(false, MieTrakWrapper.Reports.WorkOrderReportSort.WorkOrderSort, MieTrakWrapper.Reports.WorkOrderReportFilter.NoFilter);
             workOrderReport.Owner = App.Current.MainWindow;
             workOrderReport.ShowDialog();
         }
 
         public void ShowWorkOrderReportDetailed()
-        {            
+        {
 
             Reports.WorkOrderReport workOrderReport = null;
-            workOrderReport = new Reports.WorkOrderReport(true);
+            workOrderReport = new Reports.WorkOrderReport(true, MieTrakWrapper.Reports.WorkOrderReportSort.WorkOrderSort, MieTrakWrapper.Reports.WorkOrderReportFilter.NoFilter);
+            workOrderReport.Owner = App.Current.MainWindow;
+            workOrderReport.ShowDialog();
+        }
 
+        public void ShowWorkOrderReportSalesOrder()
+        {
+            Reports.WorkOrderReport workOrderReport = null;
+            workOrderReport = new Reports.WorkOrderReport(false, MieTrakWrapper.Reports.WorkOrderReportSort.SalesOrderSort, MieTrakWrapper.Reports.WorkOrderReportFilter.NoFilter);
+            workOrderReport.Owner = App.Current.MainWindow;
+            workOrderReport.ShowDialog();
+        }
+
+        public void ShowWorkOrderReportAssemblyDeburr()
+        {
+            Reports.WorkOrderReport workOrderReport = null;
+            workOrderReport = new Reports.WorkOrderReport(false, MieTrakWrapper.Reports.WorkOrderReportSort.WorkOrderSort, MieTrakWrapper.Reports.WorkOrderReportFilter.AssemblyDeburr);
+            workOrderReport.Owner = App.Current.MainWindow;
+            workOrderReport.ShowDialog();
+        }
+
+        public void ShowWorkOrderReportShippingReceiving()
+        {
+            Reports.WorkOrderReport workOrderReport = null;
+            workOrderReport = new Reports.WorkOrderReport(false, MieTrakWrapper.Reports.WorkOrderReportSort.WorkOrderSort, MieTrakWrapper.Reports.WorkOrderReportFilter.Shipping);
             workOrderReport.Owner = App.Current.MainWindow;
             workOrderReport.ShowDialog();
         }

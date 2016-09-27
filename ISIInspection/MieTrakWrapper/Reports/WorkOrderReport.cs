@@ -8,8 +8,24 @@ using System.Threading.Tasks;
 
 namespace MieTrakWrapper.Reports
 {
+
+    public enum WorkOrderReportSort
+    {
+        Unknown,
+        WorkOrderSort,
+        SalesOrderSort
+    }
+
+    public enum WorkOrderReportFilter
+    {
+        NoFilter,
+        AssemblyDeburr,
+        Shipping
+    }
+
     public class WorkOrderReport
     {
+
         SqlConnection connection;
         string queryString = @"SELECT TOP 1000
           workorder.WorkOrderPK as 'Work Order'
@@ -28,6 +44,8 @@ namespace MieTrakWrapper.Reports
          ,assem.WorkOrderAssemblyPK as 'AssemblyPK'
          ,woJob.SalesOrderFK as 'Sales Order'
 ,assem.WorkOrderAssemblyLaborStatusFK as 'WorkOrderStatus'
+,assem.QuantityProduced as 'Qty Complete'
+,assem.OperationFK as 'OperationKey'
                 --,assem.WorkOrderAssemblyLaborStatusFK
                 --,workorder.WorkOrderStatusFK
  
@@ -57,6 +75,47 @@ namespace MieTrakWrapper.Reports
         decimal constMultiplier = (decimal)1.5;
         bool showDetailedReport;
 
+        public static Int64[] deburrNums =
+        {
+            15,//   Sanding
+            16,//   Scotch Brite
+            17,//   Rout-A-Burr
+            18,//   Countersink
+            19,//   X-ACTO Knife
+            20,//   File
+            21,//   Deburr Wheel
+            22,//   Sand Blast
+            23,//   Soap & Water
+            24,//   Acetone
+            25,//   Air Blow
+            29,//   Chamfer
+            30,//   Machine Set-up
+            31,//   Wire Brush Wheel
+            32,//   3M Wheel
+            34,//   Ball Pressing
+            35,//   Pin Pressing
+            36,//   Pem-Nut Pressing
+            39,//   Bending
+            40,//   Helicoils
+            41,//   Tumble
+            42,//   Assemble
+            43,//   Arbor Press
+            44,//   Set Screw
+            46,//   Press
+            48,//   Hand Tap Deburr
+            49,//    Straighten
+            50,//    Dremel
+            54,//    Jitter Bug/Hand Sand
+            55//     Deburr
+        };
+
+        public static Int64[] shippingNums =
+        {
+            26, //Outside Process
+            27, //Packaging
+            28 //Shipping
+        };
+
         public WorkOrderReport(bool showDetailed)
         {
             showDetailedReport = showDetailed;
@@ -82,7 +141,7 @@ namespace MieTrakWrapper.Reports
                 WHERE workCollection.IsActive != 0";
         }
 
-        public List<WorkOrderReportEntry> GetQuery(decimal multiplier)
+        public List<WorkOrderReportEntry> GetQuery(decimal multiplier, WorkOrderReportSort sort, WorkOrderReportFilter filter)
         {
             constMultiplier = multiplier;
             List<WorkOrderReportEntry> returnList = new List<WorkOrderReportEntry>();
@@ -109,14 +168,19 @@ namespace MieTrakWrapper.Reports
                     rdr["Days Out"].ToString(),
                     rdr["AssemblyPK"].ToString(),
                     rdr["Sales Order"].ToString(),
-                    rdr["WorkOrderStatus"].ToString()
+                    rdr["WorkOrderStatus"].ToString(),
+                    rdr["Qty Complete"].ToString(),
+                    rdr["OperationKey"].ToString()
                         ));
                 }
             }
 
             CheckActiveEmployees(ref returnList, GetActiveEmployees());
             CheckDueDates(ref returnList);
-            return FilterReport(returnList);
+            returnList = FilterReport(returnList);
+            returnList = SortReport(returnList, sort);
+            returnList = FilterReportByEnum(returnList, filter);
+            return returnList;
         }
 
         List<ActiveEmployeeEntry> GetActiveEmployees()
@@ -155,11 +219,11 @@ namespace MieTrakWrapper.Reports
                         {
                             personNames += ", ";
                         }
-                        personNames += employee.FirstName + " " + employee.LastName;                        
+                        personNames += employee.FirstName + " " + employee.LastName;
                         firstEmployee = false;
                     }
                     entry.SetActiveEmployees(personNames);
-                }                
+                }
             }
         }
 
@@ -246,6 +310,54 @@ namespace MieTrakWrapper.Reports
             {
                 if (showDetailedReport
                     || entry.IsInProgress())
+                {
+                    returnList.Add(entry);
+                }
+            }
+            return returnList;
+        }
+
+        List<WorkOrderReportEntry> SortReport(List<WorkOrderReportEntry> inputList, WorkOrderReportSort sort)
+        {
+            if (sort == WorkOrderReportSort.WorkOrderSort)
+            {
+                return inputList.OrderBy(x => x.WorkOrder).ThenBy(x => x.DueDate_DateTime).ThenBy(x => x.PartNumber).ToList();
+            }
+            else if (sort == WorkOrderReportSort.SalesOrderSort)
+            {
+                return inputList.OrderBy(x => x.SalesOrderFK).ThenBy(x => x.DueDate_DateTime).ThenBy(x => x.PartNumber).ToList();
+            }
+
+            return null;
+        }
+
+        List<WorkOrderReportEntry> FilterReportByEnum(List<WorkOrderReportEntry> inputList, WorkOrderReportFilter filter)
+        {
+            if (filter == WorkOrderReportFilter.NoFilter)
+            {
+                return inputList;
+            }
+
+            List<WorkOrderReportEntry> returnList = new List<WorkOrderReportEntry>();
+            foreach (WorkOrderReportEntry entry in inputList)
+            {
+                bool shouldAdd = false;
+                Int64 opKey = entry.GetOperationKey();
+                if (filter == WorkOrderReportFilter.AssemblyDeburr)
+                {
+                    if (deburrNums.Contains(opKey))
+                    {
+                        shouldAdd = true;
+                    }
+                }
+                else if (filter == WorkOrderReportFilter.Shipping)
+                {
+                    if (shippingNums.Contains(opKey))
+                    {
+                        shouldAdd = true;
+                    }
+                }
+                if (shouldAdd)
                 {
                     returnList.Add(entry);
                 }
