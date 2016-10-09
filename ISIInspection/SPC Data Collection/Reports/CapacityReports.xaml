@@ -1,0 +1,83 @@
+﻿<Window x:Class="SPC_Data_Collection.Reports.CapacityReports"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPC_Data_Collection.Reports"
+        mc:Ignorable="d"
+        Title="CapacityReports" Height="700" Width="1500" Background="Gray" WindowState="Maximized">
+    <Grid>
+        <Button Content="Refresh Calc" Height="25" Width="120" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,20,0" Name="RefreshButton" Click="RefreshButton_Click"></Button>
+        <Grid Margin="0,25,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
+                <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0"></Label>
+                <TextBox Name="Machine1Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
+                <ListView x:Name="Machine1" Margin="0,30,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder}"/>
+                            <GridViewColumn Header="Priority" Width="auto" DisplayMemberBinding="{Binding Priority}"/>
+                            <GridViewColumn Header="Part Number" Width="auto" DisplayMemberBinding="{Binding PartNumber}"/>
+                            <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="DueDate" Width="auto" DisplayMemberBinding="{Binding DueDateString}"/>
+                            <GridViewColumn Header="Start" Width="auto" DisplayMemberBinding="{Binding StartWorkDateString}"/>
+                            <GridViewColumn Header="End" Width="auto" DisplayMemberBinding="{Binding EndWorkDateString}"/>
+                            <GridViewColumn Header="Est Work" Width="auto" DisplayMemberBinding="{Binding HoursOfWork}"/>
+                            <GridViewColumn Header="Qty" Width="auto" DisplayMemberBinding="{Binding QuantityToDo}"/>
+                            <GridViewColumn Header="Qty Comp" Width="auto" DisplayMemberBinding="{Binding QuantityCompleted}"/>
+                            <GridViewColumn Header="Days E/L" Width="auto" DisplayMemberBinding="{Binding DaysLateOrAhead}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1" >
+                <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0"></Label>
+                <TextBox Name="Machine2Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
+                <ListView x:Name="Machine2" Margin="0,30,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder}"/>
+                            <GridViewColumn Header="Priority" Width="auto" DisplayMemberBinding="{Binding Priority}"/>
+                            <GridViewColumn Header="Part Number" Width="auto" DisplayMemberBinding="{Binding PartNumber}"/>
+                            <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="DueDate" Width="auto" DisplayMemberBinding="{Binding DueDateString}"/>
+                            <GridViewColumn Header="Start" Width="auto" DisplayMemberBinding="{Binding StartWorkDateString}"/>
+                            <GridViewColumn Header="End" Width="auto" DisplayMemberBinding="{Binding EndWorkDateString}"/>
+                            <GridViewColumn Header="Est Work" Width="auto" DisplayMemberBinding="{Binding HoursOfWork}"/>
+                            <GridViewColumn Header="Qty" Width="auto" DisplayMemberBinding="{Binding QuantityToDo}"/>
+                            <GridViewColumn Header="Qty Comp" Width="auto" DisplayMemberBinding="{Binding QuantityCompleted}"/>
+                            <GridViewColumn Header="Days E/L" Width="auto" DisplayMemberBinding="{Binding DaysLateOrAhead}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="2" >
+                <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0"></Label>
+                <TextBox Name="Machine3Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
+                <ListView x:Name="Machine3" Margin="0,30,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder}"/>
+                            <GridViewColumn Header="Priority" Width="auto" DisplayMemberBinding="{Binding Priority}"/>
+                            <GridViewColumn Header="Part Number" Width="auto" DisplayMemberBinding="{Binding PartNumber}"/>
+                            <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="DueDate" Width="auto" DisplayMemberBinding="{Binding DueDateString}"/>
+                            <GridViewColumn Header="Start" Width="auto" DisplayMemberBinding="{Binding StartWorkDateString}"/>
+                            <GridViewColumn Header="End" Width="auto" DisplayMemberBinding="{Binding EndWorkDateString}"/>
+                            <GridViewColumn Header="Est Work" Width="auto" DisplayMemberBinding="{Binding HoursOfWork}"/>
+                            <GridViewColumn Header="Qty" Width="auto" DisplayMemberBinding="{Binding QuantityToDo}"/>
+                            <GridViewColumn Header="Qty Comp" Width="auto" DisplayMemberBinding="{Binding QuantityCompleted}"/>
+                            <GridViewColumn Header="Days E/L" Width="auto" DisplayMemberBinding="{Binding DaysLateOrAhead}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

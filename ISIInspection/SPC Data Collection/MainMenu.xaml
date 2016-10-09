@@ -32,6 +32,9 @@
                     <MenuItem Header="In Progress Ship/Receive" HorizontalAlignment="Left" Width="220" Click="ShippingMenuItem_Click"/>
                     <MenuItem Header="Export" HorizontalAlignment="Left" Width="210"/>
                 </MenuItem>
+                <MenuItem Header="Capacity">
+                    <MenuItem Header="VM Capacity" Click="VMCapacity_Click"></MenuItem>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Maintenance" >
                 <MenuItem Header="Calibration" HorizontalAlignment="Left" Width="150" IsEnabled="true" Click="Calibration_Click"/>

@@ -21,7 +21,8 @@ namespace MieTrakWrapper.Reports
         NoFilter,
         AssemblyDeburr,
         Shipping,
-        MillLathe
+        MillLathe,
+        Mill
     }
 
     public class WorkOrderReport
@@ -47,7 +48,7 @@ namespace MieTrakWrapper.Reports
 ,assem.WorkOrderAssemblyLaborStatusFK as 'WorkOrderStatus'
 ,assem.QuantityProduced as 'Qty Complete'
 ,assem.OperationFK as 'OperationKey'
-                --,assem.WorkOrderAssemblyLaborStatusFK
+                ,assem.WorkOrderAssemblyLaborStatusFK as 'Assembly Status'
                 --,workorder.WorkOrderStatusFK
  
   FROM [MIETRAK].[dbo].[WorkOrder] workorder
@@ -138,6 +139,10 @@ namespace MieTrakWrapper.Reports
             77,//    VM OP-10
             78,//    VM OP-11
             79,//    VM OP-12
+        };
+
+        public static Int64[] latheNums =
+        {
             12,//    TS-814-1 LATHE
             13,//    WASINO LATHE
             38,//    CNC Lathe
@@ -199,7 +204,8 @@ namespace MieTrakWrapper.Reports
                     rdr["Sales Order"].ToString(),
                     rdr["WorkOrderStatus"].ToString(),
                     rdr["Qty Complete"].ToString(),
-                    rdr["OperationKey"].ToString()
+                    rdr["OperationKey"].ToString(),
+                    rdr["Assembly Status"].ToString()
                         ));
                 }
             }
@@ -387,6 +393,13 @@ namespace MieTrakWrapper.Reports
                     }
                 }
                 else if (filter == WorkOrderReportFilter.MillLathe)
+                {
+                    if (millingNums.Contains(opKey) || latheNums.Contains(opKey))
+                    {
+                        shouldAdd = true;
+                    }
+                }
+                else if (filter == WorkOrderReportFilter.Mill)
                 {
                     if (millingNums.Contains(opKey))
                     {

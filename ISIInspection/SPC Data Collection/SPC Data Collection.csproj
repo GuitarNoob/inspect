@@ -103,6 +103,9 @@
     <Compile Include="MeasurementCollectionUserControl.xaml.cs">
       <DependentUpon>MeasurementCollectionUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CapacityReports.xaml.cs">
+      <DependentUpon>CapacityReports.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\WorkOrderReport.xaml.cs">
       <DependentUpon>WorkOrderReport.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MeasurementCollectionUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\CapacityReports.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -263,5 +263,13 @@ namespace SPC_Data_Collection
             workOrderReport.Owner = App.Current.MainWindow;
             workOrderReport.ShowDialog();
         }
+
+        public void ShowCapacityReport()
+        {
+            Reports.CapacityReports capacityReport = null;
+            capacityReport = new Reports.CapacityReports();
+            capacityReport.Owner = App.Current.MainWindow;
+            capacityReport.ShowDialog();
+        }
     }
 }

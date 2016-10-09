@@ -26,7 +26,8 @@ namespace MieTrakWrapper.Reports
              string SalesOrder,
             string WorkOrderStatus,
             string QtyComplete,
-            string OperationKey
+            string OperationKey,
+            string AssemblyStatus
             )
         {
             this.WorkOrder = WorkOrder;
@@ -47,6 +48,7 @@ namespace MieTrakWrapper.Reports
             this.WorkOrderStatus = WorkOrderStatus;
             this.QtyComplete = QtyComplete;
             this.OperationKey = OperationKey;
+            this.AssemblyStatus = AssemblyStatus;
         }
 
         public void SetActiveEmployees(string activeEmployees)
@@ -127,6 +129,13 @@ namespace MieTrakWrapper.Reports
         public bool IsInProgress()
         {
             return WorkOrderStatus == "1";
+        }
+
+        public string AssemblyStatus { get; set; }
+
+        public bool IsAssemblyActive()
+        {
+            return (AssemblyStatus == "1" || AssemblyStatus == "2");
         }
     }
 }

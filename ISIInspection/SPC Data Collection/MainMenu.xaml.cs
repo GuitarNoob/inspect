@@ -130,6 +130,12 @@ namespace SPC_Data_Collection
         {
             App.Current.ShowWorkOrderReportMillLathe();
         }
+
+        private void VMCapacity_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.ShowCapacityReport();
+        }
+
         ///private void MandatoryRefresh_Click(object sender, RoutedEventArgs e)
         ///{
         /// Refresh();

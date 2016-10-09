@@ -1243,6 +1243,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ActiveEmployeeEntry.cs" />
+    <Compile Include="Reports\CapacityCalculator.cs" />
+    <Compile Include="Reports\CapacityMachine.cs" />
+    <Compile Include="Reports\CapacityWorkOrder.cs" />
     <Compile Include="Reports\WorkOrderReport.cs" />
     <Compile Include="Reports\WorkOrderReportEntry.cs" />
   </ItemGroup>
