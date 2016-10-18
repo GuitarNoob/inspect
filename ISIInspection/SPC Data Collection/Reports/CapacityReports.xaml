@@ -7,15 +7,23 @@
         mc:Ignorable="d"
         Title="CapacityReports" Height="700" Width="1500" Background="Gray" WindowState="Maximized">
     <Grid>
-        <Button Content="Refresh Calc" Height="25" Width="120" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,20,0" Name="RefreshButton" Click="RefreshButton_Click"></Button>
-        <Grid Margin="0,25,0,0">
+        <Label Content="Utilization: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" Foreground="White"></Label>
+        <TextBox Height="20" Width="125" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,4,0,0" Name="TextBoxUtilization" IsReadOnly="True" IsEnabled="False" Text="0%"></TextBox>
+        <Label Content="Work Multiplier:" HorizontalAlignment="Left" Margin="250,0,0,0" Foreground="White"/>
+        <TextBox Width="60" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,4,0,0" x:Name="TextBoxMultiplier" BorderThickness="1" Text="1.5"/>
+        
+        <Button Content="Refresh Calc" Height="25" Width="194" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,20,0" Name="RefreshButton" Click="RefreshButton_Click"></Button>
+        <Button Content="Add/Remove Simulated WO" Height="25" Width="194" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,25,20,0" Name="SimulateWO" Click="SimulateWO_Click" ></Button>
+        <Grid Margin="0,50,0,0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" >
+                <Label Content="VM1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Foreground="White"></Label>
                 <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0"></Label>
                 <TextBox Name="Machine1Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
                 <ListView x:Name="Machine1" Margin="0,30,0,0">
@@ -37,6 +45,7 @@
                 </ListView>
             </Grid>
             <Grid Grid.Row="1" >
+                <Label Content="VM2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Foreground="White"></Label>
                 <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0"></Label>
                 <TextBox Name="Machine2Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
                 <ListView x:Name="Machine2" Margin="0,30,0,0">
@@ -58,9 +67,32 @@
                 </ListView>
             </Grid>
             <Grid Grid.Row="2" >
+                <Label Content="VM3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Foreground="White"></Label>
                 <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0"></Label>
                 <TextBox Name="Machine3Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
                 <ListView x:Name="Machine3" Margin="0,30,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder}"/>
+                            <GridViewColumn Header="Priority" Width="auto" DisplayMemberBinding="{Binding Priority}"/>
+                            <GridViewColumn Header="Part Number" Width="auto" DisplayMemberBinding="{Binding PartNumber}"/>
+                            <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="DueDate" Width="auto" DisplayMemberBinding="{Binding DueDateString}"/>
+                            <GridViewColumn Header="Start" Width="auto" DisplayMemberBinding="{Binding StartWorkDateString}"/>
+                            <GridViewColumn Header="End" Width="auto" DisplayMemberBinding="{Binding EndWorkDateString}"/>
+                            <GridViewColumn Header="Est Work" Width="auto" DisplayMemberBinding="{Binding HoursOfWork}"/>
+                            <GridViewColumn Header="Qty" Width="auto" DisplayMemberBinding="{Binding QuantityToDo}"/>
+                            <GridViewColumn Header="Qty Comp" Width="auto" DisplayMemberBinding="{Binding QuantityCompleted}"/>
+                            <GridViewColumn Header="Days E/L" Width="auto" DisplayMemberBinding="{Binding DaysLateOrAhead}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="3" >
+                <Label Content="Lathe" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Foreground="White"></Label>
+                <Label Content="Machine Hours:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,180,0" ></Label>
+                <TextBox Name="Machine4Hours" Width="150" Height="21" Text="8" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,20,0"></TextBox>
+                <ListView x:Name="Machine4" Margin="0,30,0,0">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Work Order" Width="auto" DisplayMemberBinding="{Binding WorkOrder}"/>

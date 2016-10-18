@@ -22,7 +22,8 @@ namespace MieTrakWrapper.Reports
         AssemblyDeburr,
         Shipping,
         MillLathe,
-        Mill
+        Mill,
+        Lathe
     }
 
     public class WorkOrderReport
@@ -402,6 +403,13 @@ namespace MieTrakWrapper.Reports
                 else if (filter == WorkOrderReportFilter.Mill)
                 {
                     if (millingNums.Contains(opKey))
+                    {
+                        shouldAdd = true;
+                    }
+                }
+                else if (filter == WorkOrderReportFilter.Lathe)
+                {
+                    if (latheNums.Contains(opKey))
                     {
                         shouldAdd = true;
                     }

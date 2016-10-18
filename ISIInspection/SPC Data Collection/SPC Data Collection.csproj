@@ -106,6 +106,9 @@
     <Compile Include="Reports\CapacityReports.xaml.cs">
       <DependentUpon>CapacityReports.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SimulateWODialog.xaml.cs">
+      <DependentUpon>SimulateWODialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\WorkOrderReport.xaml.cs">
       <DependentUpon>WorkOrderReport.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports\CapacityReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\SimulateWODialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

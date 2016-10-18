@@ -9,7 +9,7 @@ namespace MieTrakWrapper.Reports
     public class CapacityWorkOrder
     {
 
-        public void AddWorkOrderInformation(WorkOrderReportEntry entry, decimal constMultiplier = (decimal)1.5)
+        public void AddWorkOrderInformation(WorkOrderReportEntry entry, decimal constMultiplier)
         {
             CheckInformation(entry);
 
@@ -86,12 +86,17 @@ namespace MieTrakWrapper.Reports
 
         public int LenthOfTimeToCompletion = 0;
 
+        public decimal GetHoursOfWork()
+        {
+            return ((decimal)LenthOfTimeToCompletion) / ((decimal)60);
+        }
+
         public string HoursOfWork
         {
             get
             {
                 //minutes to hours
-                decimal hours = ((decimal)LenthOfTimeToCompletion) / ((decimal)60);
+                decimal hours = GetHoursOfWork();
                 return hours.ToString("0.0");
             }
             set

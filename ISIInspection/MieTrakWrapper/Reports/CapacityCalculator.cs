@@ -8,7 +8,7 @@ namespace MieTrakWrapper.Reports
 {
     public class CapacityCalculator
     {
-        public List<CapacityWorkOrder> GetCapacityWorkOrderList(List<WorkOrderReportEntry> workOrderEntries)
+        public List<CapacityWorkOrder> GetCapacityWorkOrderList(List<WorkOrderReportEntry> workOrderEntries, decimal multiplier)
         {
             List<CapacityWorkOrder> capacityWorkOrders = new List<CapacityWorkOrder>();
             string lastWorkOrder = "";
@@ -29,7 +29,7 @@ namespace MieTrakWrapper.Reports
                         lastCapactityWorkOrder = new CapacityWorkOrder();
                     }
 
-                    lastCapactityWorkOrder.AddWorkOrderInformation(entry);
+                    lastCapactityWorkOrder.AddWorkOrderInformation(entry, multiplier);
                 }
             }
 
